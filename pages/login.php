@@ -36,7 +36,7 @@
     
 </head>
 <body>
-    <h1>Hellow World Caralho</h1>
+    <h1>Hellow World</h1>
     <div>
         <h2>Login</h2>
         <form action="login.php" method="POST">
