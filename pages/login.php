@@ -3,12 +3,6 @@
 
     if (!empty($_POST['siape']) && !empty($_POST['password'])){
 
-        session_start();
-
-        if (isset($_SESSION['user_id'])) {
-            header('Location: /adminPage');
-        }
-
         $records = $conn->prepare("SELECT siape_administrador, senha_administrador FROM administrador WHERE siape_administrador = :siape");
 
         $records->bindParam(':siape', $_POST['siape']);
@@ -47,12 +41,14 @@
         <h2>Login</h2>
         <form action="login.php" method="POST">
             <input type="name" placeholder="Digite seu SIAPE" name="siape">
-            <input type="password" placeholder="Digite seu email" name="password">
+            <input type="password" placeholder="Digite sua senha" name="password">
             <button type="submit">Login</button>
+            
             <?php if(!empty($message)): ?>
                 <p> <?= $message ?></p>
             <?php endif; ?>
         </form>
+        <a href="./register.php">Registre-se</a>
     </div>
 </body>
 
