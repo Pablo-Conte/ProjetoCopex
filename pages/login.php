@@ -1,9 +1,9 @@
 <?php 
     require_once '../config/connection.php';
-
+    session_start();
     if (!empty($_POST['siape']) && !empty($_POST['password'])){
 
-        $records = $conn->prepare("SELECT siape_administrador, senha_administrador FROM administrador WHERE siape_administrador = :siape");
+        $records = $conn->prepare("SELECT siape_administrador, senha_administrador, id_administrador, nome_administrador FROM administrador WHERE siape_administrador = :siape");
 
         $records->bindParam(':siape', $_POST['siape']);
 
@@ -15,7 +15,8 @@
 
 
         if (count($results) > 0 && $_POST['password'] == $results['senha_administrador']) {
-            $_SESSION['user_id'] = $results['id'];
+            $_SESSION['user_id'] = $results["id_administrador"];
+            $_SESSION['name'] = $results["nome_administrador"];
             $message = "Você é mesmo um ADM";
             header("Location: adminPage.php");
         } else {
