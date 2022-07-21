@@ -17,8 +17,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome to the Admin Page, <?php echo($_SESSION['name']);?></h1>
-    <a href="./register.php">Registrar</a>
-    <a href="./sair.php">Sair</a>
+    <h1>Welcome to the Admin Page</h1>
+    <p>Nome do Admin: <?php echo($_SESSION['name']);?></p>
+    <a href="./register.php">Registrar ADM</a><br>
+    <a href="./registerEmpresa.php">Registrar EMPRESA</a><br>
+    <a href="./sair.php">Sair</a><br>
 </body>
 </html>

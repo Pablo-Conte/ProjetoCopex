@@ -1,6 +1,6 @@
 <?php 
     require_once '../includes/connection.php';
-
+    ini_set("display_errors", 1);
     session_start();
 
     if (isset($_SESSION['user_id'])){
@@ -8,10 +8,12 @@
     }
     if (!empty($_POST['siape']) && !empty($_POST['password'])){
 
-        $records = $conn->prepare("SELECT siape_administrador, senha_administrador, id_administrador, nome_administrador FROM administrador WHERE siape_administrador = :siape");
+        $query = "SELECT siape, senha, id, nome FROM administrador WHERE siape = :siape";
+
+        $records = $conn->prepare($query);
 
         $records->bindParam(':siape', $_POST['siape']);
-
+        
         $records->execute();
 
         $results = $records->fetch(PDO::FETCH_ASSOC);
@@ -22,9 +24,9 @@
 
         $message = '';
 
-        if (count($results) > 0 && $_POST['password'] == $results['senha_administrador']){
-            $_SESSION['user_id'] = $results["id_administrador"];
-            $_SESSION['name'] = $results["nome_administrador"];
+        if (count($results) > 0 && $_POST['password'] == $results['senha']){
+            $_SESSION['user_id'] = $results["id"];
+            $_SESSION['name'] = $results["nome"];
             header("Location: adminPage.php");
         } else {
             $message = 'Sorry, those credentials do not match';
@@ -44,7 +46,6 @@
     
 </head>
 <body>
-    <h1>Hellow World</h1>
     <div>
         <h2>Login</h2>
         <form action="login.php" method="POST">

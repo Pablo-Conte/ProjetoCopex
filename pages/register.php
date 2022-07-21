@@ -18,8 +18,8 @@
         $siape = $_POST['siape'];
         $password = $_POST['password'];
     
-        $recordsSiape = $conn->prepare("SELECT siape_administrador FROM administrador WHERE siape_administrador = :siape");
-        $recordsEmail = $conn->prepare("SELECT email_administrador FROM administrador WHERE email_administrador = :email");
+        $recordsSiape = $conn->prepare("SELECT siape FROM administrador WHERE siape = :siape");
+        $recordsEmail = $conn->prepare("SELECT email FROM administrador WHERE email = :email");
 
         $recordsSiape->bindParam(':siape', $_POST['siape']);
         $recordsEmail->bindParam(':email', $_POST['email']);
@@ -31,7 +31,7 @@
 
 
         if ($resultsSiape == 0 && $resultsEmail == 0) {
-            $query = $conn->prepare("INSERT INTO administrador (nome_administrador, senha_administrador, email_administrador, siape_administrador) VALUES (:nome, :senha, :email, :siape)");
+            $query = $conn->prepare("INSERT INTO administrador (nome, senha, email, siape) VALUES (:nome, :senha, :email, :siape)");
             $query->bindParam(':nome', $_POST['name']);
             $query->bindParam(':senha', $_POST['password']);
             $query->bindParam(':email', $_POST['email']);
@@ -43,21 +43,24 @@
         } else {
             $m = "Siape ou Email já estão cadastrados no Banco de dados";
         }
-    }
+    } 
 ?>
 <body>
     <form method="POST" action="register.php">
+
+        <h1>Registro de Administradores</h1>
 
         <input type="text" name="siape" id="siape" placeholder="Siape"><br>
 
         <input type="text" name="name" id="name" placeholder="Nome"><br>
         
         <input type="email" name="email" id="email" placeholder="E-mail"><br>
-
+        
         <input type="password" name="password" id="password" placeholder="Password"><br>
 
+        <br>
         <button type="submit">Cadastrar</button>
-        <a href="./login.php">Login</a>
+        <a href="./adminPage.php">AdminPage</a>
         <?php if(!empty($m)): ?>
             <p> <?= $m ?></p>
         <?php endif; ?>
