@@ -3,8 +3,16 @@
     <title> Cadastro de Usuário </title>
 </head>
 <?php 
-    require_once "../config/connection.php";
+    require_once "../includes/connection.php";
     $m = "";
+
+    session_start();
+
+    if(!isset($_SESSION['user_id'])){
+        header("Location: /projetocopex/pages/login.php");
+        die();
+    }
+    
     if (!empty($_POST['siape']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']))){
         
         $siape = $_POST['siape'];

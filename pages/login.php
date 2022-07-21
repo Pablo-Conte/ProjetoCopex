@@ -1,6 +1,11 @@
 <?php 
-    require_once '../config/connection.php';
+    require_once '../includes/connection.php';
+
     session_start();
+
+    if (isset($_SESSION['user_id'])){
+        header('Location: adminPage.php');
+    }
     if (!empty($_POST['siape']) && !empty($_POST['password'])){
 
         $records = $conn->prepare("SELECT siape_administrador, senha_administrador, id_administrador, nome_administrador FROM administrador WHERE siape_administrador = :siape");
@@ -11,13 +16,15 @@
 
         $results = $records->fetch(PDO::FETCH_ASSOC);
         
+        if ($results == false){
+            $results = [];
+        }
+
         $message = '';
 
-
-        if (count($results) > 0 && $_POST['password'] == $results['senha_administrador']) {
+        if (count($results) > 0 && $_POST['password'] == $results['senha_administrador']){
             $_SESSION['user_id'] = $results["id_administrador"];
             $_SESSION['name'] = $results["nome_administrador"];
-            $message = "Você é mesmo um ADM";
             header("Location: adminPage.php");
         } else {
             $message = 'Sorry, those credentials do not match';
@@ -49,7 +56,6 @@
                 <p> <?= $message ?></p>
             <?php endif; ?>
         </form>
-        <a href="./register.php">Registre-se</a>
     </div>
 </body>
 
