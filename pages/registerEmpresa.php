@@ -1,7 +1,14 @@
 <?php 
     require "../includes/connection.php";
 
-    if()
+    if(!empty($_POST['cnpj']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']))){
+        if ($_POST['password'] == $_POST['passwordVerify']){
+            
+        } else {
+            $m = 'Senhas não iguais, verifique!';
+        }
+
+    }
 
 
 ?>
@@ -17,7 +24,7 @@
 </head>
 <body>
     
-    <form method="POST" action="register.php">
+    <form method="POST" action="registerEmpresa.php">
 
         <h1>Registro de Empresas</h1>
 
@@ -27,7 +34,9 @@
 
         <input type="email" name="email" id="email" placeholder="E-mail"><br>
 
-        <input type="password" name="password" id="password" placeholder="Password"><br><br>
+        <input type="password" name="password" id="password" placeholder="Password"><br>
+
+        <input type="password" name="passwordVerify" id="passwordVerify" placeholder="Verificar Senha"><br><br>
 
         <button type="submit">Cadastrar</button>
 
