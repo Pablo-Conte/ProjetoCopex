@@ -4,6 +4,15 @@
     if(!empty($_POST['cnpj']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']))){
         if ($_POST['password'] == $_POST['passwordVerify']){
             
+            $cnpj = $_POST['cnpj'];
+            $email = $_POST['email'];
+
+            $query = $conn->prepare("SELECT * FROM empresa WHERE cnpj = :cnpj OR email = :email");
+            $query->bindParam(':cnpj', $cnpj);
+            $query->bindParam(':email', $email);
+            $query->execute();
+            var_dump($query->execute());
+
         } else {
             $m = 'Senhas não iguais, verifique!';
         }
