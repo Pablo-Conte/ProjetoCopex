@@ -8,7 +8,7 @@
     }
     if (!empty($_POST['siape']) && !empty($_POST['password'])){
 
-        $query = "SELECT siape, senha, id, nome FROM administrador WHERE siape = :siape";
+        $query = "SELECT siape, senha, id_administrador, nome FROM administrador WHERE siape = :siape";
 
         $records = $conn->prepare($query);
 
@@ -25,7 +25,7 @@
         $message = '';
 
         if (count($results) > 0 && $_POST['password'] == $results['senha']){
-            $_SESSION['user_id'] = $results["id"];
+            $_SESSION['user_id'] = $results["id_administrador"];
             $_SESSION['name'] = $results["nome"];
             header("Location: adminPage.php");
         } else {
@@ -37,7 +37,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

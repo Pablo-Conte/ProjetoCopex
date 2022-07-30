@@ -10,6 +10,18 @@ CREATE TABLE IF NOT EXISTS administrador (
     siape VARCHAR(255)
 );
 
+INSERT INTO administrador (
+    nome,
+    senha,
+    email,
+    siape   
+) VALUES (
+    "Ronise",
+    "1234",
+    "ronise@gmail.com",
+    "1"
+);
+
 CREATE TABLE IF NOT EXISTS empresa (
 	id_empresa INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome VARCHAR(255),
@@ -36,3 +48,5 @@ CREATE TABLE IF NOT EXISTS aluno (
     email VARCHAR(255),
     curso INT
 );
+
+
