@@ -6,13 +6,42 @@
             
             $cnpj = $_POST['cnpj'];
             $email = $_POST['email'];
+            $nome = $_POST['name'];
+            $password = $_POST['password'];
 
             $query = $conn->prepare("SELECT * FROM empresa WHERE cnpj = :cnpj OR email = :email");
             $query->bindParam(':cnpj', $cnpj);
             $query->bindParam(':email', $email);
             $query->execute();
-            var_dump($query->execute());
 
+            $results = $query->fetch(PDO::FETCH_ASSOC);
+
+            if($results == 0){
+                $query = $conn->prepare("INSERT INTO empresa (
+                    nome,     
+                    senha,     
+                    cnpj,     
+                    email
+                ) VALUES (  
+                    :nome,     
+                    :senha,     
+                    :cnpj,     
+                    :email
+                )");
+
+                $query->bindParam(':nome', $nome);
+                $query->bindParam(':senha', $password);
+                $query->bindParam(':cnpj', $cnpj);
+                $query->bindParam(':email', $email);
+
+                $query->execute();
+
+                $m = "<script language='javascript' type='text/javascript'>alert('Usuário cadastrado com sucesso!')</script>";
+
+            } else {
+                $m = 'Usuário já cadastrado';
+            }
+            
         } else {
             $m = 'Senhas não iguais, verifique!';
         }
@@ -43,7 +72,7 @@
 
         <input type="email" name="email" id="email" placeholder="E-mail"><br>
 
-        <input type="password" name="password" id="password" placeholder="Password"><br>
+        <input type="password" name="password" id="password" placeholder="Senha"><br>
 
         <input type="password" name="passwordVerify" id="passwordVerify" placeholder="Verificar Senha"><br><br>
 

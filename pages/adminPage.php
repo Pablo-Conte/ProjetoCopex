@@ -1,11 +1,12 @@
 <?php 
     require '../includes/connection.php';
     session_start();
+    
 
     if(!isset($_SESSION['user_id'])){
         header("Location: /projetocopex/pages/login.php");
         die();
-
+        
     }
 ?>
 <!DOCTYPE html>
@@ -21,6 +22,10 @@
     <p>Nome do Admin: <?php echo($_SESSION['name']);?></p>
     <a href="./register.php">Registrar ADM</a><br>
     <a href="./registerEmpresa.php">Registrar EMPRESA</a><br>
+    <a href="./registerAluno.php">Registrar ALUNO</a><br>
     <a href="./sair.php">Sair</a><br>
+    <?php
+        var_dump($_SESSION);
+    ?>
 </body>
 </html>
