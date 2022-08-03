@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Home demonho</h1>
+    <h1>Home</h1>
     <a href="./pages/login.php"><p>Login</p></a>
 </body>
 </html>
