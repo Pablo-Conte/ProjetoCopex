@@ -24,8 +24,5 @@
     <a href="./registerEmpresa.php">Registrar EMPRESA</a><br>
     <a href="./registerAluno.php">Registrar ALUNO</a><br>
     <a href="./sair.php">Sair</a><br>
-    <?php
-        var_dump($_SESSION);
-    ?>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php 
     require_once '../includes/connection.php';
-    ini_set("display_errors", 1);
+
     session_start();
 
     if (isset($_SESSION['user_id'])){
@@ -24,7 +24,7 @@
 
         $message = '';
 
-        if (count($results) > 0 && $_POST['password'] == $results['senha']){
+        if (count($results) > 1 && password_verify($_POST['password'], $results['senha']) == TRUE){
             $_SESSION['user_id'] = $results["id_administrador"];
             $_SESSION['name'] = $results["nome"];
             header("Location: adminPage.php");

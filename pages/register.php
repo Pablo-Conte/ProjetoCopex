@@ -32,8 +32,9 @@
 
         if ($resultsSiape == 0 && $resultsEmail == 0) {
             $query = $conn->prepare("INSERT INTO administrador (nome, senha, email, siape) VALUES (:nome, :senha, :email, :siape)");
+            $hash_password = password_hash($password, PASSWORD_DEFAULT);
             $query->bindParam(':nome', $_POST['name']);
-            $query->bindParam(':senha', $_POST['password']);
+            $query->bindParam(':senha', $hash_password);
             $query->bindParam(':email', $_POST['email']);
             $query->bindParam(':siape', $_POST['siape']);
             $query->execute();

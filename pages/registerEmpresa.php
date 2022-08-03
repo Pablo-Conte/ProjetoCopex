@@ -7,7 +7,7 @@
             $cnpj = $_POST['cnpj'];
             $email = $_POST['email'];
             $nome = $_POST['name'];
-            $password = $_POST['password'];
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
             $query = $conn->prepare("SELECT * FROM empresa WHERE cnpj = :cnpj OR email = :email");
             $query->bindParam(':cnpj', $cnpj);
