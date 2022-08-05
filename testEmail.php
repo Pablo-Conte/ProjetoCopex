@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-$mail = new PHPMailer(true); //mostrar erros
+$mail = new PHPMailer(true);
 
 try {
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
