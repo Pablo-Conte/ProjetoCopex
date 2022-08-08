@@ -3,7 +3,7 @@
     <title> Cadastro de Usuário </title>
 </head>
 <?php 
-    require_once "../includes/connection.php";
+    require_once "../../includes/connection.php";
     $m = "";
 
     session_start();
@@ -61,7 +61,7 @@
 
         <br>
         <button type="submit">Cadastrar</button>
-        <a href="./adminPage.php">AdminPage</a>
+        <a href="./../adminPage.php">AdminPage</a>
         <?php if(!empty($m)): ?>
             <p> <?= $m ?></p>
         <?php endif; ?>

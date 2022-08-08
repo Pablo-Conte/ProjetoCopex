@@ -1,5 +1,5 @@
 <?php 
-    require "../includes/connection.php";
+    require "../../includes/connection.php";
 
     session_start();
 
@@ -85,7 +85,7 @@
 
         <button type="submit">Cadastrar</button>
 
-        <a href="./adminPage.php">AdminPage</a>
+        <a href="./../adminPage.php">AdminPage</a>
 
         <?php if(!empty($m)): ?>
             <p> <?= $m ?></p>
