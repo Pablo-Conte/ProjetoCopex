@@ -1,6 +1,13 @@
 <?php 
     require "../includes/connection.php";
 
+    session_start();
+
+    if(!isset($_SESSION['user_id'])){
+        header("Location: /projetocopex/pages/login.php");
+        die();
+    }
+
     if(!empty($_POST['cnpj']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']))){
         if ($_POST['password'] == $_POST['passwordVerify']){
             

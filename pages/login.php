@@ -49,8 +49,8 @@
     <div>
         <h2>Login</h2>
         <form action="login.php" method="POST">
-            <input type="name" placeholder="Digite seu SIAPE" name="siape">
-            <input type="password" placeholder="Digite sua senha" name="password">
+            <input type="name" placeholder="Digite seu SIAPE" name="siape"></br>
+            <input type="password" placeholder="Digite sua senha" name="password"></br></br>
             <button type="submit">Login</button>
             
             <?php if(!empty($message)): ?>
