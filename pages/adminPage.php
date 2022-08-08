@@ -22,7 +22,7 @@
     <p>Nome do Admin: <?php echo($_SESSION['name']);?></p>
     <a href="./register.php">Registrar ADM</a><br>
     <a href="./registerEmpresa.php">Registrar EMPRESA</a><br>
-    <a href="./registerAluno.php">Registrar ALUNO</a><br>
+    <a href="./registerAluno.php">Registrar ALUNO</a><br></br>
     <a href="./sair.php">Sair</a><br>
 </body>
 </html>
