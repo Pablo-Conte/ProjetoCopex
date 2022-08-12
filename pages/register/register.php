@@ -4,14 +4,9 @@
 </head>
 <?php 
     require_once "../../includes/connection.php";
+    require_once "./adminAuth.php";
+    
     $m = "";
-
-    session_start();
-
-    if(!isset($_SESSION['user_id'])){
-        header("Location: /projetocopex/pages/login.php");
-        die();
-    }
     
     if (!empty($_POST['siape']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']))){
         
@@ -61,7 +56,7 @@
 
         <br>
         <button type="submit">Cadastrar</button>
-        <a href="./../adminPage.php">AdminPage</a>
+        <a href="../userPages/adminPage.php">AdminPage</a>
         <?php if(!empty($m)): ?>
             <p> <?= $m ?></p>
         <?php endif; ?>

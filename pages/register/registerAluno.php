@@ -1,12 +1,6 @@
 <?php 
     require_once "../../includes/connection.php";
-
-    session_start();
-
-    if(!isset($_SESSION['user_id'])){
-        header("Location: /projetocopex/pages/login.php");
-        die();
-    }
+    require_once "./adminAuth.php";
 
     if(!empty($_POST['matricula']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']))){
         if ($_POST['password'] == $_POST['passwordVerify']){
@@ -94,7 +88,7 @@
 
         <button type="submit">Cadastrar</button>
 
-        <a href="./../adminPage.php">AdminPage</a>
+        <a href="../userPages/adminPage.php">AdminPage</a>
 
         <?php if(!empty($m)): ?>
             <p> <?= $m ?></p>
