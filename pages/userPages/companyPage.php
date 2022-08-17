@@ -20,6 +20,10 @@
 <body>
     <h1>Welcome to the Company Page</h1>
     <p>Nome do Aluno: <?php echo($_SESSION['name']);?></p>
+
+    <a href="./funcCompany/addVacancy.php"><p>ADICIONAR VAGA</p></a>
+
     <a href="../sair.php">Sair</a><br>
+
 </body>
 </html>

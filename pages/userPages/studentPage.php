@@ -21,5 +21,6 @@
     <h1>Welcome to the Student Page</h1>
     <p>Nome do Aluno: <?php echo($_SESSION['name']);?></p>
     <a href="../sair.php">Sair</a><br>
+
 </body>
 </html>
