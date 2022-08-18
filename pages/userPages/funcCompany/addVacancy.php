@@ -2,6 +2,7 @@
 
     session_start();
     require_once('../../../includes/connection.php');
+    require_once('./companyAuth.php');
 
     if (!empty($_POST['salario']) && !empty($_POST['cargo']) && !empty($_POST['descricao'])){
         

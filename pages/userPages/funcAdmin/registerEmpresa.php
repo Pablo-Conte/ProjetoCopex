@@ -1,43 +1,39 @@
 <?php 
-    require_once "../../includes/connection.php";
+    require_once "../../../includes/connection.php";
     require_once "./adminAuth.php";
 
-    if(!empty($_POST['matricula']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']))){
+    if(!empty($_POST['cnpj']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']))){
         if ($_POST['password'] == $_POST['passwordVerify']){
             
-            $matricula = $_POST['matricula'];
+            $cnpj = $_POST['cnpj'];
             $email = $_POST['email'];
             $nome = $_POST['name'];
-            $curso = $_POST['curso'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-            $query = $conn->prepare("SELECT * FROM aluno WHERE matricula = :matricula OR email = :email");
-            $query->bindParam(':matricula', $matricula);
+            $query = $conn->prepare("SELECT * FROM empresa WHERE cnpj = :cnpj OR email = :email");
+            $query->bindParam(':cnpj', $cnpj);
             $query->bindParam(':email', $email);
             $query->execute();
 
             $results = $query->fetch(PDO::FETCH_ASSOC);
 
             if($results == 0){
-                $query = $conn->prepare("INSERT INTO aluno (
+                $query = $conn->prepare("INSERT INTO empresa (
                     nome,     
                     senha,     
-                    matricula,     
-                    email,
-                    curso
+                    cnpj,     
+                    email
                 ) VALUES (  
                     :nome,     
                     :senha,     
-                    :matricula,     
-                    :email,
-                    :curso
+                    :cnpj,     
+                    :email
                 )");
 
                 $query->bindParam(':nome', $nome);
                 $query->bindParam(':senha', $password);
-                $query->bindParam(':matricula', $matricula);
+                $query->bindParam(':cnpj', $cnpj);
                 $query->bindParam(':email', $email);
-                $query->bindParam(':curso', $curso);
 
                 $query->execute();
 
@@ -67,11 +63,11 @@
 </head>
 <body>
     
-    <form method="POST" action="registerAluno.php">
+    <form method="POST" action="registerEmpresa.php">
 
-        <h1>Registro de Alunos</h1>
+        <h1>Registro de Empresas</h1>
 
-        <input type="text" name="matricula" id="matricula" placeholder="Matricula"><br>
+        <input type="text" name="cnpj" id="cnpj" placeholder="CNPJ"><br>
 
         <input type="text" name="name" id="name" placeholder="Name"><br>
 
@@ -81,14 +77,9 @@
 
         <input type="password" name="passwordVerify" id="passwordVerify" placeholder="Verificar Senha"><br><br>
 
-        <select name="curso">
-            <option value="1">Informática</option>
-            <option value="2">Eletromecânica</option>
-        </select></br></br>
-
         <button type="submit">Cadastrar</button>
 
-        <a href="../userPages/adminPage.php">AdminPage</a>
+        <a href="../adminPage.php">AdminPage</a>
 
         <?php if(!empty($m)): ?>
             <p> <?= $m ?></p>
