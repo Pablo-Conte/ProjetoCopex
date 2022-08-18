@@ -18,10 +18,6 @@
             <input type="name" placeholder="Digite seu SIAPE" name="siape"></br>
             <input type="password" placeholder="Digite sua senha" name="password"></br></br>
             <button type="submit">Login</button>
-            
-            <?php if(!empty($message)): ?>
-                <p> <?= $message ?></p>
-            <?php endif; ?>
         </form>
     </div>
 
@@ -31,10 +27,6 @@
             <input type="text" placeholder="Digite sua matricula" name="matricula"></br>
             <input type="password" placeholder="Digite sua senha" name="password_aluno"></br></br>
             <button type="submit">Login</button>
-            
-            <?php if(!empty($message)): ?>
-                <p> <?= $message ?></p>
-            <?php endif; ?>
         </form>
     </div>
 
@@ -44,12 +36,12 @@
             <input type="name" placeholder="Digite seu CNPJ" name="cnpj"></br>
             <input type="password" placeholder="Digite sua senha" name="password_empresa"></br></br>
             <button type="submit">Login</button>
-            
-            <?php if(!empty($message)): ?>
-                <p> <?= $message ?></p>
-            <?php endif; ?>
         </form>
     </div>
+
+    <?php if(!empty($message)): ?>
+        <p> <?= $message ?></p>
+    <?php endif; ?>
 </body>
 
 

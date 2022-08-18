@@ -39,7 +39,7 @@
             $_SESSION['name'] = $results["nome"];
             header("Location: ./userPages/adminPage.php");
         } else {
-            $message = 'Sorry, those credentials do not match';
+            $message = "<script language='javascript' type='text/javascript'>alert('Problemas ao logar, credenciais não são iguais!')</script>";
         }
     
     } 
@@ -53,12 +53,16 @@
 
         $results = $records->fetch(PDO::FETCH_ASSOC);
 
+        if ($results == false){
+            $results = [];
+        }
+
         if (count($results) > 1 && password_verify($_POST['password_aluno'], $results['senha']) == True){
             $_SESSION['user_id_aluno'] = $results["id_aluno"];
             $_SESSION['name'] = $results["nome"];
             header("Location: ./userPages/studentPage.php");
         } else {
-            $message = 'Sorry, those credentials do not match';
+            $message = "<script language='javascript' type='text/javascript'>alert('Problemas ao logar, credenciais não são iguais!')</script>";
         }
     }
 
@@ -71,12 +75,16 @@
 
         $results = $records->fetch(PDO::FETCH_ASSOC);
 
+        if ($results == false){
+            $results = [];
+        }
+
         if (count($results) > 1 && password_verify($_POST['password_empresa'], $results['senha'])){
             $_SESSION['user_id_empresa'] = $results["id_empresa"];
             $_SESSION['name'] = $results["nome"];
             header("Location: ./userPages/companyPage.php");
         } else {
-            $message = 'Sorry, those credentials do not match';
+            $message = "<script language='javascript' type='text/javascript'>alert('Problemas ao logar, credenciais não são iguais!')</script>";
         }
         
     }
