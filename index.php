@@ -8,15 +8,19 @@
     <link rel="stylesheet" href="./Bootstrap/css/bootstrap.css">
     <style>
         .navbar {
-            background-color: #20C997;
+            background-color: #148028;
             position: sticky;
             top: 0px;
-            
+            color: white;
         }
         .btn {
             color: white;
             text-decoration: none;
             border: 1px solid white;
+        }
+
+        a {
+          color: white;
         }
 
         .btn:hover {
@@ -31,6 +35,18 @@
 
         body {
             background-color: #92fcdc;
+        }
+
+        .navbar-brand {
+          color: white;
+        }
+
+        .nav-item {
+          color: white;
+        }
+
+        .navbar-nav .nav-link.active {
+          color: white;
         }
     </style>
 </head>
@@ -49,7 +65,7 @@
         </li>
       </ul>
       <form class="d-flex">
-        <a href="./pages/login.php"><button type="button" class="btn btn-link">Login</button></a>
+        <a href="./pages/login.php"><button type="button" class="btn btn-link"> Login</button></a>
       </form>
     </div>
   </div>
