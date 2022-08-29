@@ -37,6 +37,7 @@
         if (count($results) > 1 && password_verify($_POST['password'], $results['senha']) == TRUE){
             $_SESSION['user_id_admin'] = $results["id_administrador"];
             $_SESSION['name'] = $results["nome"];
+            $_SESSION['localizacao'] = "";
             header("Location: ./userPages/adminPage.php");
         } else {
             $message = "<script language='javascript' type='text/javascript'>alert('Problemas ao logar, credenciais não são iguais!')</script>";
@@ -60,6 +61,7 @@
         if (count($results) > 1 && password_verify($_POST['password_aluno'], $results['senha']) == True){
             $_SESSION['user_id_aluno'] = $results["id_aluno"];
             $_SESSION['name'] = $results["nome"];
+            $_SESSION['localizacao'] = "";
             header("Location: ./userPages/studentPage.php");
         } else {
             $message = "<script language='javascript' type='text/javascript'>alert('Problemas ao logar, credenciais não são iguais!')</script>";
@@ -82,6 +84,7 @@
         if (count($results) > 1 && password_verify($_POST['password_empresa'], $results['senha'])){
             $_SESSION['user_id_empresa'] = $results["id_empresa"];
             $_SESSION['name'] = $results["nome"];
+            $_SESSION['localizacao'] = "";
             header("Location: ./userPages/companyPage.php");
         } else {
             $message = "<script language='javascript' type='text/javascript'>alert('Problemas ao logar, credenciais não são iguais!')</script>";

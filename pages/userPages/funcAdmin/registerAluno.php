@@ -1,7 +1,6 @@
 <?php 
     require_once "../../../includes/connection.php";
     require_once "./adminAuth.php";
-    require_once "../structure/headerUsers.php";
 
     if(!empty($_POST['matricula']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']))){
         if ($_POST['password'] == $_POST['passwordVerify']){
@@ -54,9 +53,27 @@
 
     }
 
-
 ?>
-    
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../Bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/default.css">
+    <script src="../../../Bootstrap/js/bootstrap.bundle.js"></script>
+    <title>Registro de Alunos</title>
+</head>
+
+<body>
+
+    <?php
+        require_once "../structure/headerUsers.php";
+    ?>
+
     <div class="main">
         <form method="POST" action="registerAluno.php">
             <h1>Registro de Alunos</h1>

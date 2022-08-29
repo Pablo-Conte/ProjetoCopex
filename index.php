@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./Bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="./pages/css/headerIndex.css">
   <script src="./Bootstrap/js/bootstrap.bundle.js"></script>
-  <title>COPEX</title>
+  <title>Index</title>
 </head>
 
 <body>

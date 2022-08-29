@@ -1,8 +1,6 @@
 <?php 
     require_once '../../includes/connection.php';
     require_once './headerHome.php';
-    session_start();
-    
 
     if(!isset($_SESSION['user_id_admin'])){
         header("Location: ../projetocopex/pages/login.php");

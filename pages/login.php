@@ -12,7 +12,7 @@ require_once "./login/loginAuth.php";
     <link rel="stylesheet" href="./css/headerIndex.css">
     <link rel="stylesheet" href="./css/headerHome.css">
     <script src="../Bootstrap/js/bootstrap.bundle.js"></script>
-    <title>COPEX</title>
+    <title>Login</title>
 </head>
 
 <body>

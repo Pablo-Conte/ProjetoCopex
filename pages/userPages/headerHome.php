@@ -8,7 +8,24 @@
     <link rel="stylesheet" href="../../Bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../css/headerHome.css">
     <script src="../../Bootstrap/js/bootstrap.bundle.js"></script>
-    <title>COPEX</title>
+    <?php
+        
+        session_start();
+        
+        if (isset($_SESSION['user_id_empresa'])){
+            echo '<title>Home Empresa</title>';
+        }
+
+        if(isset($_SESSION['user_id_aluno'])){
+            echo '<title>Home Aluno</title>';
+        }
+
+        if(isset($_SESSION['user_id_admin'])){
+            echo '<title>Home Admin</title>';
+        }
+
+    ?>
+    
 
 </head>
 
