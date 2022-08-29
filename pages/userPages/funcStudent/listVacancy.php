@@ -1,8 +1,3 @@
-<?php
-    require_once "../../../includes/connection.php";
-    require_once "./studentAuth";
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +16,13 @@
         }
     </style>
 </head>
-<body>
+<?php
+    require_once "../../../includes/connection.php";
+    require_once "./studentAuth";
+    require_once "../structure/headerUsers.php";
+
+?>
+
     
     <h1>Listar vagas</h1>
     
@@ -43,7 +44,5 @@
             echo "</div>";
         }
     ?>
-    
-    <br><a href="../studentPage.php">companyPage</a>
 </body>
 </html>

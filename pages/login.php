@@ -1,7 +1,31 @@
 <?php
-    require_once "./login/loginAuth.php";
+require_once "./login/loginAuth.php";
 ?>
-    
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/headerIndex.css">
+    <script src="../Bootstrap/js/bootstrap.bundle.js"></script>
+    <title>COPEX</title>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand">COPEX</a>
+            <form class="d-flex" role="search">
+                <a href="../index.php">
+                    <div class="dir">HOME</div>
+                </a>
+            </form>
+        </div>
+    </nav>
     <div>
         <h2>Login Admin</h2>
         <form action="login.php" method="POST">
@@ -29,7 +53,7 @@
         </form>
     </div>
 
-    <?php if(!empty($message)): ?>
+    <?php if (!empty($message)) : ?>
         <p> <?= $message ?></p>
     <?php endif; ?>
 </body>

@@ -1,6 +1,7 @@
 <?php 
     require_once "../../../includes/connection.php";
     require_once "./adminAuth.php";
+    require_once "../structure/headerUsers.php";
 
     if(!empty($_POST['cnpj']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']))){
         if ($_POST['password'] == $_POST['passwordVerify']){
@@ -78,8 +79,6 @@
         <input type="password" name="passwordVerify" id="passwordVerify" placeholder="Verificar Senha"><br><br>
 
         <button type="submit">Cadastrar</button>
-
-        <a href="../adminPage.php">AdminPage</a>
 
         <?php if(!empty($m)): ?>
             <p> <?= $m ?></p>

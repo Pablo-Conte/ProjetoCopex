@@ -1,10 +1,7 @@
-<html>
-<head>
-    <title> Cadastro de Usuário </title>
-</head>
 <?php 
     require_once "../../../includes/connection.php";
     require_once "./adminAuth.php";
+    require_once "../structure/headerUsers.php";
     
     $m = "";
     
@@ -41,7 +38,7 @@
         }
     } 
 ?>
-<body>
+
     <form method="POST" action="register.php">
 
         <h1>Registro de Administradores</h1>
@@ -56,7 +53,6 @@
 
         <br>
         <button type="submit">Cadastrar</button>
-        <a href="../adminPage.php">AdminPage</a>
         <?php if(!empty($m)): ?>
             <p> <?= $m ?></p>
         <?php endif; ?>
