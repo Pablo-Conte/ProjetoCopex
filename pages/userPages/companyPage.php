@@ -1,5 +1,6 @@
 <?php 
     require_once '../../includes/connection.php';
+    require_once './headerHome.php';
     session_start();
     
 
@@ -18,12 +19,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome to the Company Page</h1>
-    <p>Nome da empresa: <?php echo($_SESSION['name']);?></p>
+    <div class="main">
+        <h1>Welcome to the Company Page</h1>
+        <p>Nome da empresa: <?php echo($_SESSION['name']);?></p>
 
-    <a href="./funcCompany/addVacancy.php"><p>ADICIONAR VAGA</p></a>
-
-    <a href="../sair.php">Sair</a><br>
-
+        <a href="./funcCompany/addVacancy.php"><p>ADICIONAR VAGA</p></a>
+    </div>
 </body>
 </html>

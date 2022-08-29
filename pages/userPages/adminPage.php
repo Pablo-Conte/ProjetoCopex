@@ -1,5 +1,6 @@
 <?php 
-    require '../../includes/connection.php';
+    require_once '../../includes/connection.php';
+    require_once './headerHome.php';
     session_start();
     
 
@@ -9,20 +10,12 @@
         
     }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Welcome to the Admin Page</h1>
-    <p>Nome do Admin: <?php echo($_SESSION['name']);?></p>
-    <a href="./funcAdmin/register.php">Registrar ADM</a><br>
-    <a href="./funcAdmin/registerEmpresa.php">Registrar EMPRESA</a><br>
-    <a href="./funcAdmin/registerAluno.php">Registrar ALUNO</a><br></br>
-    <a href="../sair.php">Sair</a><br>
+    <div class="main">
+        <h1>Welcome to the Admin Page</h1>
+        <p>Nome do Admin: <?php echo($_SESSION['name']);?></p>
+        <a href="./funcAdmin/register.php">Registrar ADM</a><br>
+        <a href="./funcAdmin/registerEmpresa.php">Registrar EMPRESA</a><br>
+        <a href="./funcAdmin/registerAluno.php">Registrar ALUNO</a><br></br>
+    </div>
 </body>
 </html>

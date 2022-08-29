@@ -38,25 +38,26 @@
         }
     } 
 ?>
+    <div class="main">
+        <form method="POST" action="register.php">
 
-    <form method="POST" action="register.php">
+            <h1>Registro de Administradores</h1>
 
-        <h1>Registro de Administradores</h1>
+            <input type="text" name="siape" id="siape" placeholder="Siape"><br>
 
-        <input type="text" name="siape" id="siape" placeholder="Siape"><br>
+            <input type="text" name="name" id="name" placeholder="Nome"><br>
+            
+            <input type="email" name="email" id="email" placeholder="E-mail"><br>
+            
+            <input type="password" name="password" id="password" placeholder="Password"><br>
 
-        <input type="text" name="name" id="name" placeholder="Nome"><br>
-        
-        <input type="email" name="email" id="email" placeholder="E-mail"><br>
-        
-        <input type="password" name="password" id="password" placeholder="Password"><br>
+            <br>
+            <button type="submit">Cadastrar</button>
+            <?php if(!empty($m)): ?>
+                <p> <?= $m ?></p>
+            <?php endif; ?>
 
-        <br>
-        <button type="submit">Cadastrar</button>
-        <?php if(!empty($m)): ?>
-            <p> <?= $m ?></p>
-        <?php endif; ?>
-
-    </form>
+        </form>
+    </div>
 </body>
 </html>

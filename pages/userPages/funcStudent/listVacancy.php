@@ -24,25 +24,26 @@
 ?>
 
     
-    <h1>Listar vagas</h1>
-    
-    <?php 
-        $query = $conn->prepare("SELECT * FROM vaga");
-        $query->execute();
-
-        //var_dump($results);
+    <div class="main">
+        <h1>Listar vagas</h1>
         
-        while ($results = $query->fetch(PDO::FETCH_ASSOC)){
-            echo "<div class='vaga'>";
-            echo "<p>".$results["id_vaga"]."</p>";
-            echo "<p>".$results["salario"]."</p>";
-            echo "<p>".$results["curso"]."</p>";
-            echo "<p>".$results["cargo"]."</p>";
-            echo "<p>".$results["descricao"]."</p>";
-            echo "<p>".$results["id_emp"]."</p>";
-            echo "<button>Registrar interesse</button>";
-            echo "</div>";
-        }
-    ?>
+        <?php
+            $query = $conn->prepare("SELECT * FROM vaga");
+            $query->execute();
+            //var_dump($results);
+        
+            while ($results = $query->fetch(PDO::FETCH_ASSOC)){
+                echo "<div class='vaga'>";
+                echo "<p>".$results["id_vaga"]."</p>";
+                echo "<p>".$results["salario"]."</p>";
+                echo "<p>".$results["curso"]."</p>";
+                echo "<p>".$results["cargo"]."</p>";
+                echo "<p>".$results["descricao"]."</p>";
+                echo "<p>".$results["id_emp"]."</p>";
+                echo "<button>Registrar interesse</button>";
+                echo "</div>";
+            }
+        ?>
+    </div>
 </body>
 </html>

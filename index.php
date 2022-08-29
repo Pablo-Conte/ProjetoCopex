@@ -13,7 +13,7 @@
 
 <body>
 
-  <nav class="navbar">
+  <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand">COPEX</a>
       <form class="d-flex" role="search">

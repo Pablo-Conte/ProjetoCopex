@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../Bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../../css/default.css">
-    <script src="../../../Bootstrap/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="../../Bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/headerHome.css">
+    <script src="../../Bootstrap/js/bootstrap.bundle.js"></script>
     <title>COPEX</title>
+
 </head>
 
 <body>
@@ -28,10 +29,10 @@
 
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../login.php">Home</a>
+                            <a class="nav-link" href="../login.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../../sair.php">Logout</a>
+                            <a class="nav-link active" aria-current="page" href="../sair.php">Logout</a>
                         </li>
                     </ul>
 

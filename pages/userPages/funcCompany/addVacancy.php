@@ -47,23 +47,21 @@
 
 ?>
 
-    <h1>Adicionar Vaga</h1>
-    <form method="POST" action="./addVacancy.php">
-
-        <input type="text" placeholder="Salário" name="salario"></br>
-        <input type="text" placeholder="Cargo" name="cargo"></br>
-        <input type="text" placeholder="Descrição" name="descricao"></br></br>
-        <select name="curso">
-            <option value="1">Informática</option>
-            <option value="2">Eletromecânica</option>
-        </select></br></br>
-
-        <button>Criar vaga</button>
-
-    </form>
-
-    <?php if(!empty($m)): ?>
-        <p> <?= $m ?></p>
-    <?php endif; ?>
+    <div class="main">
+        <h1>Adicionar Vaga</h1>
+        <form method="POST" action="./addVacancy.php">
+            <input type="text" placeholder="Salário" name="salario"></br>
+            <input type="text" placeholder="Cargo" name="cargo"></br>
+            <input type="text" placeholder="Descrição" name="descricao"></br></br>
+            <select name="curso">
+                <option value="1">Informática</option>
+                <option value="2">Eletromecânica</option>
+            </select></br></br>
+            <button>Criar vaga</button>
+        </form>
+        <?php if(!empty($m)): ?>
+            <p> <?= $m ?></p>
+        <?php endif; ?>
+    </div>
 </body>
 </html>
