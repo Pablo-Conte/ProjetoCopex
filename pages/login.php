@@ -12,12 +12,13 @@ require_once "./login/loginAuth.php";
     <link rel="stylesheet" href="./css/headerIndex.css">
     <link rel="stylesheet" href="./css/headerHome.css">
     <link rel="stylesheet" href="./css/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="../Bootstrap/js/bootstrap.bundle.js"></script>
     <title>Login</title>
 </head>
 
 <body>
-    
+
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand">COPEX</a>
@@ -29,49 +30,78 @@ require_once "./login/loginAuth.php";
         </div>
     </nav>
     <div class="main">
-        <form class="loginChoice">
-            <input type="radio" id="html" name="fav_language" value="HTML">
-            <label for="html">Admin</label><br>
-            <input type="radio" id="css" name="fav_language" value="CSS">
-            <label for="css">Estudante</label><br>
-            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-            <label for="javascript">Empresa</label>
-        </form>
-        <div class="admin">
-            <h2>Login Admin</h2>
-            <form action="login.php" method="POST">
-                <input type="name" placeholder="Digite seu SIAPE" name="siape"></br>
-                <input type="password" placeholder="Digite sua senha" name="password"></br></br>
-                <button type="submit">Login</button>
+        <div class="loginChoice">
+            <form name="meuFormulario" class="choice">
+                <label><input value="Administrador" name="opcao" class="opcao" id="opcao1" type="radio">Administrador</label>
+                <label><input value="Estudante" name="opcao" class="opcao" id="opcao2" type="radio">Estudante</label><br>
+                <label><input value="Empresa" name="opcao" class="opcao" id="opcao3" type="radio">Empresa</label>
             </form>
         </div>
 
-        <div class="estudante">
-            <h2>Login Estudante</h2>
-            <form action="login.php" method="POST">
-                <input type="text" placeholder="Digite sua matricula" name="matricula"></br>
-                <input type="password" placeholder="Digite sua senha" name="password_aluno"></br></br>
-                <button type="submit">Login</button>
-            </form>
-        </div>
+        <div>
+            <div id="tab1" style="display: none;">
+                <div class="loginForm">
+                    <h2>Login Admin</h2>
+                    <form action="login.php" method="POST" class="data">
+                        <input type="name" placeholder="Digite seu SIAPE" name="siape">
+                        <input type="password" placeholder="Digite sua senha" name="password">
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+            <div id="tab2" style="display: none;">
+                <div class="loginForm">
+                    <h2>Login Estudante</h2>
+                    <form action="login.php" method="POST" class="data">
+                        <input type="text" placeholder="Digite sua matricula" name="matricula">
+                        <input type="password" placeholder="Digite sua senha" name="password_aluno">
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+            <div id="tab3" style="display: none;">
+                <div class="loginForm">
+                    <h2>Login Empresa</h2>
+                    <form action="login.php" method="POST" class="data">
+                        <input type="name" placeholder="Digite seu CNPJ" name="cnpj">
+                        <input type="password" placeholder="Digite sua senha" name="password_empresa">
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
 
-        <div class="empresa">
-            <h2>Login Empresa</h2>
-            <form action="login.php" method="POST">
-                <input type="name" placeholder="Digite seu CNPJ" name="cnpj"></br>
-                <input type="password" placeholder="Digite sua senha" name="password_empresa"></br></br>
-                <button type="submit">Login</button>
-            </form>
+            <?php if (!empty($message)) : ?>
+                <p> <?= $message ?></p>
+            <?php endif; ?>
         </div>
+        <script>
+            var a = "";
+            $(window).load(function() {
+                $('.opcao').on('change', function() {
 
-        <?php if (!empty($message)) : ?>
-            <p> <?= $message ?></p>
-        <?php endif; ?>
-    </div>
-    <script>
-        const 
-    </script>
+                    a = this.value;
+
+                    if ((a == "Administrador") || (a == "Estudante") || (a == "Empresa")) {
+
+                        if ((a == "Administrador")) {
+                            document.getElementById('tab1').style.display = "block";
+                            document.getElementById('tab2').style.display = "none";
+                            document.getElementById('tab3').style.display = "none";
+                        } else if ((a == "Estudante")) {
+                            document.getElementById('tab1').style.display = "none";
+                            document.getElementById('tab2').style.display = "block";
+                            document.getElementById('tab3').style.display = "none";
+                        } else if ((a == "Empresa")) {
+                            document.getElementById('tab1').style.display = "none";
+                            document.getElementById('tab2').style.display = "none";
+                            document.getElementById('tab3').style.display = "block";
+                        }
+                    }
+
+                });
+
+            });
+        </script>
 </body>
-
 
 </html>

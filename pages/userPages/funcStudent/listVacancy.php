@@ -52,7 +52,6 @@
                     echo "<p>Vaga: ".$results["cargo"]."</p>";
                     echo "<p>Salário: ".$results["salario"]."</p>";
                     echo "<p>Curso: ".$curso."</p>";
-                    echo "<p>Descrição: ".$results["descricao"]."</p>";
                     echo "</div>";
                     echo "<button>Registrar Interesse</button>";
                     echo "</div>";
