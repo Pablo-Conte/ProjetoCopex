@@ -11,6 +11,7 @@ require_once "./login/loginAuth.php";
     <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./css/headerIndex.css">
     <link rel="stylesheet" href="./css/headerHome.css">
+    <link rel="stylesheet" href="./css/login.css">
     <script src="../Bootstrap/js/bootstrap.bundle.js"></script>
     <title>Login</title>
 </head>
@@ -28,7 +29,15 @@ require_once "./login/loginAuth.php";
         </div>
     </nav>
     <div class="main">
-        <div>
+        <form class="loginChoice">
+            <input type="radio" id="html" name="fav_language" value="HTML">
+            <label for="html">Admin</label><br>
+            <input type="radio" id="css" name="fav_language" value="CSS">
+            <label for="css">Estudante</label><br>
+            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+            <label for="javascript">Empresa</label>
+        </form>
+        <div class="admin">
             <h2>Login Admin</h2>
             <form action="login.php" method="POST">
                 <input type="name" placeholder="Digite seu SIAPE" name="siape"></br>
@@ -37,7 +46,7 @@ require_once "./login/loginAuth.php";
             </form>
         </div>
 
-        <div>
+        <div class="estudante">
             <h2>Login Estudante</h2>
             <form action="login.php" method="POST">
                 <input type="text" placeholder="Digite sua matricula" name="matricula"></br>
@@ -46,7 +55,7 @@ require_once "./login/loginAuth.php";
             </form>
         </div>
 
-        <div>
+        <div class="empresa">
             <h2>Login Empresa</h2>
             <form action="login.php" method="POST">
                 <input type="name" placeholder="Digite seu CNPJ" name="cnpj"></br>
@@ -59,6 +68,9 @@ require_once "./login/loginAuth.php";
             <p> <?= $message ?></p>
         <?php endif; ?>
     </div>
+    <script>
+        const 
+    </script>
 </body>
 
 

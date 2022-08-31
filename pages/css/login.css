@@ -1,0 +1,17 @@
+form.loginChoice {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    margin-right: 10px;
+}
+
+div.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+}
