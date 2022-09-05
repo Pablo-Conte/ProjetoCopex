@@ -21,7 +21,7 @@ require_once "./login/loginAuth.php";
 
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand">COPEX</a>
+            <a href="../index.php" class="navbar-brand" >COPEX</a>
             <form class="d-flex" role="search">
                 <a href="../index.php">
                     <div class="dir">HOME</div>
