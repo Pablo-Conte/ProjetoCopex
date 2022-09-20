@@ -2,9 +2,10 @@
     require_once "../../../includes/connection.php";
     require_once "./adminAuth.php";
 
-    if(!empty($_POST['cnpj']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']))){
+    if(!empty($_POST['cnpj']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['numero']))){
         if ($_POST['password'] == $_POST['passwordVerify']){
             
+            $numero = $_POST['numero'];
             $cnpj = $_POST['cnpj'];
             $email = $_POST['email'];
             $nome = $_POST['name'];
@@ -22,18 +23,21 @@
                     nome,     
                     senha,     
                     cnpj,     
-                    email
+                    email,
+                    numero
                 ) VALUES (  
                     :nome,     
                     :senha,     
                     :cnpj,     
-                    :email
+                    :email,
+                    :numero
                 )");
 
                 $query->bindParam(':nome', $nome);
                 $query->bindParam(':senha', $password);
                 $query->bindParam(':cnpj', $cnpj);
                 $query->bindParam(':email', $email);
+                $query->bindParam(':numero', $numero);
 
                 $query->execute();
 
@@ -77,6 +81,7 @@
             <input type="text" name="cnpj" id="cnpj" placeholder="CNPJ"><br>
             <input type="text" name="name" id="name" placeholder="Name"><br>
             <input type="email" name="email" id="email" placeholder="E-mail"><br>
+            <input type="text" name="numero" id="numero" placeholder="Número"><br>
             <input type="password" name="password" id="password" placeholder="Senha"><br>
             <input type="password" name="passwordVerify" id="passwordVerify" placeholder="Verificar Senha"><br><br>
             <button type="submit">Cadastrar</button>

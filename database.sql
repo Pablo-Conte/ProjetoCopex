@@ -24,18 +24,19 @@ INSERT INTO administrador (
 
 CREATE TABLE IF NOT EXISTS empresa (
 	id_empresa INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nome VARCHAR(255),
-    senha VARCHAR(255),
-    cnpj VARCHAR(14) UNIQUE,
-    email VARCHAR(255) UNIQUE
+    nome VARCHAR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    cnpj VARCHAR(14) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    numero VARCHAR(11) UNIQUE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS vaga (
 	id_vaga INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    salario VARCHAR(255),
-    curso VARCHAR(100),
-    cargo VARCHAR(255), 
-    descricao VARCHAR(1000),
+    salario VARCHAR(255) NOT NULL,
+    curso VARCHAR(100) NOT NULL,
+    cargo VARCHAR(255) NOT NULL, 
+    descricao VARCHAR(1000) NOT NULL,
     id_emp INT,
     CONSTRAINT fk_id_emp FOREIGN KEY (id_emp) REFERENCES empresa (id_empresa) 
 );
@@ -44,7 +45,7 @@ CREATE TABLE IF NOT EXISTS aluno (
 	id_aluno INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
     senha VARCHAR(255) NOT NULL,
-    numero VARCHAR(9) UNIQUE NOT NULL,
+    numero VARCHAR(11) UNIQUE NOT NULL,
     matricula VARCHAR(20) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     curso INT

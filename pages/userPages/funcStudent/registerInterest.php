@@ -32,7 +32,7 @@ try {
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'bobesponjamailer@gmail.com';
-    $mail->Password = '****';
+    $mail->Password = '***';
     $mail->Port = 587;
 
     $mail->setFrom('bobesponjamailer@gmail.com');
@@ -50,9 +50,12 @@ try {
         ";
     $mail->AltBody = 'Chegou o email teste de Pablin!!';
 
+    $_SESSION['m'] = "Interesse foi registrado com sucesso!";
+
     $mail->send();
 
     header("location: ./listVacancy.php");
+
 } catch (Exception $e) {
     echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
 }

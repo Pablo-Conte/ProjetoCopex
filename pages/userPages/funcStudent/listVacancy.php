@@ -1,6 +1,14 @@
 <?php
 require_once "../../../includes/connection.php";
 require_once "./studentAuth.php";
+
+if (!empty($_SESSION['m'])) {
+    $messageInformation = $_SESSION['m'];
+
+    echo "<script language='javascript' type='text/javascript'>alert('$messageInformation')</script>";
+    $_SESSION['m'] = "";
+}
+
 ?>
 
 <!DOCTYPE html>
