@@ -12,7 +12,7 @@ require_once "./login/loginAuth.php";
     <link rel="stylesheet" href="./css/headerIndex.css">
     <link rel="stylesheet" href="./css/headerHome.css">
     <link rel="stylesheet" href="./css/login.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="../library/jquery/jquery.min.js"></script>
     <script src="../Bootstrap/js/bootstrap.bundle.js"></script>
     <title>Login</title>
 </head>
@@ -21,7 +21,7 @@ require_once "./login/loginAuth.php";
 
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <a href="../index.php" class="navbar-brand" >COPEX</a>
+            <a href="../index.php" class="navbar-brand">COPEX</a>
             <form class="d-flex" role="search">
                 <a href="../index.php">
                     <div class="dir">HOME</div>
@@ -30,78 +30,81 @@ require_once "./login/loginAuth.php";
         </div>
     </nav>
     <div class="main">
-        <div class="loginChoice">
-            <form name="meuFormulario" class="choice">
-                <label><input value="Administrador" name="opcao" class="opcao" id="opcao1" type="radio">Administrador</label>
-                <label><input value="Estudante" name="opcao" class="opcao" id="opcao2" type="radio">Estudante</label><br>
-                <label><input value="Empresa" name="opcao" class="opcao" id="opcao3" type="radio">Empresa</label>
-            </form>
-        </div>
-
         <div>
-            <div id="tab1" style="display: none;">
-                <div class="loginForm">
-                    <h2>Login Admin</h2>
-                    <form action="login.php" method="POST" class="data">
-                        <input type="name" placeholder="Digite seu SIAPE" name="siape">
-                        <input type="password" placeholder="Digite sua senha" name="password">
-                        <button type="submit">Login</button>
-                    </form>
+            <div class="loginChoice">
+                <form name="meuFormulario" class="choice">
+                    <label><input value="Administrador" name="opcao" class="opcao" id="opcao1" type="radio">Administrador</label>
+                    <label><input value="Estudante" name="opcao" class="opcao" id="opcao2" type="radio">Estudante</label><br>
+                    <label><input value="Empresa" name="opcao" class="opcao" id="opcao3" type="radio">Empresa</label>
+                </form>
+            </div>
+            <div class="loginStyle">
+                <div>
+                    <div id="tab1" style="display: none;">
+                        <div class="loginForm">
+                            <h2>Login Admin</h2>
+                            <form action="login.php" method="POST" class="data">
+                                <input type="name" placeholder="Digite seu SIAPE" name="siape">
+                                <input type="password" placeholder="Digite sua senha" name="password">
+                                <button type="submit">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="tab2" style="display: block;">
+                        <div class="loginForm">
+                            <h2>Login Estudante</h2>
+                            <form action="login.php" method="POST" class="data">
+                                <input type="text" placeholder="Digite sua matricula" name="matricula">
+                                <input type="password" placeholder="Digite sua senha" name="password_aluno">
+                                <button type="submit">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="tab3" style="display: none;">
+                        <div class="loginForm">
+                            <h2>Login Empresa</h2>
+                            <form action="login.php" method="POST" class="data">
+                                <input type="name" placeholder="Digite seu CNPJ" name="cnpj">
+                                <input type="password" placeholder="Digite sua senha" name="password_empresa">
+                                <button type="submit">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                    <?php if (!empty($message)) : ?>
+                        <p> <?= $message ?></p>
+                    <?php endif; ?>
                 </div>
             </div>
-            <div id="tab2" style="display: none;">
-                <div class="loginForm">
-                    <h2>Login Estudante</h2>
-                    <form action="login.php" method="POST" class="data">
-                        <input type="text" placeholder="Digite sua matricula" name="matricula">
-                        <input type="password" placeholder="Digite sua senha" name="password_aluno">
-                        <button type="submit">Login</button>
-                    </form>
-                </div>
-            </div>
-            <div id="tab3" style="display: none;">
-                <div class="loginForm">
-                    <h2>Login Empresa</h2>
-                    <form action="login.php" method="POST" class="data">
-                        <input type="name" placeholder="Digite seu CNPJ" name="cnpj">
-                        <input type="password" placeholder="Digite sua senha" name="password_empresa">
-                        <button type="submit">Login</button>
-                    </form>
-                </div>
-            </div>
-
-            <?php if (!empty($message)) : ?>
-                <p> <?= $message ?></p>
-            <?php endif; ?>
         </div>
-        <script>
-            var a = "";
-            $(window).load(function() {
-                $('.opcao').on('change', function() {
+    </div>
+    <script>
+        var a = "";
+        $(window).load(function() {
+            $('.opcao').on('change', function() {
 
-                    a = this.value;
+                a = this.value;
 
-                    if ((a == "Administrador") || (a == "Estudante") || (a == "Empresa")) {
+                if ((a == "Administrador") || (a == "Estudante") || (a == "Empresa")) {
 
-                        if ((a == "Administrador")) {
-                            document.getElementById('tab1').style.display = "block";
-                            document.getElementById('tab2').style.display = "none";
-                            document.getElementById('tab3').style.display = "none";
-                        } else if ((a == "Estudante")) {
-                            document.getElementById('tab1').style.display = "none";
-                            document.getElementById('tab2').style.display = "block";
-                            document.getElementById('tab3').style.display = "none";
-                        } else if ((a == "Empresa")) {
-                            document.getElementById('tab1').style.display = "none";
-                            document.getElementById('tab2').style.display = "none";
-                            document.getElementById('tab3').style.display = "block";
-                        }
+                    if ((a == "Administrador")) {
+                        document.getElementById('tab1').style.display = "block";
+                        document.getElementById('tab2').style.display = "none";
+                        document.getElementById('tab3').style.display = "none";
+                    } else if ((a == "Estudante")) {
+                        document.getElementById('tab1').style.display = "none";
+                        document.getElementById('tab2').style.display = "block";
+                        document.getElementById('tab3').style.display = "none";
+                    } else if ((a == "Empresa")) {
+                        document.getElementById('tab1').style.display = "none";
+                        document.getElementById('tab2').style.display = "none";
+                        document.getElementById('tab3').style.display = "block";
                     }
-
-                });
+                }
 
             });
-        </script>
+
+        });
+    </script>
 </body>
 
 </html>

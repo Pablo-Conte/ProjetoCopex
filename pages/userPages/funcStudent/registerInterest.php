@@ -2,9 +2,9 @@
 require_once "../../../includes/connection.php";
 require_once "./studentAuth.php";
 
-require_once('../../../mailSRC/PHPMailer.php');
-require_once('../../../mailSRC/SMTP.php');
-require_once('../../../mailSRC/Exception.php');
+require_once('../../../library/mailSRC/PHPMailer.php');
+require_once('../../../library/mailSRC/SMTP.php');
+require_once('../../../library/mailSRC/Exception.php');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -32,7 +32,7 @@ try {
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'bobesponjamailer@gmail.com';
-    $mail->Password = '***';
+    $mail->Password = 'rxcyewmvmscegjmu';
     $mail->Port = 587;
 
     $mail->setFrom('bobesponjamailer@gmail.com');
@@ -55,7 +55,7 @@ try {
     $mail->send();
 
     header("location: ./listVacancy.php");
-
+    
 } catch (Exception $e) {
     echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
 }
