@@ -32,11 +32,11 @@ require_once "./login/loginAuth.php";
     <div class="main">
         <div>
             <div class="loginChoice">
-                <form name="meuFormulario" class="choice">
-                    <label><input value="Administrador" name="opcao" class="opcao" id="opcao1" type="radio">Administrador</label>
-                    <label><input value="Estudante" name="opcao" class="opcao" id="opcao2" type="radio">Estudante</label><br>
-                    <label><input value="Empresa" name="opcao" class="opcao" id="opcao3" type="radio">Empresa</label>
-                </form>
+
+                <label><input value="Administrador" name="opcao" class="opcao" id="opcao1" type="radio">Administrador</label>
+                <label><input value="Estudante" name="opcao" class="opcao" id="opcao2" type="radio">Estudante</label>
+                <label><input value="Empresa" name="opcao" class="opcao" id="opcao3" type="radio">Empresa</label>
+
             </div>
             <div class="loginStyle">
                 <div>
