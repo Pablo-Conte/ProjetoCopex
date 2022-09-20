@@ -18,8 +18,6 @@ $numeroAluno = $_SESSION['numero'];
 $emailAluno = $_SESSION['email'];
 $idEmpresa = $_POST['idEmpresa'];
 $cargo = $_POST['cargo'];
-var_dump($_SESSION);
-
 
 $query = $conn->prepare("SELECT email FROM empresa WHERE id_empresa = $idEmpresa");
 $query->execute();
@@ -30,12 +28,11 @@ $emailEmpresa = $results['email'];
 $mail = new PHPMailer(true);
 
 try {
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'bobesponjamailer@gmail.com';
-    $mail->Password = '';
+    $mail->Password = '****';
     $mail->Port = 587;
 
     $mail->setFrom('bobesponjamailer@gmail.com');
@@ -54,6 +51,8 @@ try {
     $mail->AltBody = 'Chegou o email teste de Pablin!!';
 
     $mail->send();
+
+    header("location: ./listVacancy.php");
 } catch (Exception $e) {
     echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
 }
