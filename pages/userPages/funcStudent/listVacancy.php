@@ -42,6 +42,7 @@ require_once "./studentAuth.php";
                 }
                 
                 $idEmpresa = $results['id_emp'];
+                $cargo = $results['cargo'];
 
                 $query1 = $conn->prepare("SELECT nome FROM empresa WHERE id_empresa = :idempresa");
                 $query1->bindParam(":idempresa", $results['id_emp']);
@@ -57,6 +58,7 @@ require_once "./studentAuth.php";
                 echo "<p>Curso: " . $curso . "</p>";
                 echo "</div>";
                 echo "<input type='hidden' value='$idEmpresa' name='idEmpresa'></input>";
+                echo "<input type='hidden' value='$cargo' name='cargo'></input>";
                 echo "<button type='submit'>Registrar Interesse</button>";
                 echo "</div>";
                 echo "</form>";

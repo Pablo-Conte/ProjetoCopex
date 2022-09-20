@@ -15,7 +15,11 @@ use PHPMailer\PHPMailer\SMTP;
 
 $nomeAluno = $_SESSION['name'];
 $numeroAluno = $_SESSION['numero'];
+$emailAluno = $_SESSION['email'];
 $idEmpresa = $_POST['idEmpresa'];
+$cargo = $_POST['cargo'];
+var_dump($_SESSION);
+
 
 $query = $conn->prepare("SELECT email FROM empresa WHERE id_empresa = $idEmpresa");
 $query->execute();
@@ -42,8 +46,9 @@ try {
     $mail->Body = "<p>Dados de $nomeAluno:</p>
         <ul>
             <li>Nome: $nomeAluno</li>
-            <li>Numero: $numeroAluno</li>
-            <li>Vaga de interesse: </li>
+            <li>Numero de contato: $numeroAluno</li>
+            <li>Email de contato: $emailAluno</li>
+            <li>Vaga de interesse: $cargo</li>
         </ul>
         ";
     $mail->AltBody = 'Chegou o email teste de Pablin!!';
