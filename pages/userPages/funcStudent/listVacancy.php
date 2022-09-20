@@ -1,6 +1,6 @@
 <?php
     require_once "../../../includes/connection.php";
-    require_once "./studentAuth";
+    require_once "./studentAuth.php";
 ?>
 
 <!DOCTYPE html>
