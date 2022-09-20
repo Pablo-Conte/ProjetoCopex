@@ -47,7 +47,7 @@
     
     //Login Estudante
     if(!empty($_POST['matricula']) && !empty($_POST["password_aluno"])){
-        $query = "SELECT id_aluno, nome, senha FROM aluno WHERE matricula = :matricula";
+        $query = "SELECT id_aluno, nome, senha, numero FROM aluno WHERE matricula = :matricula";
         $records = $conn->prepare($query);
         $records->bindParam(':matricula', $_POST['matricula']);
         $records->execute();
@@ -61,7 +61,7 @@
         if (count($results) > 1 && password_verify($_POST['password_aluno'], $results['senha']) == True){
             $_SESSION['user_id_aluno'] = $results["id_aluno"];
             $_SESSION['name'] = $results["nome"];
-            $_SESSION['localizacao'] = "";
+            $_SESSION['numero'] = $results["numero"];
             header("Location: ./userPages/studentPage.php");
         } else {
             $message = "<script language='javascript' type='text/javascript'>alert('Problemas ao logar, credenciais não são iguais!')</script>";

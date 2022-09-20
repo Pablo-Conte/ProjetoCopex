@@ -1,6 +1,6 @@
 <?php
-    require_once "../../../includes/connection.php";
-    require_once "./studentAuth.php";
+require_once "../../../includes/connection.php";
+require_once "./studentAuth.php";
 ?>
 
 <!DOCTYPE html>
@@ -19,49 +19,54 @@
 
 <body>
 
-<?php
+    <?php
     require_once "../structure/headerUsers.php";
-?>
-    
+    ?>
+
     <div class="main">
         <h1>Listar vagas</h1>
         <div class="listar">
             <?php
-                $query = $conn->prepare("SELECT * FROM vaga");
-                $query->execute();
-                $curso = "";
-                $empresa = "";
-                
-                while ($results = $query->fetch(PDO::FETCH_ASSOC)){
-                    
-                    if ($results["curso"] == 1){
-                        $curso = "Informática";
-                    }
-                    if ($results["curso"] == 2){
-                        $curso = "Eletromecânica";
-                    }
-                    
-                    $query1 = $conn->prepare("SELECT nome FROM empresa WHERE id_empresa = :idempresa");
-                    $query1->bindParam(":idempresa", $results['id_emp']);
-                    $query1->execute();
-                    $empresa = $query1->fetch(PDO::FETCH_ASSOC)['nome'];
-
-                    echo "<div class='vaga'>";
-                    echo "<div class='nomeEmpresa'>".$empresa."</div>";
-                    echo "<div class='corpoVaga'>";
-                    echo "<p>Vaga: ".$results["cargo"]."</p>";
-                    echo "<p>Salário: ".$results["salario"]."</p>";
-                    echo "<p>Curso: ".$curso."</p>";
-                    echo "</div>";
-                    echo "<button>Registrar Interesse</button>";
-                    echo "</div>";
-                    
+            $query = $conn->prepare("SELECT * FROM vaga");
+            $query->execute();
+            $curso = "";
+            $empresa = "";
+            
+            while ($results = $query->fetch(PDO::FETCH_ASSOC)) {
+            
+                if ($results["curso"] == 1) {
+                    $curso = "Informática";
                 }
+                if ($results["curso"] == 2) {
+                    $curso = "Eletromecânica";
+                }
+                
+                $idEmpresa = $results['id_emp'];
+
+                $query1 = $conn->prepare("SELECT nome FROM empresa WHERE id_empresa = :idempresa");
+                $query1->bindParam(":idempresa", $results['id_emp']);
+                $query1->execute();
+                $empresa = $query1->fetch(PDO::FETCH_ASSOC)['nome'];
+
+                echo "<form method='POST' action='./registerInterest.php'>";
+                echo "<div class='vaga'>";
+                echo "<div class='nomeEmpresa'>" . $empresa . "</div>";
+                echo "<div class='corpoVaga'>";
+                echo "<p>Vaga: " . $results["cargo"] . "</p>";
+                echo "<p>Salário: " . $results["salario"] . "</p>";
+                echo "<p>Curso: " . $curso . "</p>";
+                echo "</div>";
+                echo "<input type='hidden' value='$idEmpresa' name='idEmpresa'></input>";
+                echo "<button type='submit'>Registrar Interesse</button>";
+                echo "</div>";
+                echo "</form>";
+            }
             ?>
         </div>
     </div>
-    
+
 
 
 </body>
+
 </html>

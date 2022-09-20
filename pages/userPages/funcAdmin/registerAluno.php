@@ -2,11 +2,12 @@
     require_once "../../../includes/connection.php";
     require_once "./adminAuth.php";
 
-    if(!empty($_POST['matricula']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']))){
+    if(!empty($_POST['matricula']) && !empty($_POST['password'] && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['numero']))){
         if ($_POST['password'] == $_POST['passwordVerify']){
             
             $matricula = $_POST['matricula'];
             $email = $_POST['email'];
+            $numero = $_POST['numero'];
             $nome = $_POST['name'];
             $curso = $_POST['curso'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -24,13 +25,15 @@
                     senha,     
                     matricula,     
                     email,
-                    curso
+                    curso,
+                    numero
                 ) VALUES (  
                     :nome,     
                     :senha,     
                     :matricula,     
                     :email,
-                    :curso
+                    :curso,
+                    :numero
                 )");
 
                 $query->bindParam(':nome', $nome);
@@ -38,6 +41,7 @@
                 $query->bindParam(':matricula', $matricula);
                 $query->bindParam(':email', $email);
                 $query->bindParam(':curso', $curso);
+                $query->bindParam(':numero', $numero);
 
                 $query->execute();
 
@@ -48,7 +52,7 @@
             }
             
         } else {
-            $m = 'Senhas não iguais, verifique!';
+            $m = "<script language='javascript' type='text/javascript'>alert('Senhas não iguais, verifique!')</script>";
         }
 
     }
@@ -80,6 +84,7 @@
             <input type="text" name="matricula" id="matricula" placeholder="Matricula"><br>
             <input type="text" name="name" id="name" placeholder="Name"><br>
             <input type="email" name="email" id="email" placeholder="E-mail"><br>
+            <input type="text" name="numero" id="numero" placeholder="Número de celular"><br>
             <input type="password" name="password" id="password" placeholder="Senha"><br>
             <input type="password" name="passwordVerify" id="passwordVerify" placeholder="Verificar Senha"><br><br>
             <select name="curso">
