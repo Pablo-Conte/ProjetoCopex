@@ -18,7 +18,6 @@ require_once "./login/loginAuth.php";
 </head>
 
 <body>
-
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
             <a href="../index.php" class="navbar-brand">COPEX</a>
@@ -33,9 +32,9 @@ require_once "./login/loginAuth.php";
         <div>
             <div class="loginChoice">
 
-                <label><input value="Administrador" name="opcao" class="opcao" id="opcao1" type="radio">Administrador</label>
-                <label><input value="Estudante" name="opcao" class="opcao" id="opcao2" type="radio">Estudante</label>
-                <label><input value="Empresa" name="opcao" class="opcao" id="opcao3" type="radio">Empresa</label>
+                <label value="Administrador" name="opcao" class="opcao" id="Administrador">Administrador</label>
+                <label value="Estudante" name="opcao" class="opcao" id="Estudante">Estudante</label>
+                <label value="Empresa" name="opcao" class="opcao" id="Empresa">Empresa</label>
 
             </div>
             <div class="loginStyle">
@@ -80,12 +79,13 @@ require_once "./login/loginAuth.php";
     <script>
         var a = "";
         $(window).load(function() {
-            $('.opcao').on('change', function() {
-
-                a = this.value;
+            
+            $('.opcao').on('click', function(label) {
+                
+                a = label.currentTarget.id;
 
                 if ((a == "Administrador") || (a == "Estudante") || (a == "Empresa")) {
-
+                    
                     if ((a == "Administrador")) {
                         document.getElementById('tab1').style.display = "block";
                         document.getElementById('tab2').style.display = "none";

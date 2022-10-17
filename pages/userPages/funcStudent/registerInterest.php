@@ -32,7 +32,7 @@ try {
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'bobesponjamailer@gmail.com';
-    $mail->Password = 'xx';
+    $mail->Password = 'wozphddlueyujznr';
     $mail->Port = 587;
 
     $mail->setFrom('bobesponjamailer@gmail.com');

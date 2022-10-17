@@ -8,7 +8,7 @@ form.choice {
 }
 
 label:hover {
-  background-color: #4d5156;
+  background-color: #2F5B44;
 }
 
 label {
@@ -18,13 +18,20 @@ label {
   width: 33.33%;
   text-align: center;
   padding: 10px;
-  
+}
+
+label:first-child {
+  border-radius: 10px 0px 0px 0px;
+}
+
+label:last-child {
+  border-radius: 0px 10px 0px 0px;
 }
 
 .loginStyle {
   background-color: #bfbfbf;
   padding: 15px;
-  height: 200px
+  border-radius: 0px 0px 10px 10px;
 }
 
 div.main {
@@ -33,7 +40,6 @@ div.main {
   justify-content: left;
   align-items: center;
   margin-top: 50px;
-
 }
 
 div div.loginForm {
@@ -58,8 +64,13 @@ input {
   -ms-appearance: none;
   -o-appearance: none;
   appearance: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 button {
   margin-top: 10px;
 }
+
+
