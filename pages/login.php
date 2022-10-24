@@ -17,7 +17,7 @@ require_once "./login/loginAuth.php";
     <title>Login</title>
 </head>
 
-<body>
+<body id="grad">
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
             <a href="../index.php" class="navbar-brand">COPEX</a>
