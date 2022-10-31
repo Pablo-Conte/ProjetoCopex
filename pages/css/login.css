@@ -1,18 +1,24 @@
-form.choice {
-  margin: 0px;
+/* Config da página */
+html {
+  height: 100%
 }
 
 h2 {
   margin-bottom: 5%;
 }
 
-.loginChoice {
-  width: 100%;
-  display: flex;
+body#grad {
+  background-color: #4a5057;
 }
 
-label:hover {
-  background-color: #2F5B44;
+/* Sistema de autenticação */
+
+div.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  margin-top: 3.125rem;
 }
 
 label {
@@ -21,38 +27,36 @@ label {
   color: white;
   width: 33.33%;
   text-align: center;
-  padding: 10px;
+  padding: 0.625rem;
 }
 
 label:first-child {
-  border-radius: 10px 0px 0px 0px;
+  border-radius: 0.625rem 0rem 0rem 0rem;
 }
 
 label:last-child {
-  border-radius: 0px 10px 0px 0px;
+  border-radius: 0rem 0.625rem 0rem 0rem;
+}
+
+.loginChoice {
+  width: 100%;
+  display: flex;
 }
 
 .loginStyle {
-  background-color: #bfbfbf;
-  padding: 15px;
-  border-radius: 0px 0px 10px 10px;
-}
-
-div.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  align-items: center;
-  margin-top: 50px;
+  background-color: #b1b1b1;
+  padding: 0.9375rem;
+  border-radius: 0rem 0rem 0.625rem 0.625rem;
 }
 
 div div.loginForm {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 350px;
+  width: 21.875rem;
   justify-content: center;
 }
+
 
 form.data {
   display: flex;
@@ -62,35 +66,34 @@ form.data {
 }
 
 input {
-  margin: 5px 0px;
+  margin: 0.3125rem 0rem;
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
   appearance: none;
   border: none;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 0.625rem;
+  padding: 0.625rem;
   border-color: #212529;
-  border-width: 2px;
+  border-width: 0.125rem;
 }
 
 button {
-  padding: 5px;
-  border-radius: 10px;
+  padding: 0.3125rem;
+  border-radius: 0.625rem;
   width: 50%;
   margin-top: 10%;
-  border: #212529 solid 1px;
+  border: #212529 solid 0.0625rem;
+  background-color: #212529;
+  color: white
+}
+
+/*h overs */
+label:hover {
+  background-color: #0D731C;
 }
 
 button:hover {
-  background-color: red;
-}
-
-html {
-  height: 100%
-}
-
-body#grad {
-  background-color: #124628;
+  background-color: #0D731C;
 }
