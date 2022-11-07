@@ -6,6 +6,9 @@ require_once('../../../library/mailSRC/PHPMailer.php');
 require_once('../../../library/mailSRC/SMTP.php');
 require_once('../../../library/mailSRC/Exception.php');
 
+require_once '../../../library/sms/vendor/autoload.php';
+
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
@@ -57,5 +60,16 @@ try {
     header("location: ./listVacancy.php");
     
 } catch (Exception $e) {
-    echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
+    // echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
 }
+
+
+$MessageBird = new \MessageBird\Client('YUyw652t4Rdi27XLvd0TEESoc');
+$Message = new \MessageBird\Objects\Message();
+$Message->originator = 'SMS Test!';
+$Message->recipients = array("5551980442548");
+$Message->body = "Hello Tommy, this is a quick test from COPEX Estágios";
+
+print_r(json_encode($MessageBird->messages->create($Message)));
+
+?>
