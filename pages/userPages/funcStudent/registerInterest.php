@@ -1,4 +1,7 @@
 <?php
+
+require_once('../../../vendor/autoload.php');
+use Twilio\Rest\Client;
 require_once "../../../includes/connection.php";
 require_once "./studentAuth.php";
 
@@ -64,12 +67,28 @@ try {
 }
 
 
-$MessageBird = new \MessageBird\Client('');
-$Message = new \MessageBird\Objects\Message();
-$Message->originator = 'SMS Test!';
-$Message->recipients = array("");
-$Message->body = "Hello Tommy, this is a quick test from COPEX Estágios";
+try {
+    
+    // Your Account SID and Auth Token from twilio.com/console
+    $account_sid = '-';
+    $auth_token = '-';
+    // In production, these should be environment variables. E.g.:
+    // $auth_token = $_ENV["TWILIO_AUTH_TOKEN"]
 
-print_r(json_encode($MessageBird->messages->create($Message)));
+    // A Twilio number you own with SMS capabilities
+    $twilio_number = "-";
 
+    $client = new Client($account_sid, $auth_token);
+    $client->messages->create(
+        // Where to send a text message (your cell phone?)
+        '+5551997602457',
+        array(
+            'from' => $twilio_number,
+            'body' => 'Projeto COPEX está funcionando com SMS agora!'
+        )
+);
+    
+} catch (Exception $e) {
+    echo "Erro ao enviar SMS";
+}
 ?>
