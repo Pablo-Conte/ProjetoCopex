@@ -5,10 +5,15 @@ html {
 
 h2 {
   margin-bottom: 5%;
+  color: white
+}
+
+body {
+  background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
 }
 
 body#grad {
-  background-color: #4a5057;
+  background-color: #292e33;
 }
 
 /* Sistema de autenticação */
@@ -44,7 +49,7 @@ label:last-child {
 }
 
 .loginStyle {
-  background-color: #b1b1b1;
+  background-color: #343a3f;
   padding: 0.9375rem;
   border-radius: 0rem 0rem 0.625rem 0.625rem;
 }
@@ -89,11 +94,11 @@ button {
   color: white
 }
 
-/*h overs */
+/* hovers */
 label:hover {
-  background-color: #0D731C;
+  background-color: #5CB1F1;
 }
 
 button:hover {
-  background-color: #0D731C;
+  background-color: #5CB1F1;
 }
