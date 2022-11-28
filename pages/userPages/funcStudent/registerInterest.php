@@ -1,7 +1,7 @@
 <?php
 
-require_once('../../../vendor/autoload.php');
-use Twilio\Rest\Client;
+//require_once('../../../vendor/autoload.php');
+//use Twilio\Rest\Client;
 require_once "../../../includes/connection.php";
 require_once "./studentAuth.php";
 
@@ -37,8 +37,8 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'bobesponjamailer@gmail.com';
-    $mail->Password = 'wozphddlueyujznr';
+    $mail->Username = 'bobesponjamailer@gmail.com'; //Uma conta com as devidas configs para aceitar requisições desse tipo.
+    $mail->Password = '-'; //Necessário pass pública do email usado para enviar os e-mails (bob).
     $mail->Port = 587;
 
     $mail->setFrom('bobesponjamailer@gmail.com');
@@ -63,32 +63,38 @@ try {
     header("location: ./listVacancy.php");
     
 } catch (Exception $e) {
-    // echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
+    echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
+    //Provavelmente tu estás vendo essa parte do código pq a autenticação não funfou né prof? ahahahha, podemos testar em aulas juntos se quiser ;), ou tu pode criar um email e configurar certin para colocar no $mail->Username e tals
 }
 
 
-try {
-    
-    // Your Account SID and Auth Token from twilio.com/console
-    $account_sid = '-';
-    $auth_token = '-';
-    // In production, these should be environment variables. E.g.:
-    // $auth_token = $_ENV["TWILIO_AUTH_TOKEN"]
 
-    // A Twilio number you own with SMS capabilities
-    $twilio_number = "-";
 
-    $client = new Client($account_sid, $auth_token);
-    $client->messages->create(
-        // Where to send a text message (your cell phone?)
-        '+5551997602457',
-        array(
-            'from' => $twilio_number,
-            'body' => 'Projeto COPEX está funcionando com SMS agora!'
-        )
-);
+
+//Implementação do envio de SMS, em trabalho ainda.
+
+// try {
     
-} catch (Exception $e) {
-    echo "Erro ao enviar SMS";
-}
+//     // Your Account SID and Auth Token from twilio.com/console
+//     $account_sid = '-';
+//     $auth_token = '-';
+//     // In production, these should be environment variables. E.g.:
+//     // $auth_token = $_ENV["TWILIO_AUTH_TOKEN"]
+
+//     // A Twilio number you own with SMS capabilities
+//     $twilio_number = "-";
+
+//     $client = new Client($account_sid, $auth_token);
+//     $client->messages->create(
+//         // Where to send a text message (your cell phone?)
+//         '+5551997602457',
+//         array(
+//             'from' => $twilio_number,
+//             'body' => 'Projeto COPEX está funcionando com SMS agora!'
+//         )
+// );
+    
+// } catch (Exception $e) {
+//     echo "Erro ao enviar SMS";
+// }
 ?>
