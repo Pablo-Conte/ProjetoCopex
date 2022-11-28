@@ -9,6 +9,7 @@ require_once "./login/loginAuth.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/headerIndex.css">
     <link rel="stylesheet" href="./css/headerHome.css">
     <link rel="stylesheet" href="./css/login.css">
     <script src="../library/jquery/jquery.min.js"></script>

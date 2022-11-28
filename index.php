@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./Bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="./pages/css/cssindex.css">
   <script src="./Bootstrap/js/bootstrap.bundle.js"></script>
-  <title>COPEX Estágios</title>
+  <title>Index</title>
 </head>
 
 <body class="corfundo">
@@ -57,5 +57,8 @@
       </div>
     </div>
   </footer>
+
+
 </body>
+
 </html>

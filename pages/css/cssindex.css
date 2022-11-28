@@ -1,0 +1,82 @@
+.navbar {
+    font-family: Helvetica, Arial, sans-serif;
+    background: black;
+  }
+
+  .navbar-brand {
+    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .container-fluid {
+    width: 85%;
+  }
+
+  .btn {
+    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: clamp(1em, 12px + 1vw, 1em);
+  }
+
+  .container11 {
+    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
+    display: grid;
+    grid-template-columns: 42% 42%;
+    justify-content: center;
+    padding-top: 2%;
+    padding-bottom: 5%;
+  }
+
+  .itensimg {
+    text-align: start;
+    margin-top: 5%;
+    padding-top: 5%;
+    padding-right: 10%;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #fff;
+  }
+
+  .textodivmain {
+    font-size: clamp(0.5em, 0.8em + 1vw, 1.6em);
+  }
+
+  .textofooter {
+    font-size: clamp(0.5em, 0.5em + 1vw, 1em);
+  }
+
+  .corfundo {
+    background-color: black;
+  }
+
+  .containerfooter {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: center;
+    font-weight: bold;
+    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-top: 2%;
+    gap: 10px;
+  }
+
+  .footeritems {
+    padding-top: 3%;
+    align-items: center;
+  }
+
+  .logoifsul {
+    width: 21vw;
+    min-width: 5.5rem;
+    height: auto;
+  }
+
+  .hrvisual {
+    height: 1px;
+    box-shadow: none;
+  }
