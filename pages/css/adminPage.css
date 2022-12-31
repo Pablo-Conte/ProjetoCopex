@@ -1,7 +1,8 @@
 .page {
     display: flex;
-    height: 93vh;
+    height: 91vh;
     padding: 3%;
+    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
 }
 
 .perfil {
@@ -10,12 +11,12 @@
     width: 25%;
     flex-direction: column;
     align-items: center;
-    border: 2px solid #000;
     border-radius: 20px;
     padding: 3%;
-    margin-right: 20px;
+    margin-right: 1.25rem;
     justify-content: space-between;
     padding-bottom: 5%;
+    background-color: rgba(240, 248, 255, 0.829);
 }
 
 .funcoes {
@@ -23,9 +24,9 @@
     height: 100%;
     width: 75%;
     flex-direction: column;
-    border: 2px solid #000;
     border-radius: 20px;
     padding: 3%;
+    background-color: rgba(240, 248, 255, 0.829);
 }
 
 .sessao {
@@ -35,18 +36,26 @@
     flex-wrap: wrap;
 }
 
+.sticky-top {
+    height: 9vh;
+}
+
 .botaoRegistro {
     display: flex;
-    margin-right: 10px;
-    padding: 10px;
-    border: 1px solid #000;
-    border-radius: 10px;
+    margin-right: 0.625rem;
+    padding: 0.625rem;
+    background-color: white;
+    border-radius: 0.625rem;
     justify-content: center;
 }
 
+.funcoes h1{
+    margin-bottom: 20px;
+}
+
 .botaoRegistro:hover {
-    background-color: rgb(228, 228, 228);
-    color: #000;
+    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
+    color: white;
 }
 
 .linksFunc {

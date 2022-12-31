@@ -19,6 +19,7 @@
     <script src="../../Bootstrap/js/bootstrap.bundle.js"></script>
     <title>Home do administrador</title>
 </head>
+<body>
     <?php
         require_once './headerHome.php';
     ?>
