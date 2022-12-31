@@ -33,10 +33,13 @@
                 <p>Alunos Matriculados</p>
                 <p>
                     <?php 
-                        $query = "SELECT nome FROM aluno";
+                        $query = "SELECT * FROM aluno";
                         $records = $conn->prepare($query);
                         $records->execute();
-                        $results = $records->fetch(PDO::FETCH_DEFAULT);
+                        $results = $records->fetchAll(PDO::FETCH_DEFAULT);
+                        if ($results == false){
+                            $results = [];
+                        }
                         echo(count($results));
                     ?>
                 </p>
@@ -44,12 +47,34 @@
 
             <div class="nomeAdmin">
                 <p>Empresas Cadastradas</p>
-                <p>n°</p>
+                <p>
+                    <?php 
+                        $query = "SELECT * FROM empresa";
+                        $records = $conn->prepare($query);
+                        $records->execute();
+                        $results = $records->fetchAll(PDO::FETCH_DEFAULT);
+                        if ($results == false){
+                            $results = [];
+                        }
+                        echo(count($results));
+                    ?>
+                </p>
             </div>
 
             <div class="nomeAdmin">
                 <p>Vagas Ofertadas</p>
-                <p>n°</p>
+                <p>
+                    <?php 
+                        $query = "SELECT * FROM vaga";
+                        $records = $conn->prepare($query);
+                        $records->execute();
+                        $results = $records->fetchAll(PDO::FETCH_DEFAULT);
+                        if ($results == false){
+                            $results = [];
+                        }
+                        echo(count($results));
+                    ?>
+                </p>
             </div>
             
         </div>
@@ -89,13 +114,6 @@
                         Admin
                     </div>
                 </a>
-                <?php 
-                        $query = "SELECT * FROM aluno";
-                        $records = $conn->prepare($query);
-                        $records->execute();
-                        $results = $records->fetch(PDO::FETCH_DEFAULT);
-                        print_r($results);
-                    ?>
             </div>
         </div>
     </div>
