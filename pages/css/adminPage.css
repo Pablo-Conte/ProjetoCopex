@@ -12,6 +12,7 @@ body {
     height: 5%;
     width: 100%;
     margin-bottom: 10px;
+    display: inline-table;
 }
 
 .perfil {
@@ -50,6 +51,7 @@ body {
 
 .sticky-top {
     height: 9vh;
+    min-height: 65px;
 }
 
 .botaoRegistro {
@@ -114,3 +116,40 @@ a:hover {
         width: 100%;
     }
 }
+
+@media (max-height: 550px){
+    .perfil {
+        overflow: scroll;
+        overflow-x: hidden;
+        border-radius: 20px 0px 0px 20px;
+    }
+
+}
+
+@media (max-height: 490px){
+    .funcoes {
+        overflow: scroll;
+        overflow-x: hidden;
+        border-radius: 20px 0px 0px 20px;
+    }
+
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(4, 46, 94);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(72, 136, 255);
+  }
