@@ -121,7 +121,31 @@ a:hover {
     .perfil {
         overflow: scroll;
         overflow-x: hidden;
-        border-radius: 20px 0px 0px 20px;
+    }
+
+    .perfil::-webkit-scrollbar {
+        width: fit-content;
+    }
+
+    /* Track */
+    .perfil::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 0px 20px 20px 0px;
+    }
+    .perfil::-webkit-scrollbar-corner {
+        border-radius: 0px 20px 20px 0px;
+    }
+
+    /* Handle */
+    .perfil::-webkit-scrollbar-thumb {
+        background: rgb(33, 37, 41);
+        border-radius: 0px 20px 20px 0px;
+        width: 3px;
+        }
+
+    /* Handle on hover */
+    .perfil::-webkit-scrollbar-thumb:hover {
+        background: rgb(72, 136, 255);
     }
 
 }
@@ -130,26 +154,35 @@ a:hover {
     .funcoes {
         overflow: scroll;
         overflow-x: hidden;
-        border-radius: 20px 0px 0px 20px;
+    }
+
+    .funcoes::-webkit-scrollbar {
+        width: fit-content;
+    }
+
+    /* Track */
+    .funcoes::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 0px 20px 20px 0px;
+    }
+    .funcoes::-webkit-scrollbar-corner {
+        border-radius: 0px 20px 20px 0px;
+    }
+
+    /* Handle */
+    .funcoes::-webkit-scrollbar-thumb {
+        background: rgb(33, 37, 41);
+        border-radius: 0px 20px 20px 0px;
+        }
+
+    /* Handle on hover */
+    .funcoes::-webkit-scrollbar-thumb:hover {
+        background: rgb(72, 136, 255);
     }
 
 }
 
-::-webkit-scrollbar {
-    width: 10px;
-  }
+
+
   
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgb(4, 46, 94);
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(72, 136, 255);
-  }
+
