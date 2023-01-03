@@ -2,7 +2,16 @@
     display: flex;
     height: 91vh;
     padding: 3%;
-    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
+}
+
+body {
+    background: radial-gradient( circle farthest-corner at 100%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2%);
+}
+
+.funcoes h1 {
+    height: 5%;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .perfil {
@@ -11,6 +20,7 @@
     width: 25%;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     border-radius: 20px;
     padding: 3%;
     margin-right: 1.25rem;
@@ -29,11 +39,13 @@
     background-color: rgba(240, 248, 255, 0.829);
 }
 
+
 .sessao {
     display: flex;
     flex-direction: row;
     margin-bottom: 3%;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .sticky-top {
@@ -47,6 +59,7 @@
     background-color: white;
     border-radius: 0.625rem;
     justify-content: center;
+    height: 100%;
 }
 
 .funcoes h1{
@@ -54,7 +67,7 @@
 }
 
 .botaoRegistro:hover {
-    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
+    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgb(110, 110, 110) 0%, rgb(121, 121, 121) 100.2% );
     color: white;
 }
 
@@ -72,4 +85,32 @@
 
 a:hover {
     color: #000;
+}
+
+@media (max-width: 700px){
+    .page {
+        flex-direction:column;
+    }
+    .sessao {
+        justify-content: center;
+    }
+    .sessao a {
+        display: block;
+        margin-bottom: 3%;
+        height: auto;
+        width: 90%;
+    }
+    .funcoes h1 {
+        height: 5%;
+        width: 100%;
+        text-align: center;
+    }
+    .perfil {
+        width: 100%;
+        margin-bottom: 5%;
+    }
+
+    .funcoes {
+        width: 100%;
+    }
 }
