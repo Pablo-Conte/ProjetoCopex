@@ -2,7 +2,7 @@
 
     $server = 'localhost:3306';
     $username = 'root';
-    $password = '';
+    $password = '1234';
     $database = 'site';
 
     try {

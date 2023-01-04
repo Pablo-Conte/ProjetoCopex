@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS aluno (
     numero VARCHAR(11) UNIQUE NOT NULL,
     matricula VARCHAR(20) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    curso INT
+    curso VARCHAR(255) NOT NULL
 );
 
 

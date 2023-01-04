@@ -18,6 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../Bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../css/headerHome.css">
+    <link rel="stylesheet" href="../css/studentPage.css">
     <script src="../../Bootstrap/js/bootstrap.bundle.js"></script>
     <title>Home do Estudante</title>
 </head>
@@ -25,11 +26,80 @@
     <?php
         require_once './headerHome.php'
     ?>
-    <div class="main">
-        <h1>Welcome to the Student Page</h1>
-        <p>Nome do Aluno: <?php echo($_SESSION['name']);?></p>
+    <div class="page">
+        <div class="perfil">
+            <div class="user">
+                <h1><?php echo($_SESSION['name']);?></h1>
+                <p>
+                    <?php 
+                        $query = $conn->prepare("SELECT curso FROM aluno WHERE id_aluno = :id");
+                        $query->bindParam(':id', $_SESSION['user_id_aluno']);
+                        $query->execute();
+                        $results = $query->fetch(PDO::FETCH_DEFAULT);
+                        if ($results == false){
+                            $results = [];
+                        }
+                        echo $results['curso'];
+                    ?>
+                </p>
+            </div>
 
-        <a href="./funcStudent/listVacancy.php"><p>LISTAR VAGAS</p></a>
+            <div class="nomeAdmin">
+                <h2>Registros de interesse</h2>
+                <p>
+                    nº
+                    <?php 
+                        // $query = "SELECT * FROM aluno";
+                        // $records = $conn->prepare($query);
+                        // $records->execute();
+                        // $results = $records->fetchAll(PDO::FETCH_DEFAULT);
+                        // if ($results == false){
+                        //     $results = [];
+                        // }
+                        // echo(count($results));
+                    ?>
+                </p>
+                <a href="">Ver interesses</a>
+            </div>
+        </div>
+        <div class="funcoes">
+            <h1>Vagas Abertas</h1>
+            <div class="sessao">
+            <div class="listar">
+                <?php
+                    $query = $conn->prepare("SELECT * FROM vaga");
+                    $query->execute();
+                    $curso = "";
+                    $empresa = "";
+
+                    while ($results = $query->fetch(PDO::FETCH_ASSOC)) {
+                        
+                        $idEmpresa = $results['id_emp'];
+                        $cargo = $results['cargo'];
+
+                        $query1 = $conn->prepare("SELECT nome FROM empresa WHERE id_empresa = :idempresa");
+                        $query1->bindParam(":idempresa", $results['id_emp']);
+                        $query1->execute();
+                        $empresa = $query1->fetch(PDO::FETCH_ASSOC)['nome'];
+
+                        echo "<form method='POST' action='./registerInterest.php'>";
+                        echo "<div class='vaga'>";
+                        echo "<div class='nomeEmpresa'>" . $empresa . "</div>";
+                        echo "<div class='corpoVaga'>";
+                        echo "<p>Vaga: " . $results["cargo"] . "</p>";
+                        echo "<p>Salário: " . $results["salario"] . "</p>";
+                        echo "</div>";
+                        echo "<input type='hidden' value='$idEmpresa' name='idEmpresa'></input>";
+                        echo "<input type='hidden' value='$cargo' name='cargo'></input>";
+                        echo "<button type='submit'>Registrar Interesse</button>";
+                        echo "</div>";
+                        echo "</form>";
+                    }
+                ?>
+        </div>
+            </div>
+        </div>
+        
     </div>
 </body>
 </html>
