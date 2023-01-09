@@ -88,21 +88,21 @@
 
     try {
 
-        // Find your Account SID and Auth Token at twilio.com/console
-        // and set the environment variables. See http://twil.io/secure
-        $sid = "";
-        $token = "";
-        $twilio = new Client($sid, $token);
-        
-        $message = $twilio->messages
-                          ->create("whatsapp:+5551997602457", // to
-                                   [
-                                       "from" => "whatsapp:+14155238886",
-                                       "body" => "Hi Pablo, it's working very well, good job"
-                                   ]
-                          );
-        
-        print($message->sid);
+        $dadosParaEnviar = http_build_query(
+            array(
+                'number' => '+55 51 8044-2548',
+                'message' => 'OK, agora implementei no código do projeto mesmo, se tu ver essa mensagem é pq deu certo'
+            )
+        );
+        $opcoes = array('http' =>
+               array(
+                'method'  => 'POST',
+                'header'  => 'Content-Type: application/x-www-form-urlencoded',
+                'content' => $dadosParaEnviar
+            )
+        );
+        $contexto = stream_context_create($opcoes);
+        $result   = file_get_contents('http://localhost:8000/send-message', false, $contexto);
     } catch (Exception $e){
         echo "oh shit, here we go again!\n" . $e;
     }
