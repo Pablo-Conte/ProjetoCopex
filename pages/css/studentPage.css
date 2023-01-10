@@ -37,8 +37,8 @@ body {
     flex-direction: column;
     border-radius: 20px;
     padding: 3%;
-    height: fit-content;
     background-color: rgba(240, 248, 255, 0.829);
+    overflow: auto;
 }
 
 
@@ -51,13 +51,13 @@ body {
 }
 
 
+
 form {
     margin: 10px;
     background-color: white;
     padding: 20px;
     border-radius: 20px;
     width: 200px;
-    height: 20%;
 }
 
 
@@ -230,4 +230,34 @@ a:hover {
         background: rgb(72, 136, 255);
     }
 
+}
+
+.funcoes {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.funcoes::-webkit-scrollbar {
+    width: fit-content;
+}
+
+/* Track */
+.funcoes::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 0px 20px 20px 0px;
+}
+
+.funcoes::-webkit-scrollbar-corner {
+    border-radius: 0px 20px 20px 0px;
+}
+
+/* Handle */
+.funcoes::-webkit-scrollbar-thumb {
+    background: rgb(33, 37, 41);
+    border-radius: 0px 20px 20px 0px;
+}
+
+/* Handle on hover */
+.funcoes::-webkit-scrollbar-thumb:hover {
+    background: rgb(72, 136, 255);
 }
