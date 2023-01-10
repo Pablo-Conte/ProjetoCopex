@@ -86,24 +86,39 @@
     //     echo "Erro ao enviar SMS";
     // }
 
-    try {
+    // try {
 
-        // Find your Account SID and Auth Token at twilio.com/console
-        // and set the environment variables. See http://twil.io/secure
-        $sid = "";
-        $token = "";
-        $twilio = new Client($sid, $token);
+    //     // Find your Account SID and Auth Token at twilio.com/console
+    //     // and set the environment variables. See http://twil.io/secure
+    //     $sid = "";
+    //     $token = "";
+    //     $twilio = new Client($sid, $token);
         
-        $message = $twilio->messages
-                          ->create("whatsapp:+5551997602457", // to
-                                   [
-                                       "from" => "whatsapp:+14155238886",
-                                       "body" => "Hi Pablo, it's working very well, good job"
-                                   ]
-                          );
+    //     $message = $twilio->messages
+    //                       ->create("whatsapp:+5551997602457", // to
+    //                                [
+    //                                    "from" => "whatsapp:+14155238886",
+    //                                    "body" => "Hi Pablo, it's working very well, good job"
+    //                                ]
+    //                       );
         
-        print($message->sid);
-    } catch (Exception $e){
-        echo "oh shit, here we go again!\n" . $e;
-    }
+    //     print($message->sid);
+    // } catch (Exception $e){
+    //     echo "oh shit, here we go again!\n" . $e;
+    // }
+        var_dump($_SESSION);
+    $idVaga = $_POST['idVaga'];
+    $query = $conn->prepare(
+    "INSERT INTO vaga_aluno (
+        id_vaga, 
+        id_aluno
+    ) VALUES (
+        $idVaga,
+        $_SESSION[user_id_aluno]
+    )");
+
+    $query->execute();
+
+    $results = $query->fetch(PDO::FETCH_ASSOC);
+    header("location: ../studentPage.php");
 ?>

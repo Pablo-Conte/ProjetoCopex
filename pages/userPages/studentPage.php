@@ -81,42 +81,48 @@
                         $query1->execute();
                         $empresa = $query1->fetch(PDO::FETCH_ASSOC)['nome'];
 
-                        echo "<form method='POST' action='./funcStudent/registerInterest.php'>";
-                        echo "<div class='vaga'>";
-                        echo "<div class='nomeEmpresa'>Empresa: " . $empresa . "</div>";
-                        echo "<div class='corpoVaga'>";
-                        echo "<p>Vaga: " . $results["cargo"] . "</p>";
-                        echo "<p>Salário: " . $results["salario"] . "</p>";
-                        echo "</div>";
-                        echo "<input type='hidden' value='$idEmpresa' name='idEmpresa'></input>";
-                        echo "<input type='hidden' value='$cargo' name='cargo'></input>";
-                        echo "<input type='hidden' value='$idVaga' name='idVaga'></input>";
-                        echo "<div class='botoesModais'>";
-                        echo "<button type='submit' class='botaoModalRegistro'>Registrar Interesse</button>";
-                        echo "<button type='button' class='botaoModalInfo' data-bs-toggle='modal' data-bs-target='#JanelaModalVaga" . $idVaga . "'>+</button>";
-                        echo "</div>";
-                        echo "</div>";
+                        $queryJaInteressado = $conn->prepare("SELECT * FROM vaga_aluno WHERE id_aluno = $_SESSION[user_id_aluno] AND id_vaga = $idVaga");
+                        $queryJaInteressado->execute();
 
-                        echo '<div id="JanelaModalVaga' . $idVaga . '" class="modal fade" tabindex="-1" >';
-                        echo "<div class='modal-dialog'>";
-                        echo '<div class="modal-content">';
-                        echo '    <div class="modal-header">';
-                        echo '        <h3 class="modal-title">Cargo: '. $cargo . '</h3>';
-                        echo '        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>';
-                        echo '    </div>';
+                        if ($queryJaInteressado->fetch(PDO::FETCH_ASSOC) == 0){
+                            echo "<form method='POST' action='./funcStudent/registerInterest.php'>";
+                            echo "<div class='vaga'>";
+                            echo "<div class='nomeEmpresa'>Empresa: " . $empresa . "</div>";
+                            echo "<div class='corpoVaga'>";
+                            echo "<p>Vaga: " . $results["cargo"] . "</p>";
+                            echo "<p>Salário: " . $results["salario"] . "</p>";
+                            echo "</div>";
+                            echo "<input type='hidden' value='$idEmpresa' name='idEmpresa'></input>";
+                            echo "<input type='hidden' value='$cargo' name='cargo'></input>";
+                            echo "<input type='hidden' value='$idVaga' name='idVaga'></input>";
+                            echo "<div class='botoesModais'>";
+                            echo "<button type='submit' class='botaoModalRegistro'>Registrar Interesse</button>";
+                            echo "<button type='button' class='botaoModalInfo' data-bs-toggle='modal' data-bs-target='#JanelaModalVaga" . $idVaga . "'>+</button>";
+                            echo "</div>";
+                            echo "</div>";
+    
+                            echo '<div id="JanelaModalVaga' . $idVaga . '" class="modal fade" tabindex="-1" >';
+                            echo "<div class='modal-dialog'>";
+                            echo '<div class="modal-content">';
+                            echo '    <div class="modal-header">';
+                            echo '        <h3 class="modal-title">Cargo: '. $cargo . '</h3>';
+                            echo '        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>';
+                            echo '    </div>';
+    
+                            echo '    <div class="modal-body">';
+                            echo '        <p><strong>Empresa:</strong> '. $empresa . '</p>';
+                            echo '        <p><strong>Descrição:</strong> '. $results["descricao"] . '</p>';
+                            echo '    </div>';
+    
+                            echo '    <div class="modal-footer">';
+                            echo '        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>';
+                            echo '    </div>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo "</form>";
+                        }
 
-                        echo '    <div class="modal-body">';
-                        echo '        <p><strong>Empresa:</strong> '. $empresa . '</p>';
-                        echo '        <p><strong>Descrição:</strong> '. $results["descricao"] . '</p>';
-                        echo '    </div>';
-
-                        echo '    <div class="modal-footer">';
-                        echo '        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>';
-                        echo '    </div>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo "</form>";
                     }
                 ?>
             </div>

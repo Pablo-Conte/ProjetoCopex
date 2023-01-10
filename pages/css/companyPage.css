@@ -5,7 +5,7 @@
 }
 
 body {
-    background: radial-gradient(circle farthest-corner at 100%, rgba(85, 88, 218, 1) 0%, rgba(95, 209, 249, 1) 100.2%);
+    background: radial-gradient( circle farthest-corner at 100%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2%);
 }
 
 .funcoes h1 {
@@ -37,7 +37,6 @@ body {
     flex-direction: column;
     border-radius: 20px;
     padding: 3%;
-    height: fit-content;
     background-color: rgba(240, 248, 255, 0.829);
 }
 
@@ -48,49 +47,6 @@ body {
     margin-bottom: 3%;
     flex-wrap: wrap;
     width: 100%;
-}
-
-
-form {
-    margin: 10px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 20px;
-    width: 200px;
-    height: 20%;
-}
-
-
-.botaoModalRegistro{
-    background-color: #5EC8F7;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
-    color: white;
-    font-weight: 400;
-    margin-right: 10px;
-}
-
-.botaoModalRegistro:hover {
-    background-color: #408cad;
-}
-
-.botaoModalInfo {
-    border: none;
-    border-radius: 10px;
-    padding: 10px 15px;
-    font-weight: 700;
-    background-color: rgb(227, 226, 226);
-}
-
-.botaoModalInfo:hover {
-    background-color: rgb(171, 171, 171);
-}
-
-.botoesModais {
-    display: flex;
-    justify-content: center;
 }
 
 .sticky-top {
@@ -108,13 +64,12 @@ form {
     height: 100%;
 }
 
-.funcoes h1 {
+.funcoes h1{
     margin-bottom: 20px;
-    margin-left: 10px;
 }
 
 .botaoRegistro:hover {
-    background-image: radial-gradient(circle farthest-corner at 12.3% 19.3%, rgb(110, 110, 110) 0%, rgb(121, 121, 121) 100.2%);
+    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgb(110, 110, 110) 0%, rgb(121, 121, 121) 100.2% );
     color: white;
 }
 
@@ -122,11 +77,6 @@ form {
     text-decoration: none;
     color: #000;
     width: 30%;
-}
-
-.nomeAdmin a{
-    text-decoration: none;
-    color: rgba(32, 124, 251, 0.665);
 }
 
 .perfil div {
@@ -139,22 +89,24 @@ a:hover {
     color: #000;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 700px){
     .page {
-        flex-direction: column;
+        flex-direction:column;
     }
-
     .sessao {
         justify-content: center;
     }
-
+    .sessao a {
+        display: block;
+        margin-bottom: 3%;
+        height: auto;
+        width: 90%;
+    }
     .funcoes h1 {
         height: 5%;
         width: 100%;
-        margin-left: 0px;
         text-align: center;
     }
-
     .perfil {
         width: 100%;
         margin-bottom: 5%;
@@ -165,7 +117,7 @@ a:hover {
     }
 }
 
-@media (max-height: 550px) {
+@media (max-height: 550px){
     .perfil {
         overflow: scroll;
         overflow-x: hidden;
@@ -180,7 +132,6 @@ a:hover {
         background: #f1f1f1;
         border-radius: 0px 20px 20px 0px;
     }
-
     .perfil::-webkit-scrollbar-corner {
         border-radius: 0px 20px 20px 0px;
     }
@@ -190,7 +141,7 @@ a:hover {
         background: rgb(33, 37, 41);
         border-radius: 0px 20px 20px 0px;
         width: 3px;
-    }
+        }
 
     /* Handle on hover */
     .perfil::-webkit-scrollbar-thumb:hover {
@@ -199,7 +150,7 @@ a:hover {
 
 }
 
-@media (max-height: 490px) {
+@media (max-height: 490px){
     .funcoes {
         overflow: scroll;
         overflow-x: hidden;
@@ -214,7 +165,6 @@ a:hover {
         background: #f1f1f1;
         border-radius: 0px 20px 20px 0px;
     }
-
     .funcoes::-webkit-scrollbar-corner {
         border-radius: 0px 20px 20px 0px;
     }
@@ -223,7 +173,7 @@ a:hover {
     .funcoes::-webkit-scrollbar-thumb {
         background: rgb(33, 37, 41);
         border-radius: 0px 20px 20px 0px;
-    }
+        }
 
     /* Handle on hover */
     .funcoes::-webkit-scrollbar-thumb:hover {
@@ -231,3 +181,8 @@ a:hover {
     }
 
 }
+
+
+
+  
+
