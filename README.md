@@ -6,3 +6,5 @@
 <p>4 - Feito o passo anterior, estando tudo ok, dê o merge estando na develop na branch em que tu estavas trabalhando. (git merge feat/landingPage);</p>
 <p>5 - Arrumar erros de conflito. Procurar na intenet se não souber fazer (https://www.youtube.com/watch?v=xNVM5UxlFSA).</p>
 
+1° backup
+
