@@ -1,82 +1,115 @@
-.navbar {
-    font-family: Helvetica, Arial, sans-serif;
-    background: black;
-  }
+body, ul, li{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
 
-  .navbar-brand {
-    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+a {
+    text-decoration: none;
+}
 
-  .container-fluid {
-    width: 85%;
-  }
-
-  .btn {
-    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: clamp(1em, 12px + 1vw, 1em);
-  }
-
-  .container11 {
-    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
-    display: grid;
-    grid-template-columns: 42% 42%;
-    justify-content: center;
-    padding-top: 2%;
-    padding-bottom: 5%;
-  }
-
-  .itensimg {
-    text-align: start;
-    margin-top: 5%;
-    padding-top: 5%;
-    padding-right: 10%;
-    font-family: Helvetica, Arial, sans-serif;
-    color: #fff;
-  }
-
-  .textodivmain {
-    font-size: clamp(0.5em, 0.8em + 1vw, 1.6em);
-  }
-
-  .textofooter {
-    font-size: clamp(0.5em, 0.5em + 1vw, 1em);
-  }
-
-  .corfundo {
+body {
     background-color: black;
-  }
+}
 
-  .containerfooter {
-    display: grid;
-    grid-template-columns: 30% 30% 30%;
-    justify-content: center;
-    font-weight: bold;
+.header {
     background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    padding-top: 2%;
-    gap: 10px;
-  }
-
-  .footeritems {
-    padding-top: 3%;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
     align-items: center;
-  }
+}
 
-  .logoifsul {
-    width: 21vw;
-    min-width: 5.5rem;
-    height: auto;
-  }
+.links {
+    padding: 10px;
+}
 
-  .hrvisual {
-    height: 1px;
-    box-shadow: none;
-  }
+.links:hover { 
+    border: 2px solid rgba(95,209,249,1);
+    border-radius: 20%;
+}
+
+.flexbox {
+    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 40px 40px 40px;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    height: fit-content;
+    min-height: 70vh;
+    font-size: 1.5em;
+}
+
+.flexbox > div {
+    flex: 1 1 200px;
+    justify-content: center;
+    max-width: 100%;
+    min-width: 40vw;
+    padding: 10px 20px 0px 20px;
+}
+
+.maps {
+    max-width: 100%;
+}
+
+.imggestao {
+    width: 45vw;
+    max-width: 100%;
+    justify-content: center;
+}
+
+.footer {
+    display: grid;
+    grid-template-columns: 26vw 20vw 20vw;
+    max-width: 100%;
+    grid-gap: 10px;
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: clamp(0.1rem, 0.95em, 2em);
+}
+
+@media (min-width: 1500px) {
+    .footer {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 650px) {
+    .imggestao {
+        width: 64vw;
+    }
+}
+
+@media (max-width: 550px) {
+    .footer {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 400px) {
+    .footer {
+        font-size: 0.6em;
+    }
+    .flexbox {
+        font-size: 1em;
+    }
+}
+@media (max-width: 300px) {
+    .imggestao {
+        width: 80vw;
+    }
+    .footer {
+        font-size: 0.5em;
+    }
+}
+
