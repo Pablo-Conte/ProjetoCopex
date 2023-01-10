@@ -15,19 +15,109 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../Bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../css/headerHome.css">
+    <link rel="stylesheet" href="../css/adminPage.css">
     <script src="../../Bootstrap/js/bootstrap.bundle.js"></script>
     <title>Home do administrador</title>
 </head>
+<body>
     <?php
         require_once './headerHome.php';
     ?>
-    <div class="main">
-        <h1>Welcome to the Admin Page</h1>
-        <p>Nome do Admin: <?php echo($_SESSION['name']);?></p>
-        <a href="./funcAdmin/register.php">Registrar ADM</a><br>
-        <a href="./funcAdmin/registerEmpresa.php">Registrar EMPRESA</a><br>
-        <a href="./funcAdmin/registerAluno.php">Registrar ALUNO</a><br></br>
+    <div class="page">
+        <div class="perfil">
+            <div class="user">
+                <h2>Admin</h2>
+                <h1><?php echo($_SESSION['name']);?></h1>
+            </div>
+
+            <div class="nomeAdmin">
+                <p>Alunos Matriculados</p>
+                <p>
+                    <?php 
+                        $query = "SELECT * FROM aluno";
+                        $records = $conn->prepare($query);
+                        $records->execute();
+                        $results = $records->fetchAll(PDO::FETCH_DEFAULT);
+                        if ($results == false){
+                            $results = [];
+                        }
+                        echo(count($results));
+                    ?>
+                </p>
+            </div>
+
+            <div class="nomeAdmin">
+                <p>Empresas Cadastradas</p>
+                <p>
+                    <?php 
+                        $query = "SELECT * FROM empresa";
+                        $records = $conn->prepare($query);
+                        $records->execute();
+                        $results = $records->fetchAll(PDO::FETCH_DEFAULT);
+                        if ($results == false){
+                            $results = [];
+                        }
+                        echo(count($results));
+                    ?>
+                </p>
+            </div>
+
+            <div class="nomeAdmin">
+                <p>Vagas Ofertadas</p>
+                <p>
+                    <?php 
+                        $query = "SELECT * FROM vaga";
+                        $records = $conn->prepare($query);
+                        $records->execute();
+                        $results = $records->fetchAll(PDO::FETCH_DEFAULT);
+                        if ($results == false){
+                            $results = [];
+                        }
+                        echo(count($results));
+                    ?>
+                </p>
+            </div>
+            
+        </div>
+        <div class="funcoes">
+            <h1>Cadastros</h1>
+            <div class="sessao">
+                <a class="linksFunc" href="./funcAdmin/registerAluno.php">
+                    <div class="botaoRegistro">
+                        Aluno
+                    </div>
+                </a>
+                <a class="linksFunc" href="./funcAdmin/registerEmpresa.php">
+                    <div class="botaoRegistro">
+                        Empresa
+                    </div>
+                </a>
+                <a class="linksFunc" href="./funcAdmin/register.php">
+                    <div class="botaoRegistro">
+                        Admin
+                    </div>
+                </a>
+            </div>
+            <h1>Edição</h1>
+            <div class="sessao">
+                <a class="linksFunc" href="./funcAdmin/registerAluno.php">
+                    <div class="botaoRegistro">
+                        Aluno
+                    </div>
+                </a>
+                <a class="linksFunc" href="./funcAdmin/registerEmpresa.php">
+                    <div class="botaoRegistro">
+                        Empresa
+                    </div>
+                </a>
+                <a class="linksFunc" href="./funcAdmin/register.php">
+                    <div class="botaoRegistro">
+                        Admin
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
+    
 </body>
 </html>

@@ -88,8 +88,22 @@
             <input type="password" name="password" id="password" placeholder="Senha"><br>
             <input type="password" name="passwordVerify" id="passwordVerify" placeholder="Verificar Senha"><br><br>
             <select name="curso">
-                <option value="1">Informática</option>
-                <option value="2">Eletromecânica</option>
+                <option value="INF1M">INF1M</option>
+                <option value="INF2M">INF2M</option>
+                <option value="INF3M">INF3M</option>
+                <option value="INF4M">INF4M</option>
+                <option value="INF1T">INF1T</option>
+                <option value="INF2T">INF2T</option>
+                <option value="INF3T">INF3T</option>
+                <option value="INF4T">INF4T</option>
+                <option value="ETM1M">ETM1M</option>
+                <option value="ETM2M">ETM2M</option>
+                <option value="ETM3M">ETM3M</option>
+                <option value="ETM4M">ETM4M</option>
+                <option value="ETM1T">ETM1T</option>
+                <option value="ETM2T">ETM2T</option>
+                <option value="ETM3T">ETM3T</option>
+                <option value="ETM4T">ETM4T</option>
             </select></br></br>
             <button type="submit">Cadastrar</button>
             <?php if(!empty($m)): ?>

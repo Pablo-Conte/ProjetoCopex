@@ -86,24 +86,40 @@
     //     echo "Erro ao enviar SMS";
     // }
 
-    try {
+    // try {
 
-        $dadosParaEnviar = http_build_query(
-            array(
-                'number' => '+55 51 8044-2548',
-                'message' => 'OK, agora implementei no código do projeto mesmo, se tu ver essa mensagem é pq deu certo'
-            )
-        );
-        $opcoes = array('http' =>
-               array(
-                'method'  => 'POST',
-                'header'  => 'Content-Type: application/x-www-form-urlencoded',
-                'content' => $dadosParaEnviar
-            )
-        );
-        $contexto = stream_context_create($opcoes);
-        $result   = file_get_contents('http://localhost:8000/send-message', false, $contexto);
-    } catch (Exception $e){
-        echo "oh shit, here we go again!\n" . $e;
-    }
+    //     $dadosParaEnviar = http_build_query(
+    //         array(
+    //             'number' => '+55 51 8044-2548',
+    //             'message' => 'OK, agora implementei no código do projeto mesmo, se tu ver essa mensagem é pq deu certo'
+    //         )
+    //     );
+    //     $opcoes = array('http' =>
+    //            array(
+    //             'method'  => 'POST',
+    //             'header'  => 'Content-Type: application/x-www-form-urlencoded',
+    //             'content' => $dadosParaEnviar
+    //         )
+    //     );
+    //     $contexto = stream_context_create($opcoes);
+    //     $result   = file_get_contents('http://localhost:8000/send-message', false, $contexto);
+    // } catch (Exception $e){
+    //     echo "oh shit, here we go again!\n" . $e;
+    // }
+     
+    $idVaga = $_POST['idVaga'];
+    $query = $conn->prepare(
+    "INSERT INTO vaga_aluno (
+        id_vaga, 
+        id_aluno
+    ) VALUES (
+        $idVaga,
+        $_SESSION[user_id_aluno]
+    )");
+
+    $query->execute();
+
+    $results = $query->fetch(PDO::FETCH_ASSOC);
+    header("location: ../studentPage.php");
 ?>
+
