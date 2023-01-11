@@ -16,13 +16,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../Bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../css/headerHome.css">
-    <link rel="stylesheet" href="../css/companyPage.css">
+    <link rel="stylesheet" href="../css/company/companyPage.css">
     <script src="../../Bootstrap/js/bootstrap.bundle.js"></script>
     <title>Home da Empresa</title>
 </head>
 <body>
 <?php
-        require_once './headerHome.php';
+        require_once './structure/headerUsers.php';
     ?>
     <div class="page">
         <div class="perfil">
@@ -75,7 +75,7 @@
         <div class="funcoes">
             <h1>Vagas</h1>
             <div class="sessao">
-                <a class="linksFunc" href="./funcCompany/addVacancy.php">
+                <a class="linksFunc" href="./funcCompany/registerVacancy/addVacancy.php">
                     <div class="botaoRegistro">
                         Cadastrar
                     </div>

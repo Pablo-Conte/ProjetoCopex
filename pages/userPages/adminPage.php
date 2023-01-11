@@ -15,13 +15,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../Bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../css/adminPage.css">
+    <link rel="stylesheet" href="../css/admin/adminPage.css">
     <script src="../../Bootstrap/js/bootstrap.bundle.js"></script>
     <title>Home do administrador</title>
 </head>
 <body>
     <?php
-        require_once './headerHome.php';
+        require_once './structure/headerUsers.php';
     ?>
     <div class="page">
         <div class="perfil">
@@ -82,17 +82,17 @@
         <div class="funcoes">
             <h1>Cadastros</h1>
             <div class="sessao">
-                <a class="linksFunc" href="./funcAdmin/registerAluno.php">
+                <a class="linksFunc" href="./funcAdmin/register/registerAluno.php">
                     <div class="botaoRegistro">
                         Aluno
                     </div>
                 </a>
-                <a class="linksFunc" href="./funcAdmin/registerEmpresa.php">
+                <a class="linksFunc" href="./funcAdmin/register/registerEmpresa.php">
                     <div class="botaoRegistro">
                         Empresa
                     </div>
                 </a>
-                <a class="linksFunc" href="./funcAdmin/register.php">
+                <a class="linksFunc" href="./funcAdmin/register/registerAdmin.php">
                     <div class="botaoRegistro">
                         Admin
                     </div>
@@ -100,7 +100,7 @@
             </div>
             <h1>Edição</h1>
             <div class="sessao">
-                <a class="linksFunc" href="./funcAdmin/registerAluno.php">
+                <a class="linksFunc" href="./funcAdmin/editStudent/editStudent.php">
                     <div class="botaoRegistro">
                         Aluno
                     </div>

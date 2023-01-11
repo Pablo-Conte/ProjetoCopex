@@ -13,10 +13,10 @@
 
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../login.php">Home</a>
+                            <a class="nav-link" href="../login.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../../sair.php">Logout</a>
+                            <a class="nav-link active" aria-current="page" href="../sair.php">Logout</a>
                         </li>
                     </ul>
 
