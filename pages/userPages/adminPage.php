@@ -105,12 +105,12 @@
                         Aluno
                     </div>
                 </a>
-                <a class="linksFunc" href="./funcAdmin/registerEmpresa.php">
+                <a class="linksFunc" href="./funcAdmin/editCompany/editCompany.php">
                     <div class="botaoRegistro">
                         Empresa
                     </div>
                 </a>
-                <a class="linksFunc" href="./funcAdmin/register.php">
+                <a class="linksFunc" href="./funcAdmin/editAdmin/editAdmin.php">
                     <div class="botaoRegistro">
                         Admin
                     </div>
