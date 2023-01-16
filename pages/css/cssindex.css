@@ -11,11 +11,11 @@ a {
 }
 
 body {
-    background-color: black;
+    background-color: #254836;
 }
 
 .header {
-    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
+    background-color: white;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -32,12 +32,12 @@ body {
 }
 
 .links:hover { 
-    border: 2px solid rgba(95,209,249,1);
-    border-radius: 20%;
+    border: 2px solid #ffffff;
+    border-radius: 20px;
 }
 
 .flexbox {
-    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
+    background-color: #2F5B44;
     display: flex;
     flex-wrap: wrap;
     padding: 20px 40px 40px 40px;

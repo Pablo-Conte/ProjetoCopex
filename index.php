@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pages\css\cssindex.css">
+    <link rel="stylesheet" href="./pages/css/cssindex.css">
     <title>Home</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
             <p> Aqui você pode conferir as vagas de estágio ofertadas para os alunos do IFSul - campus Sapiranga.</p>
         </div>
         <div>
-            <img class="imggestao" src="imagens\Imagem-1.png" alt="gestão">
+            <img class="imggestao" src="./imagens/okok.png" alt="gestão">
         </div>
     </main>
 
