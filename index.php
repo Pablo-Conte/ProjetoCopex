@@ -1,64 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./Bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="./pages/css/cssindex.css">
-  <script src="./Bootstrap/js/bootstrap.bundle.js"></script>
-  <title>Index</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/css/cssindex.css">
+    <title>Home</title>
 </head>
+<body>
 
-<body class="corfundo">
-  <!-- talvez colocar um daqueles botao de hamburguer q tenhga link pro site do ifsul e o moodle -->
-  <!--NAVBAR AQUI -->
-  <nav class="navbar sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand"><b>COPEX Estágios</b></a>
-      <form class="d-flex" role="search">
-        <a href="./pages/login.php">
-          <div class="btn btn-outline"><b>Login</b></div>
-        </a>
-      </form>
-    </div>
-  </nav> 
-  <!--DIV PRINCIPAL-->
-  <div class="container11">
-    <div>
-      <div class="itensimg">
-        <h1 text-align="center"><b>COPEX Estágios</b></h1>
-        <hr class="hrvisual">
-        <p class="textodivmain">Sejam bem-vin@s.</p>
-        <p class="textodivmain"> Aqui você pode conferir as vagas ofertadas para os alunos do IFSul - campus Sapiranga.</p>
-        <br><br><br><br>
-      </div>
-    </div>
-    <div class="itensimg">
-      <h3 >trocar plano de fundo pra degrade ou cor solida e colocar aquela imagem minimalista</h3>
-    </div>
-  </div>
-  <!-- FOOTER COMEÇA AQUI-->
-  <footer margin-bottom="0%">
-    <div class="containerfooter">
-      <div class="footeritems logoifsul">
-        <img class="logoifsul" src="imagens\Sapiranga\Sapiranga\Marca\Versão-Horizontal-2.png" alt="Logo IFSul">        
-      </div>
-      <div class="footeritems textofooter">
-        <p>Contatos:</p>
-        <p>E-mail COPEX: sg-copex@ifsul.edu.br</p>
-        <p>Whatsapp: (51) 99504-3303</p>
-      </div>
-      <div class="footeritems textofooter">
-        <p>Atendimento:</p>
-        <p>Horário: 10h às 19h</p>
-        <p>Dias da semana: segunda-feira à sexta-feira.</p>
-      </div>
-    </div>
-  </footer>
+    <header class="header">
+        <a href="">COPEX Estágios</a>
+        <ul>
+            <li ><a href="./pages/login.php" class="links">Login</a></li>
+        </ul>
+    </header>
 
+    <main class="flexbox">
+        <div>
+            <h1>COPEX Estágios</h1>
+            <hr>
+            <p> Aqui você pode conferir as vagas de estágio ofertadas para os alunos do IFSul - campus Sapiranga.</p>
+        </div>
+        <div>
+            <img class="imggestao" src="./imagens/okok.png" alt="gestão">
+        </div>
+    </main>
 
+    <footer class="footer">
+        <div>
+            <p><b>Nossa localização:</b></p>
+            <iframe class="maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.468004235809!2d-51.03252538864044!3d-29.64819090065559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95194092c0742ac3%3A0xe32828040c8f9fb6!2sIFSul%20-%20C%C3%A2mpus%20Sapiranga!5e0!3m2!1spt-BR!2sbr!4v1673267365472!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen=""  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div>
+            <p><b>Entre em contato:</b></p>
+            <p>E-mail: sg-copex@ifsul.edu.br</p>
+            <p>Whatsapp: (51) 99504-3303</p>
+        </div>
+        <div>
+            <p><b>Horário de atendimento:</b></p>
+            <p>10h às 19h.</p>
+            <p>Dias da semana:</p>
+            <p>Segunda-feira à sexta-feira.</p>
+        </div>
+    </footer>
 </body>
-
-</html>
