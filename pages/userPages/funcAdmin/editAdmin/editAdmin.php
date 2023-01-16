@@ -91,8 +91,7 @@ if (!isset($_SESSION['user_id_admin'])) {
                 $query = $conn->prepare("SELECT siape, nome, email, id_administrador FROM administrador");  
                 
                 if (!empty($_POST['search'])){
-                    $query = $conn->prepare("SELECT id_administrador, siape, nome, email, id_administrador FROM administrador WHERE id_administrador = :search or nome = :search");
-                    $query->bindParam(':search', $_POST['search']);
+                    $query = $conn->prepare("SELECT id_administrador, siape, nome, email, id_administrador FROM administrador WHERE id_administrador LIKE '%$_POST[search]%' or nome LIKE '%$_POST[search]%'");
                 }
 
                 $query->execute();
@@ -121,7 +120,7 @@ if (!isset($_SESSION['user_id_admin'])) {
                     echo "<div class='modal-dialog'>";
                     echo '<div class="modal-content">';
                     echo '    <div class="modal-header">';
-                    echo "        <h3 class='modal-title'>Aluno: $results[nome]</h3>";
+                    echo "        <h3 class='modal-title'>Admin: $results[nome]</h3>";
                     echo '        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>';
                     echo '    </div>';
 

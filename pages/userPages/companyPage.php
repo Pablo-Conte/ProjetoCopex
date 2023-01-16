@@ -80,7 +80,7 @@
                         Cadastrar
                     </div>
                 </a>
-                <a class="linksFunc" href="#">
+                <a class="linksFunc" href="./funcCompany/editVacancies/editVacancy.php">
                     <div class="botaoRegistro">
                         Editar
                     </div>
