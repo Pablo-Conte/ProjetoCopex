@@ -91,7 +91,7 @@ if (!isset($_SESSION['user_id_admin'])) {
                 $query = $conn->prepare("SELECT siape, nome, email, id_administrador FROM administrador");  
                 
                 if (!empty($_POST['search'])){
-                    $query = $conn->prepare("SELECT siape, nome, email, id_administrador FROM administrador WHERE id_administrador = :search or nome = :search");
+                    $query = $conn->prepare("SELECT id_administrador, siape, nome, email, id_administrador FROM administrador WHERE id_administrador = :search or nome = :search");
                     $query->bindParam(':search', $_POST['search']);
                 }
 
@@ -112,12 +112,12 @@ if (!isset($_SESSION['user_id_admin'])) {
                     echo         "<td>$results[siape]</td>";
                     echo         "<td>$results[nome]</td>";
                     echo         "<td class='resp'>$results[email]</td>";
-                    echo         "<td><button type='button' class='botaoModalInfo btn btn-primary' data-bs-toggle='modal' data-bs-target='#JanelaModalStudent". $results['siape'] ."'>Editar</button></td>";
+                    echo         "<td><button type='button' class='botaoModalInfo btn btn-primary' data-bs-toggle='modal' data-bs-target='#JanelaModalStudent". $results['id_administrador'] ."'>Editar</button></td>";
                     echo     "</tr>";
 
                     echo "<form method='POST' action='./updateAdmin.php'>";
 
-                    echo "<div id='JanelaModalStudent$results[siape]' class='modal fade' tabindex='-1' >";
+                    echo "<div id='JanelaModalStudent$results[id_administrador]' class='modal fade' tabindex='-1' >";
                     echo "<div class='modal-dialog'>";
                     echo '<div class="modal-content">';
                     echo '    <div class="modal-header">';

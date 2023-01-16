@@ -132,6 +132,8 @@ if (!isset($_SESSION['user_id_admin'])) {
                     echo "      <input name='nome' type='text' spellcheck='false' value='$results[nome]'>";
                     echo "      <h5>Curso</h5>";
                     echo "      <input name='curso' type='text' spellcheck='false' value='$results[curso]'>";
+                    echo "       <h5>Número de Celular</h5>";
+                    echo "      <input name='numero' type='text' spellcheck='false' value='$results[numero]'>";
                     echo "      <h5>Email</h5>";
                     echo "      <input name='email' type='text' spellcheck='false' value='$results[email]'>";
                     echo "      <input name='idAluno' type='text' value='$results[id_aluno]' hidden>";

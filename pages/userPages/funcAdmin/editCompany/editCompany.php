@@ -91,7 +91,7 @@ if (!isset($_SESSION['user_id_admin'])) {
                 $query = $conn->prepare("SELECT nome, cnpj, email, id_empresa FROM empresa");  
                 
                 if (!empty($_POST['search'])){
-                    $query = $conn->prepare("SELECT nome, cnpj, email, id_empresa FROM empresa WHERE cnpj = :search OR nome = :search");
+                    $query = $conn->prepare("SELECT id_empresa, nome, cnpj, email, id_empresa FROM empresa WHERE cnpj = :search OR nome = :search");
                     $query->bindParam(':search', $_POST['search']);
 
                 }
@@ -113,12 +113,12 @@ if (!isset($_SESSION['user_id_admin'])) {
                     echo         "<td>$results[cnpj]</td>";
                     echo         "<td>$results[nome]</td>";
                     echo         "<td class='resp'>$results[email]</td>";
-                    echo         "<td><button type='button' class='botaoModalInfo btn btn-primary' data-bs-toggle='modal' data-bs-target='#JanelaModalStudent". $results['cnpj'] ."'>Editar</button></td>";
+                    echo         "<td><button type='button' class='botaoModalInfo btn btn-primary' data-bs-toggle='modal' data-bs-target='#JanelaModalStudent". $results['id_empresa'] ."'>Editar</button></td>";
                     echo     "</tr>";
 
                     echo "<form method='POST' action='./updateCompany.php'>";
 
-                    echo "<div id='JanelaModalStudent$results[cnpj]' class='modal fade' tabindex='-1' >";
+                    echo "<div id='JanelaModalStudent$results[id_empresa]' class='modal fade' tabindex='-1' >";
                     echo "<div class='modal-dialog'>";
                     echo '<div class="modal-content">';
                     echo '    <div class="modal-header">';
