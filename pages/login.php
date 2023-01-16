@@ -1,5 +1,5 @@
 <?php
-require_once "./login/loginAuth.php";
+    require_once "./login/loginAuth.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

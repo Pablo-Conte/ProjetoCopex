@@ -37,60 +37,8 @@ body {
     flex-direction: column;
     border-radius: 20px;
     padding: 3%;
-    height: fit-content;
     background-color: rgba(240, 248, 255, 0.829);
-}
-
-
-.sessao {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 3%;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-
-form {
-    margin: 10px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 20px;
-    width: 200px;
-    height: 20%;
-}
-
-
-.botaoModalRegistro{
-    background-color: #5EC8F7;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
-    color: white;
-    font-weight: 400;
-    margin-right: 10px;
-}
-
-.botaoModalRegistro:hover {
-    background-color: #408cad;
-}
-
-.botaoModalInfo {
-    border: none;
-    border-radius: 10px;
-    padding: 10px 15px;
-    font-weight: 700;
-    background-color: rgb(227, 226, 226);
-}
-
-.botaoModalInfo:hover {
-    background-color: rgb(171, 171, 171);
-}
-
-.botoesModais {
-    display: flex;
-    justify-content: center;
+    overflow: auto;
 }
 
 .sticky-top {
@@ -110,23 +58,11 @@ form {
 
 .funcoes h1 {
     margin-bottom: 20px;
-    margin-left: 10px;
 }
 
 .botaoRegistro:hover {
     background-image: radial-gradient(circle farthest-corner at 12.3% 19.3%, rgb(110, 110, 110) 0%, rgb(121, 121, 121) 100.2%);
     color: white;
-}
-
-.linksFunc {
-    text-decoration: none;
-    color: #000;
-    width: 30%;
-}
-
-.nomeAdmin a{
-    text-decoration: none;
-    color: rgba(32, 124, 251, 0.665);
 }
 
 .perfil div {
@@ -144,14 +80,9 @@ a:hover {
         flex-direction: column;
     }
 
-    .sessao {
-        justify-content: center;
-    }
-
     .funcoes h1 {
         height: 5%;
         width: 100%;
-        margin-left: 0px;
         text-align: center;
     }
 
@@ -163,6 +94,14 @@ a:hover {
     .funcoes {
         width: 100%;
     }
+}
+
+@media (max-width: 600px) {
+    
+    .resp {
+        display: none;
+    }
+
 }
 
 @media (max-height: 550px) {
@@ -230,4 +169,80 @@ a:hover {
         background: rgb(72, 136, 255);
     }
 
+}
+
+.funcoes {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.funcoes::-webkit-scrollbar {
+    width: fit-content;
+}
+
+/* Track */
+.funcoes::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 0px 20px 20px 0px;
+}
+
+.funcoes::-webkit-scrollbar-corner {
+    border-radius: 0px 20px 20px 0px;
+}
+
+/* Handle */
+.funcoes::-webkit-scrollbar-thumb {
+    background: rgb(33, 37, 41);
+    border-radius: 0px 20px 20px 0px;
+}
+
+/* Handle on hover */
+.funcoes::-webkit-scrollbar-thumb:hover {
+    background: rgb(72, 136, 255);
+}
+
+
+input {
+    border: none;
+    background-color: transparent;
+    border-bottom: rgb(168, 168, 168) 1px solid;
+    width: 90%;
+}
+
+button {
+    width: auto;
+    border: none;
+    background-color: transparent;
+}
+
+img:hover {
+    filter: opacity(0.5);
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+    border-bottom: rgb(108, 108, 108) 1px solid;
+}
+
+img {
+    width: 25px;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+}
+
+h5 {
+    margin-top: 2%;
+}
+
+
+.ok {
+    margin-top: 3%;
+}
+
+td {
+    
 }
