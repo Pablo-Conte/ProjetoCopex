@@ -1,110 +1,89 @@
 <?php
-    require_once "./login/loginAuth.php";
+require_once "./login/loginAuth.php";
 ?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="./css/headerIndex.css">
-    <link rel="stylesheet" href="./css/headerHome.css">
-    <link rel="stylesheet" href="./css/login.css">
-    <script src="../library/jquery/jquery.min.js"></script>
-    <script src="../Bootstrap/js/bootstrap.bundle.js"></script>
-    <title>Login</title>
+    <link rel="stylesheet" href="css\csslogin.css">
+    <title>login</title>
 </head>
+<body>
+    
+    <header class="header">
+        <a href="">COPEX Estágios</a>
+        <ul>
+            <li>
+                <a href=".././index.php" class="links">Voltar</a>
+            </li>
+        </ul>
+    </header>
 
-<body id="grad">
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a href="../index.php" class="navbar-brand">COPEX</a>
-            <form class="d-flex" role="search">
-                <a href="../index.php">
-                    <div class="dir">HOME</div>
-                </a>
-            </form>
-        </div>
-    </nav>
-    <div class="main">
-        <div>
-            <div class="loginChoice">
-
-                <label value="Administrador" name="opcao" class="opcao" id="Administrador">Administrador</label>
-                <label value="Estudante" name="opcao" class="opcao" id="Estudante">Estudante</label>
-                <label value="Empresa" name="opcao" class="opcao" id="Empresa">Empresa</label>
-
+    <main class="main">
+        <div class="main1">
+            <div class="mainItem">      
+                <label value="Estudante" name="opcao" class="mainOpcao" id="Estudante">Estudante</label>
+                <label value="Administrador" name="opcao" class="mainOpcao" id="Administrador">Administrador</label>
+                <label value="Empresa" name="opcao" class="mainOpcao" id="Empresa">Empresa</label>
             </div>
-            <div class="loginStyle">
-                <div>
-                    <div id="tab1" style="display: none;">
-                        <div class="loginForm">
-                            <h2>Login Admin</h2>
-                            <form action="login.php" method="POST" class="data">
-                                <input type="name" placeholder="Digite seu SIAPE" name="siape">
-                                <input type="password" placeholder="Digite sua senha" name="password">
-                                <button type="submit">Login</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div id="tab2" style="display: block;">
-                        <div class="loginForm">
-                            <h2>Login Estudante</h2>
-                            <form action="login.php" method="POST" class="data">
-                                <input type="text" placeholder="Digite sua matricula" name="matricula">
-                                <input type="password" placeholder="Digite sua senha" name="password_aluno">
-                                <button type="submit">Login</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div id="tab3" style="display: none;">
-                        <div class="loginForm">
-                            <h2>Login Empresa</h2>
-                            <form action="login.php" method="POST" class="data">
-                                <input type="name" placeholder="Digite seu CNPJ" name="cnpj">
-                                <input type="password" placeholder="Digite sua senha" name="password_empresa">
-                                <button type="submit">Login</button>
-                            </form>
-                        </div>
-                    </div>
-                    <?php if (!empty($message)) : ?>
-                        <p> <?= $message ?></p>
-                    <?php endif; ?>
+            <div class="mainForm">
+                <div id="tab1" style="display: block;">
+                    <form action="login.php" method="POST" class="form">
+                        <h2>Entrar como aluno</h2>
+                        <input class="formInput" type="text" placeholder="Digite sua matricula" name="matricula">
+                        <input class="formInput" type="password" placeholder="Digite sua senha" name="password_aluno">
+                        <button type="submit" class="btnForm">Entrar</button>
+                    </form>
                 </div>
+                <div id="tab2" style="display: none;">
+                    <form action="login.php" method="POST" class="form">
+                        <h2>Entrar como administrador</h2>
+                        <input class="formInput" type="name" placeholder="Digite seu SIAPE" name="SIAPE">
+                        <input class="formInput" type="password" placeholder="Digite sua senha" name="password">
+                        <button type="submit">Entrar</button>
+                    </form>
+                </div>
+                <div id="tab3" style="display: none;">
+                    <form action="login.php" method="POST" class="form">
+                        <h2>Entrar como empresa</h2>
+                        <input class="formInput" type="text" placeholder="Digite seu CNPJ" name="cnpj">
+                        <input class="formInput" type="password" placeholder="Digite sua senha" name="password_empresa">
+                        <button type="submit">Entrar</button>
+                    </form>
+                </div>    
             </div>
         </div>
-    </div>
+    </main>
+</div>
+    <?php if (!empty($message)) : ?>
+    <p> <?= $message ?></p>
+    <?php endif; ?>
+    
     <script>
         var a = "";
-        $(window).load(function() {
-            
-            $('.opcao').on('click', function(label) {
-                
+        $(window).load(function() {           
+            $('.opcao').on('click', function(label) {  
                 a = label.currentTarget.id;
-
-                if ((a == "Administrador") || (a == "Estudante") || (a == "Empresa")) {
-                    
+                if ((a == "Administrador") || (a == "Estudante") || (a == "Empresa")) { 
                     if ((a == "Administrador")) {
-                        document.getElementById('tab1').style.display = "block";
-                        document.getElementById('tab2').style.display = "none";
-                        document.getElementById('tab3').style.display = "none";
+                        document.body.getElementById('tab1').style.display = 'none';
+                        document.body.getElementById('tab2').style.display = 'block';
+                        document.body.getElementById('tab3').style.display = 'none';
                     } else if ((a == "Estudante")) {
-                        document.getElementById('tab1').style.display = "none";
-                        document.getElementById('tab2').style.display = "block";
-                        document.getElementById('tab3').style.display = "none";
+                        document.body.getElementById('tab1').style.display = 'block';
+                        document.body.getElementById('tab2').style.display = 'none';
+                        document.body.getElementById('tab3').style.display = 'none';
                     } else if ((a == "Empresa")) {
-                        document.getElementById('tab1').style.display = "none";
-                        document.getElementById('tab2').style.display = "none";
-                        document.getElementById('tab3').style.display = "block";
+                        document.body.getElementById('tab1').style.display = 'none';
+                        document.body.getElementById('tab2').style.display = 'none';
+                        document.body.getElementById('tab3').style.display = 'block';
                     }
                 }
-
             });
-
         });
     </script>
-</body>
 
+</body>
 </html>

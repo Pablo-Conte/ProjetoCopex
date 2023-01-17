@@ -1,0 +1,146 @@
+body, ul, li, a{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  text-decoration: none;
+}
+
+body {
+  background-color: #499670;
+}
+
+.header {
+  background-color: #1a3528;   
+  font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  font-size: 1.2em;
+}
+
+.links {
+  padding: 10px;
+}
+
+.links:hover { 
+
+}
+
+.main {
+  padding: 20px;
+  position: relative;
+}
+
+.main1 {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+  margin: 0 auto;
+  width: 60vw;
+  padding: 20px 0 0 0;
+  max-width: 80vw;
+  border-top-right-radius: 10px ;
+}
+
+.mainItem {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #1a3528;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 10px 20px 10px 20px;
+  text-align: center;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.mainOpcao {
+  padding: 10px;
+}
+
+.mainForm {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-items: center;
+  background: #2F5B44;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 20px 30px 20px;
+  text-align: center;
+  align-items: center;
+  margin: 10px;
+  font-size: 1.2em;
+  
+}
+
+.formInput {
+  border: none;
+  padding: 10px;
+  margin: 15px;
+  border-radius: 10px;
+  height: 5vh;
+  width: 30vw;
+  box-shadow: 0 10px 30px 0 #1a3528;
+}
+
+.btnForm {
+  display: flex;
+  justify-content: center;
+  border: 2px solid #1a3528;
+  align-items: center;
+  min-width: 160px;
+  height: 50px;
+  background-color: #2F5B44;
+  border-radius: 25px;
+  color: #fff;
+  margin-top: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px 0 #468866;
+  
+}
+
+@media (max-width: 650px) {
+  .formInput {
+      width: 40vw;
+  }
+}
+
+@media (max-width: 580px) {
+  .main1 {
+      width: 75vw;
+  }
+}
+
+@media (max-width: 450px) {
+  .formInput {
+      width: 60vw;
+      font-size: 0.8em;
+  }
+  .mainItem {
+      font-size: 1em;
+  }
+  .main1 {
+      width: 90vw;
+  }
+
+  h2 {
+      font-size: 1.2em;
+  }
+
+  .header {
+      font-size: 1em;
+  }
+}
