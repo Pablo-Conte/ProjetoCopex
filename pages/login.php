@@ -8,6 +8,7 @@ require_once "./login/loginAuth.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css\csslogin.css">
+    <script src="../library/jquery/jquery.min.js"></script>
     <title>login</title>
 </head>
 <body>
@@ -64,21 +65,21 @@ require_once "./login/loginAuth.php";
     <script>
         var a = "";
         $(window).load(function() {           
-            $('.opcao').on('click', function(label) {  
+            $('.mainOpcao').on('click', function(label) {  
                 a = label.currentTarget.id;
                 if ((a == "Administrador") || (a == "Estudante") || (a == "Empresa")) { 
                     if ((a == "Administrador")) {
-                        document.body.getElementById('tab1').style.display = 'none';
-                        document.body.getElementById('tab2').style.display = 'block';
-                        document.body.getElementById('tab3').style.display = 'none';
+                        document.getElementById('tab1').style.display = 'none';
+                        document.getElementById('tab2').style.display = 'block';
+                        document.getElementById('tab3').style.display = 'none';
                     } else if ((a == "Estudante")) {
-                        document.body.getElementById('tab1').style.display = 'block';
-                        document.body.getElementById('tab2').style.display = 'none';
-                        document.body.getElementById('tab3').style.display = 'none';
+                        document.getElementById('tab1').style.display = 'block';
+                        document.getElementById('tab2').style.display = 'none';
+                        document.getElementById('tab3').style.display = 'none';
                     } else if ((a == "Empresa")) {
-                        document.body.getElementById('tab1').style.display = 'none';
-                        document.body.getElementById('tab2').style.display = 'none';
-                        document.body.getElementById('tab3').style.display = 'block';
+                        document.getElementById('tab1').style.display = 'none';
+                        document.getElementById('tab2').style.display = 'none';
+                        document.getElementById('tab3').style.display = 'block';
                     }
                 }
             });
