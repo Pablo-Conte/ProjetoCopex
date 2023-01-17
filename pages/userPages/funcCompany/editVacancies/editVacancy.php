@@ -17,7 +17,7 @@ if(!isset($_SESSION['user_id_empresa'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../../Bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../../../css/admin/editAdmin/editAdmin.css">
+    <link rel="stylesheet" href="../../../css/company/editVacancies/editVacancies.css">
     <script src="../../../../Bootstrap/js/bootstrap.bundle.js"></script>
     <title>Editar Vagas</title>
 </head>
