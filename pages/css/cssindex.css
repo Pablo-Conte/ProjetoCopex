@@ -15,25 +15,31 @@ body {
 }
 
 .header {
-    background-color: white;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background-color: #1a3528;
     font-weight: bold;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 20px;
+    padding: 18px 25px 18px 25px;
     align-items: center;
+    font-size: 1.2em;
+}
+
+.links1 {
+    color: white;
 }
 
 .links {
     padding: 10px;
+    color: white;
 }
 
 .links:hover { 
+    transition: 0.2s;
+    background-color: white;
     border: 2px solid #ffffff;
     border-radius: 20px;
+    color: #1a3528;
 }
 
 .flexbox {
@@ -45,7 +51,7 @@ body {
     align-content: center;
     align-items: center;
     height: fit-content;
-    min-height: 70vh;
+    min-height: 83vh;
     font-size: 1.5em;
 }
 
@@ -76,7 +82,10 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: clamp(0.1rem, 0.95em, 2em);
+    background-color: #1a3528;
 }
+
+
 
 @media (min-width: 1500px) {
     .footer {

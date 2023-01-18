@@ -8,7 +8,7 @@ body, ul, li, a{
 }
 
 body {
-  background-color: #499670;
+  background-color: rgb(237, 253, 239);
 }
 
 .header {
@@ -17,8 +17,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 20px;
+  padding: 18px 25px 18px 25px;
   font-size: 1.2em;
+  align-items: center;
 }
 
 .links {
@@ -26,7 +27,11 @@ body {
 }
 
 .links:hover { 
-
+  transition: 0.2s;
+  background-color: white;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  color: #1a3528;
 }
 
 .main {
@@ -40,7 +45,7 @@ body {
   align-content: center;
   text-align: center;
   margin: 0 auto;
-  width: 60vw;
+  width: 33vw;
   padding: 20px 0 0 0;
   max-width: 80vw;
   border-top-right-radius: 10px ;
@@ -52,7 +57,7 @@ body {
   flex-direction: row;
   justify-content: space-around;
   background-color: #1a3528;
-  font-size: 1.2em;
+  font-size: 0.95em;
   font-weight: bold;
   padding: 10px 20px 10px 20px;
   text-align: center;
@@ -60,8 +65,15 @@ body {
   border-top-right-radius: 25px;
 }
 
+.mainOpcao:hover {
+  color: #1a3528;
+  transition: 0.3s;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+
 .mainOpcao {
-  padding: 10px;
+  padding: 10px 25px 10px 25px;
 }
 
 .mainForm {
@@ -81,7 +93,7 @@ body {
   text-align: center;
   align-items: center;
   margin: 10px;
-  font-size: 1.2em;
+  font-size: 1em;
   
 }
 
@@ -91,8 +103,9 @@ body {
   margin: 15px;
   border-radius: 10px;
   height: 5vh;
-  width: 30vw;
+  width: 100%;
   box-shadow: 0 10px 30px 0 #1a3528;
+  background-color: rgb(237, 247, 238)
 }
 
 .btnForm {
@@ -112,22 +125,37 @@ body {
   
 }
 
+@media (max-width: 970px) {
+  .main1 {
+    width: 40vw;
+  }
+}
+
 @media (max-width: 650px) {
-  .formInput {
-      width: 40vw;
+  .main1 {
+    width: 50%;
+  }
+  .form {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 610px) {
+  .mainItem {
+    flex-direction: column;
   }
 }
 
 @media (max-width: 580px) {
   .main1 {
-      width: 75vw;
+      width: 60vw;
   }
 }
 
 @media (max-width: 450px) {
   .formInput {
-      width: 60vw;
       font-size: 0.8em;
+      width: 90%;
   }
   .mainItem {
       font-size: 1em;
@@ -138,6 +166,10 @@ body {
 
   h2 {
       font-size: 1.2em;
+  }
+
+  .form {
+    font-size: 1em;
   }
 
   .header {

@@ -1,5 +1,5 @@
 <?php
-require_once "./login/loginAuth.php";
+require_once "login/loginAuth.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,7 +12,6 @@ require_once "./login/loginAuth.php";
     <title>login</title>
 </head>
 <body>
-    
     <header class="header">
         <a href="">COPEX Estágios</a>
         <ul>
@@ -21,7 +20,6 @@ require_once "./login/loginAuth.php";
             </li>
         </ul>
     </header>
-
     <main class="main">
         <div class="main1">
             <div class="mainItem">      
@@ -41,9 +39,9 @@ require_once "./login/loginAuth.php";
                 <div id="tab2" style="display: none;">
                     <form action="login.php" method="POST" class="form">
                         <h2>Entrar como administrador</h2>
-                        <input class="formInput" type="name" placeholder="Digite seu SIAPE" name="SIAPE">
+                        <input class="formInput" type="name" placeholder="Digite seu SIAPE" name="siape">
                         <input class="formInput" type="password" placeholder="Digite sua senha" name="password">
-                        <button type="submit">Entrar</button>
+                        <button type="submit" class="btnForm">Entrar</button>
                     </form>
                 </div>
                 <div id="tab3" style="display: none;">
@@ -51,7 +49,7 @@ require_once "./login/loginAuth.php";
                         <h2>Entrar como empresa</h2>
                         <input class="formInput" type="text" placeholder="Digite seu CNPJ" name="cnpj">
                         <input class="formInput" type="password" placeholder="Digite sua senha" name="password_empresa">
-                        <button type="submit">Entrar</button>
+                        <button type="submit" class="btnForm">Entrar</button>
                     </form>
                 </div>    
             </div>

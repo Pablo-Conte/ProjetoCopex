@@ -10,7 +10,7 @@
 <body>
 
     <header class="header">
-        <a href="">COPEX Estágios</a>
+        <a class="links1" href="">COPEX Estágios</a>
         <ul>
             <li ><a href="./pages/login.php" class="links">Login</a></li>
         </ul>
@@ -28,16 +28,16 @@
     </main>
 
     <footer class="footer">
-        <div>
+        <div class="footerItem">
             <p><b>Nossa localização:</b></p>
             <iframe class="maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.468004235809!2d-51.03252538864044!3d-29.64819090065559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95194092c0742ac3%3A0xe32828040c8f9fb6!2sIFSul%20-%20C%C3%A2mpus%20Sapiranga!5e0!3m2!1spt-BR!2sbr!4v1673267365472!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen=""  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <div>
+        <div class="footerItem">
             <p><b>Entre em contato:</b></p>
             <p>E-mail: sg-copex@ifsul.edu.br</p>
             <p>Whatsapp: (51) 99504-3303</p>
         </div>
-        <div>
+        <div class="footerItem">
             <p><b>Horário de atendimento:</b></p>
             <p>10h às 19h.</p>
             <p>Dias da semana:</p>
