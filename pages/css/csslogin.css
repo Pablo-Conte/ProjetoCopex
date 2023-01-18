@@ -125,6 +125,12 @@ body {
   
 }
 
+@media (max-width: 1350px) {
+  .mainItem {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 970px) {
   .main1 {
     width: 40vw;
@@ -137,12 +143,6 @@ body {
   }
   .form {
     font-size: 0.8em;
-  }
-}
-
-@media (max-width: 610px) {
-  .mainItem {
-    flex-direction: column;
   }
 }
 
