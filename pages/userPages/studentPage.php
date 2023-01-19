@@ -8,6 +8,8 @@
         die();
         
     }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +29,7 @@
     <?php
         require_once './structure/headerUsers.php';
     ?>
+
     <div class="page">
         <div class="perfil">
             <div class="user">
@@ -181,6 +184,41 @@
                 </div>
             </div>
         </div>
+        
+
+        <?php
+            if (!empty($_SESSION['messageInformation'])){
+                
+                echo "
+                <div class='toast-container position-fixed top-0 end-0 p-3'>
+                    <div id='liveToast' class='toast' role='alert' aria-live='assertive' aria-atomic='true' style='background-color: white;'>
+                        <div class='toast-header' style='background-color: green; color: white'>
+                            <strong class='me-auto'>Informativo!</strong>
+                            <small>11 mins ago</small>
+                            <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+                        </div>
+                        <div class='toast-body'>
+                            $_SESSION[messageInformation]
+                        </div>
+                    </div>
+                </div>";
+
+
+                echo "
+                    <script>
+                        const toastLiveExample = document.getElementById('liveToast')
+                        const toast = new bootstrap.Toast(toastLiveExample)
+                        toast.show()
+                    </script>
+                ";
+
+                $_SESSION['messageInformation'] = '';
+
+            }
+        
+        
+        ?>
+
     </div>
 
 </body>
