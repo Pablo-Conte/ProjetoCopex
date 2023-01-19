@@ -261,3 +261,67 @@ a:hover {
 .funcoes::-webkit-scrollbar-thumb:hover {
     background: rgb(72, 136, 255);
 }
+
+.interest {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+.simboloCirculo {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    background-color: green;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.simboloQuadrado {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 20px;
+    background-color: rgb(71, 71, 71);
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.seta {
+    width: 25%;
+    height: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.curriculo {
+    width: 25%;
+    height: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse:separate;
+    border-spacing: 0 10px;
+}
+
+td {
+    width: 16%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+@media (max-width: 400px) {
+    .respInterest {
+        display: none;
+    }
+}
