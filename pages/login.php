@@ -23,7 +23,7 @@
             <a href="../index.php" class="navbar-brand">COPEX</a>
             <form class="d-flex" role="search">
                 <a href="../index.php">
-                    <div class="dir">HOME</div>
+                    HOME
                 </a>
             </form>
         </div>
@@ -33,7 +33,7 @@
             <div class="loginChoice">
 
                 <label value="Administrador" name="opcao" class="opcao" id="Administrador">Administrador</label>
-                <label value="Estudante" name="opcao" class="opcao" id="Estudante">Estudante</label>
+                <label value="Estudante" name="opcao" class="opcao" id="Estudante" style="background-color: white; color: black;">Estudante</label>
                 <label value="Empresa" name="opcao" class="opcao" id="Empresa">Empresa</label>
 
             </div>
@@ -41,9 +41,11 @@
                 <div>
                     <div id="tab1" style="display: none;">
                         <div class="loginForm">
-                            <h2>Login Admin</h2>
                             <form action="login.php" method="POST" class="data">
+                                <img src="../imagens/login.png" alt="">
+                                <hr>
                                 <input type="name" placeholder="Digite seu SIAPE" name="siape">
+                                
                                 <input type="password" placeholder="Digite sua senha" name="password">
                                 <button type="submit">Login</button>
                             </form>
@@ -51,9 +53,11 @@
                     </div>
                     <div id="tab2" style="display: block;">
                         <div class="loginForm">
-                            <h2>Login Estudante</h2>
                             <form action="login.php" method="POST" class="data">
+                                <img src="../imagens/login.png" alt="">
+                                <hr>
                                 <input type="text" placeholder="Digite sua matricula" name="matricula">
+                                
                                 <input type="password" placeholder="Digite sua senha" name="password_aluno">
                                 <button type="submit">Login</button>
                             </form>
@@ -61,9 +65,11 @@
                     </div>
                     <div id="tab3" style="display: none;">
                         <div class="loginForm">
-                            <h2>Login Empresa</h2>
                             <form action="login.php" method="POST" class="data">
+                                <img src="../imagens/login.png" alt="">
+                                <hr>
                                 <input type="name" placeholder="Digite seu CNPJ" name="cnpj">
+                                
                                 <input type="password" placeholder="Digite sua senha" name="password_empresa">
                                 <button type="submit">Login</button>
                             </form>
@@ -88,16 +94,34 @@
                     
                     if ((a == "Administrador")) {
                         document.getElementById('tab1').style.display = "block";
+                        document.getElementById('Administrador').style.backgroundColor = 'white';
+                        document.getElementById('Administrador').style.color = 'black';
                         document.getElementById('tab2').style.display = "none";
+                        document.getElementById('Estudante').style.backgroundColor = 'RGB(33, 37, 41)';
+                        document.getElementById('Estudante').style.color = 'white';
                         document.getElementById('tab3').style.display = "none";
+                        document.getElementById('Empresa').style.backgroundColor = 'RGB(33, 37, 41)';
+                        document.getElementById('Empresa').style.color = 'white';
                     } else if ((a == "Estudante")) {
                         document.getElementById('tab1').style.display = "none";
+                        document.getElementById('Administrador').style.backgroundColor = 'RGB(33, 37, 41)';
+                        document.getElementById('Administrador').style.color = 'white';
                         document.getElementById('tab2').style.display = "block";
+                        document.getElementById('Estudante').style.backgroundColor = 'white';
+                        document.getElementById('Estudante').style.color = 'black';
                         document.getElementById('tab3').style.display = "none";
+                        document.getElementById('Empresa').style.backgroundColor = 'RGB(33, 37, 41)';
+                        document.getElementById('Empresa').style.color = 'white';
                     } else if ((a == "Empresa")) {
                         document.getElementById('tab1').style.display = "none";
+                        document.getElementById('Administrador').style.backgroundColor = 'RGB(33, 37, 41)';
+                        document.getElementById('Administrador').style.color = 'white';
                         document.getElementById('tab2').style.display = "none";
+                        document.getElementById('Estudante').style.backgroundColor = 'RGB(33, 37, 41)';
+                        document.getElementById('Estudante').style.color = 'white';
                         document.getElementById('tab3').style.display = "block";
+                        document.getElementById('Empresa').style.backgroundColor = 'white';
+                        document.getElementById('Empresa').style.color = 'black';
                     }
                 }
 

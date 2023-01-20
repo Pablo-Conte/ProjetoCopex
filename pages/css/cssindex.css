@@ -8,17 +8,22 @@ body, ul, li{
 
 a {
     text-decoration: none;
+    color: white;
 }
 
 body {
     background-color: #254836;
 }
 
+.none a:hover {
+    background-color: transparent;
+}
+
+p {
+    margin: 0px;
+}
+
 .header {
-    background-color: white;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     font-weight: bold;
     display: flex;
     flex-wrap: wrap;
@@ -31,9 +36,11 @@ body {
     padding: 10px;
 }
 
-.links:hover { 
-    border: 2px solid #ffffff;
+a:hover { 
+    background-color: white;
     border-radius: 20px;
+    color: black;
+    transition: 0.1s;
 }
 
 .flexbox {
