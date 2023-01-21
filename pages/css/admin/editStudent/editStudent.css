@@ -5,7 +5,7 @@
 }
 
 body {
-    background: radial-gradient(circle farthest-corner at 100%, rgba(85, 88, 218, 1) 0%, rgba(95, 209, 249, 1) 100.2%);
+    background: #2f5b44;
 }
 
 .funcoes h1 {
@@ -42,8 +42,15 @@ body {
 }
 
 .sticky-top {
-    height: 9vh;
-    min-height: 65px;
+    height: 8vh;
+}
+
+.user {
+    margin: 10% 0% 0% 0%;
+}
+
+.nomeAdmin {
+    margin: 0% 0% 10% 0%;
 }
 
 .botaoRegistro {

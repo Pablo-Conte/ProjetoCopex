@@ -91,8 +91,7 @@ if (!isset($_SESSION['user_id_admin'])) {
                 $query = $conn->prepare("SELECT matricula, nome, email, numero, curso, id_aluno FROM aluno");  
                 
                 if (!empty($_POST['search'])){
-                    $query = $conn->prepare("SELECT matricula, nome, email, numero, curso, id_aluno FROM aluno WHERE id_aluno = :search or nome = :search");
-                    $query->bindParam(':search', $_POST['search']);
+                    $query = $conn->prepare("SELECT matricula, nome, email, numero, curso, id_aluno FROM aluno WHERE id_aluno LIKE '%$_POST[search]%' or nome LIKE '%$_POST[search]%'");
                 }
                 
                 $query->execute();

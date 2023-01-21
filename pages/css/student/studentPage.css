@@ -5,7 +5,7 @@
 }
 
 body {
-    background: radial-gradient(circle farthest-corner at 100%, rgba(85, 88, 218, 1) 0%, rgba(95, 209, 249, 1) 100.2%);
+    background-color: #2f5b44;
 }
 
 .funcoes h1 {
@@ -45,9 +45,11 @@ body {
 .sessao {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     margin-bottom: 3%;
     flex-wrap: wrap;
     width: 100%;
+    align-items: center;
 }
 
 
@@ -57,12 +59,19 @@ form {
     background-color: white;
     padding: 20px;
     border-radius: 20px;
-    width: 200px;
+    width: 30%;
 }
 
+.user {
+    margin: 10% 0% 0% 0%;
+}
+
+.nomeAdmin {
+    margin: 0% 0% 10% 0%;
+}
 
 .botaoModalRegistro{
-    background-color: #5EC8F7;
+    background-color: #37712d;
     border: none;
     border-radius: 10px;
     padding: 10px;
@@ -73,7 +82,8 @@ form {
 }
 
 .botaoModalRegistro:hover {
-    background-color: #408cad;
+    background-color: #173014;
+    transition: 1s;
 }
 
 .botaoModalInfo {
@@ -81,11 +91,12 @@ form {
     border-radius: 10px;
     padding: 10px 15px;
     font-weight: 700;
-    background-color: rgb(227, 226, 226);
+    background-color: rgb(67, 67, 67);
 }
 
 .botaoModalInfo:hover {
-    background-color: rgb(171, 171, 171);
+    background-color: rgb(0, 0, 0);
+    transition: 1s;
 }
 
 .botoesModais {
@@ -103,6 +114,7 @@ form {
 
 .nomeAdmin {
     margin: 0% 0% 10% 0%;
+
 }
 
 .botaoRegistro {
@@ -155,11 +167,16 @@ a:hover {
         justify-content: center;
     }
 
+    form {
+        width: auto;
+    }
+
     .funcoes h1 {
         height: 5%;
         width: 100%;
         margin-left: 0px;
         text-align: center;
+
     }
 
     .perfil {
@@ -206,6 +223,26 @@ a:hover {
 
 }
 
+.nomeAdmin button {
+    border: none;
+    padding: 5%;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: #2f5b44;
+    color: white;
+    outline: none;
+}
+
+.navbar-toggler {
+    outline: none;
+    
+}
+
+.nomeAdmin button:hover {
+    background-color: #244634;
+    transition: 1s;
+}
+
 @media (max-height: 490px) {
     .funcoes {
         overflow: scroll;
@@ -244,6 +281,10 @@ a:hover {
     overflow-x: hidden;
 }
 
+.funcoes h1 {
+    text-align: center;
+}
+
 .funcoes::-webkit-scrollbar {
     width: fit-content;
 }
@@ -267,4 +308,68 @@ a:hover {
 /* Handle on hover */
 .funcoes::-webkit-scrollbar-thumb:hover {
     background: rgb(72, 136, 255);
+}
+
+.interest {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+.simboloCirculo {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    background-color: green;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.simboloQuadrado {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 20px;
+    background-color: rgb(71, 71, 71);
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.seta {
+    width: 25%;
+    height: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.curriculo {
+    width: 25%;
+    height: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse:separate;
+    border-spacing: 0 10px;
+}
+
+td {
+    width: 16%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+@media (max-width: 400px) {
+    .respInterest {
+        display: none;
+    }
 }

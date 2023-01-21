@@ -5,7 +5,7 @@
 }
 
 body {
-    background: radial-gradient( circle farthest-corner at 100%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2%);
+    background-color: #2f5b44;
 }
 
 .funcoes h1 {
@@ -50,26 +50,34 @@ body {
 }
 
 .sticky-top {
-    height: 9vh;
-    min-height: 65px;
+    height: 8vh;
+}
+
+.user {
+    margin: 10% 0% 0% 0%;
+}
+
+.nomeAdmin {
+    margin: 0% 0% 10% 0%;
 }
 
 .botaoRegistro {
     display: flex;
     margin-right: 0.625rem;
     padding: 0.625rem;
-    background-color: white;
+    background-color: rgb(56, 56, 56);
+    color: white;
     border-radius: 0.625rem;
     justify-content: center;
     height: 100%;
 }
 
-.funcoes h1{
+.funcoes h1 {
     margin-bottom: 20px;
 }
 
 .botaoRegistro:hover {
-    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgb(110, 110, 110) 0%, rgb(121, 121, 121) 100.2% );
+    background-image: radial-gradient(circle farthest-corner at 12.3% 19.3%, rgb(110, 110, 110) 0%, rgb(121, 121, 121) 100.2%);
     color: white;
 }
 
@@ -89,24 +97,28 @@ a:hover {
     color: #000;
 }
 
-@media (max-width: 700px){
+@media (max-width: 700px) {
     .page {
-        flex-direction:column;
+        flex-direction: column;
     }
+
     .sessao {
         justify-content: center;
     }
+
     .sessao a {
         display: block;
         margin-bottom: 3%;
         height: auto;
         width: 90%;
     }
+
     .funcoes h1 {
         height: 5%;
         width: 100%;
         text-align: center;
     }
+
     .perfil {
         width: 100%;
         margin-bottom: 5%;
@@ -117,7 +129,7 @@ a:hover {
     }
 }
 
-@media (max-height: 550px){
+@media (max-height: 550px) {
     .perfil {
         overflow: scroll;
         overflow-x: hidden;
@@ -132,6 +144,7 @@ a:hover {
         background: #f1f1f1;
         border-radius: 0px 20px 20px 0px;
     }
+
     .perfil::-webkit-scrollbar-corner {
         border-radius: 0px 20px 20px 0px;
     }
@@ -141,7 +154,7 @@ a:hover {
         background: rgb(33, 37, 41);
         border-radius: 0px 20px 20px 0px;
         width: 3px;
-        }
+    }
 
     /* Handle on hover */
     .perfil::-webkit-scrollbar-thumb:hover {
@@ -150,7 +163,7 @@ a:hover {
 
 }
 
-@media (max-height: 490px){
+@media (max-height: 490px) {
     .funcoes {
         overflow: scroll;
         overflow-x: hidden;
@@ -165,6 +178,7 @@ a:hover {
         background: #f1f1f1;
         border-radius: 0px 20px 20px 0px;
     }
+
     .funcoes::-webkit-scrollbar-corner {
         border-radius: 0px 20px 20px 0px;
     }
@@ -173,7 +187,7 @@ a:hover {
     .funcoes::-webkit-scrollbar-thumb {
         background: rgb(33, 37, 41);
         border-radius: 0px 20px 20px 0px;
-        }
+    }
 
     /* Handle on hover */
     .funcoes::-webkit-scrollbar-thumb:hover {
@@ -182,7 +196,66 @@ a:hover {
 
 }
 
+.interest {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
 
+}
 
-  
+.simboloCirculo {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    background-color: green;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+.simboloQuadrado {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 20px;
+    background-color: rgb(71, 71, 71);
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.seta {
+    width: 25%;
+    height: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.curriculo {
+    width: 25%;
+    height: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse:separate;
+    border-spacing: 0 10px;
+}
+
+td {
+    width: 16%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+@media (max-width: 400px) {
+    .respInterest {
+        display: none;
+    }
+}

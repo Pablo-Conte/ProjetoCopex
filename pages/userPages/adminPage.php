@@ -26,7 +26,6 @@
     <div class="page">
         <div class="perfil">
             <div class="user">
-                <h2>Admin</h2>
                 <h1><?php echo($_SESSION['name']);?></h1>
             </div>
 
