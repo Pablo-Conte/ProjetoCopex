@@ -94,8 +94,15 @@ form {
 }
 
 .sticky-top {
-    height: 9vh;
-    min-height: 65px;
+    height: 8vh;
+}
+
+.user {
+    margin: 10% 0% 0% 0%;
+}
+
+.nomeAdmin {
+    margin: 0% 0% 10% 0%;
 }
 
 .botaoRegistro {

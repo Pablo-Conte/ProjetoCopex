@@ -17,7 +17,7 @@
     </header>
 
     <main class="flexbox">
-        <div>
+        <div class="introducao">
             <h1>COPEX Estágios</h1>
             <hr>
             <p> Aqui você pode conferir as vagas de estágio ofertadas para os alunos do IFSul - campus Sapiranga.</p>
