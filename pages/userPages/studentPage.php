@@ -51,16 +51,11 @@
             <div class="nomeAdmin">
                 <h2>Registros de interesse</h2>
                 <p>
-                    nº
                     <?php 
-                        // $query = "SELECT * FROM aluno";
-                        // $records = $conn->prepare($query);
-                        // $records->execute();
-                        // $results = $records->fetchAll(PDO::FETCH_DEFAULT);
-                        // if ($results == false){
-                        //     $results = [];
-                        // }
-                        // echo(count($results));
+                        $queryQuantidade = $conn->prepare("SELECT id_vaga FROM vaga_aluno WHERE id_aluno = $_SESSION[user_id_aluno]");
+                        $queryQuantidade->execute();
+
+                        echo count($queryQuantidade->fetchAll());
                     ?>
                 </p>
                 <button data-bs-toggle='modal' data-bs-target='#JanelaModalShowInterest'>Ver interesses</button>
@@ -194,7 +189,6 @@
                     <div id='liveToast' class='toast' role='alert' aria-live='assertive' aria-atomic='true' style='background-color: white;'>
                         <div class='toast-header' style='background-color: green; color: white'>
                             <strong class='me-auto'>Informativo!</strong>
-                            <small>11 mins ago</small>
                             <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
                         </div>
                         <div class='toast-body'>
