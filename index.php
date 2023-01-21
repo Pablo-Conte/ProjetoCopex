@@ -10,7 +10,7 @@
 <body>
 
     <header class="header">
-        <p>COPEX Estágios</p>
+        <p class="titulo">COPEX Estágios</p>
         <ul>
             <li ><a href="./pages/login.php" class="links">Login</a></li>
         </ul>

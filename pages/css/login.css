@@ -74,11 +74,11 @@ input {
   border: none;
   background-color: white;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
   outline: none;
   margin-top: 5%;
   margin-bottom: 2%;
-  color: white;
+  color: black;
   width: 75%;
 }
 
@@ -90,7 +90,12 @@ button {
   margin-top: 10%;
   background-color: #212529;
   border: none;
-  color: white
+  color: white;
+  border: 1px solid black
+}
+
+.bg-dark {
+  height: 8vh;
 }
 
 hr {
@@ -127,7 +132,7 @@ button:hover {
 img {
   width: 25%;
   margin: 0px;
-  filter: drop-shadow(2px 4px 6px black);
+  filter: invert(1) drop-shadow(2px 4px 6px black);
 }
 
 hr {

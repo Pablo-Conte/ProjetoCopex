@@ -42,7 +42,7 @@
                     <div id="tab1" style="display: none;">
                         <div class="loginForm">
                             <form action="login.php" method="POST" class="data">
-                                <img src="../imagens/login.png" alt="">
+                                <img src="../imagens/admin.png" alt="">
                                 <hr>
                                 <input type="name" placeholder="Digite seu SIAPE" name="siape">
                                 
@@ -54,7 +54,7 @@
                     <div id="tab2" style="display: block;">
                         <div class="loginForm">
                             <form action="login.php" method="POST" class="data">
-                                <img src="../imagens/login.png" alt="">
+                                <img src="../imagens/aluno.png" alt="">
                                 <hr>
                                 <input type="text" placeholder="Digite sua matricula" name="matricula">
                                 
@@ -66,7 +66,7 @@
                     <div id="tab3" style="display: none;">
                         <div class="loginForm">
                             <form action="login.php" method="POST" class="data">
-                                <img src="../imagens/login.png" alt="">
+                                <img src="../imagens/empresa.png" alt="">
                                 <hr>
                                 <input type="name" placeholder="Digite seu CNPJ" name="cnpj">
                                 
@@ -96,6 +96,7 @@
                         document.getElementById('tab1').style.display = "block";
                         document.getElementById('Administrador').style.backgroundColor = 'white';
                         document.getElementById('Administrador').style.color = 'black';
+                        document.getElementById('Administrador').style.transition = '0.5s'
                         document.getElementById('tab2').style.display = "none";
                         document.getElementById('Estudante').style.backgroundColor = 'RGB(33, 37, 41)';
                         document.getElementById('Estudante').style.color = 'white';
@@ -109,6 +110,7 @@
                         document.getElementById('tab2').style.display = "block";
                         document.getElementById('Estudante').style.backgroundColor = 'white';
                         document.getElementById('Estudante').style.color = 'black';
+                        document.getElementById('Estudante').style.transition = '0.5s'
                         document.getElementById('tab3').style.display = "none";
                         document.getElementById('Empresa').style.backgroundColor = 'RGB(33, 37, 41)';
                         document.getElementById('Empresa').style.color = 'white';
@@ -122,6 +124,7 @@
                         document.getElementById('tab3').style.display = "block";
                         document.getElementById('Empresa').style.backgroundColor = 'white';
                         document.getElementById('Empresa').style.color = 'black';
+                        document.getElementById('Empresa').style.transition = '0.5s'
                     }
                 }
 
