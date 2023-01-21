@@ -120,6 +120,8 @@
     $query->execute();
 
     $results = $query->fetch(PDO::FETCH_ASSOC);
+    var_dump($_SESSION);
+    $_SESSION['messageInformation'] = 'Interesse registrado com sucesso!';
     header("location: ../studentPage.php");
 ?>
 

@@ -8,44 +8,58 @@ body, ul, li{
 
 a {
     text-decoration: none;
+    color: white;
 }
 
+
+
 body {
-    background-color: #254836;
+    background-color: black;
+}
+
+a:hover {
+    background-color: #000000;
+    transition: 1s;
+}
+
+p {
+    margin: 0px;
 }
 
 .header {
-    background-color: white;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     font-weight: bold;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 20px;
     align-items: center;
+    height:8vh;
 }
 
 .links {
     padding: 10px;
 }
 
-.links:hover { 
-    border: 2px solid #ffffff;
+.titulo {
+    padding: 20px;
+}
+
+a:hover { 
+    background-color: white;
     border-radius: 20px;
+    color: black;
+    transition: 0.1s;
 }
 
 .flexbox {
     background-color: #2F5B44;
     display: flex;
     flex-wrap: wrap;
-    padding: 20px 40px 40px 40px;
+    padding: 0px 40px 0px 40px;
     text-align: center;
     align-content: center;
     align-items: center;
     height: fit-content;
-    min-height: 70vh;
+    min-height: 92vh;
     font-size: 1.5em;
 }
 
@@ -54,7 +68,7 @@ body {
     justify-content: center;
     max-width: 100%;
     min-width: 40vw;
-    padding: 10px 20px 0px 20px;
+    padding: 10px 20px 5% 20px;
 }
 
 .maps {
@@ -73,8 +87,7 @@ body {
     max-width: 100%;
     grid-gap: 10px;
     justify-content: space-around;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 5% 0% 5% 0%;
     font-size: clamp(0.1rem, 0.95em, 2em);
 }
 
@@ -112,3 +125,17 @@ body {
         font-size: 0.5em;
     }
 }
+
+
+body::-webkit-scrollbar {
+    width: 12px;            
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: white;       
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: rgb(107, 107, 107); 
+    border: none;  
+  }

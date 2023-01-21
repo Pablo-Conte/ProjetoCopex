@@ -10,14 +10,14 @@
 <body>
 
     <header class="header">
-        <a href="">COPEX Estágios</a>
+        <p class="titulo">COPEX Estágios</p>
         <ul>
             <li ><a href="./pages/login.php" class="links">Login</a></li>
         </ul>
     </header>
 
     <main class="flexbox">
-        <div>
+        <div class="introducao">
             <h1>COPEX Estágios</h1>
             <hr>
             <p> Aqui você pode conferir as vagas de estágio ofertadas para os alunos do IFSul - campus Sapiranga.</p>

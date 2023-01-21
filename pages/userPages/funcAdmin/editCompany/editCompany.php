@@ -91,9 +91,7 @@ if (!isset($_SESSION['user_id_admin'])) {
                 $query = $conn->prepare("SELECT nome, cnpj, email, id_empresa FROM empresa");  
                 
                 if (!empty($_POST['search'])){
-                    $query = $conn->prepare("SELECT id_empresa, nome, cnpj, email, id_empresa FROM empresa WHERE cnpj = :search OR nome = :search");
-                    $query->bindParam(':search', $_POST['search']);
-
+                    $query = $conn->prepare("SELECT id_empresa, nome, cnpj, email, id_empresa FROM empresa WHERE cnpj LIKE '%$_POST[search]%' OR nome LIKE '%$_POST[search]%'");
                 }
                 
                 $query->execute();
@@ -122,7 +120,7 @@ if (!isset($_SESSION['user_id_admin'])) {
                     echo "<div class='modal-dialog'>";
                     echo '<div class="modal-content">';
                     echo '    <div class="modal-header">';
-                    echo "        <h3 class='modal-title'>Aluno: $results[nome]</h3>";
+                    echo "        <h3 class='modal-title'>Empresa: $results[nome]</h3>";
                     echo '        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>';
                     echo '    </div>';
 

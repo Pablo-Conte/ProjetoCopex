@@ -8,6 +8,8 @@
         die();
         
     }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,12 +21,15 @@
     <link rel="stylesheet" href="../../Bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/headerHome.css">
     <link rel="stylesheet" href="../css/student/studentPage.css">
+    <script src="../../Bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../library/jquery/jquery.min.js"></script>
     <title>Home do Estudante</title>
 </head>
 <body>
     <?php
         require_once './structure/headerUsers.php';
     ?>
+
     <div class="page">
         <div class="perfil">
             <div class="user">
@@ -46,19 +51,14 @@
             <div class="nomeAdmin">
                 <h2>Registros de interesse</h2>
                 <p>
-                    nº
                     <?php 
-                        // $query = "SELECT * FROM aluno";
-                        // $records = $conn->prepare($query);
-                        // $records->execute();
-                        // $results = $records->fetchAll(PDO::FETCH_DEFAULT);
-                        // if ($results == false){
-                        //     $results = [];
-                        // }
-                        // echo(count($results));
+                        $queryQuantidade = $conn->prepare("SELECT id_vaga FROM vaga_aluno WHERE id_aluno = $_SESSION[user_id_aluno]");
+                        $queryQuantidade->execute();
+
+                        echo count($queryQuantidade->fetchAll());
                     ?>
                 </p>
-                <a href="">Ver interesses</a>
+                <button data-bs-toggle='modal' data-bs-target='#JanelaModalShowInterest'>Ver interesses</button>
             </div>
         </div>
         <div class="funcoes">
@@ -127,10 +127,94 @@
                 ?>
             </div>
         </div>
+
+        <div id="JanelaModalShowInterest" class="modal fade " tabindex="-1" >';
+            <div class='modal-dialog modal-xl'>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1>Interesses</h1>
+                        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <table>
+                            <tr>
+                                <th>-</th>
+                                <th>Empresa</th>
+                                <th>-</th>
+                                <th class='respInterest'>-</th>
+                                <th>vaga</th>
+                                <th>Dados Empresa</th>
+                            </tr>
+
+                            <?php
+                                
+                                $queryVagaAluno = $conn->prepare("SELECT id_vaga FROM vaga_aluno WHERE id_aluno = $_SESSION[user_id_aluno]");
+                                $queryVagaAluno->execute();
+
+                                while ($resultQueryVagaAluno = $queryVagaAluno->fetch(PDO::FETCH_ASSOC)) {
+                                    $queryNomeAluno = $conn->prepare("SELECT cargo, id_emp FROM vaga WHERE id_vaga = $resultQueryVagaAluno[id_vaga]");
+                                    $queryNomeAluno->execute();
+                                    $resultNome = $queryNomeAluno->fetch();
+
+
+                                    $queryEmpresa = $conn->prepare("SELECT nome FROM empresa WHERE id_empresa = $resultNome[id_emp]");
+                                    $queryEmpresa->execute();
+                                    $resultEmpresa = $queryEmpresa->fetch();
+
+                                    echo "<tr>";
+                                    echo "      <td><div class='simboloCirculo'></div></td>";
+                                    echo "      <td><div class='nome'>$resultNome[cargo]</div></td>";
+                                    echo "      <td class='respInterest'><img class='seta' src='../../imagens/seta.png' alt=''></td>";
+                                    echo "      <td><div class='simboloQuadrado'></div></td>";
+                                    echo "      <td><div class='vaga'>$resultEmpresa[nome]</div></td>";
+                                    echo "      <td><img class='curriculo' src='../../imagens/informacao.png' alt=''></td>";
+                                    echo "</tr>";
+                                }
+                                
+  
+                            ?>
+                        </table>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        
+
+        <?php
+            if (!empty($_SESSION['messageInformation'])){
+                
+                echo "
+                <div class='toast-container position-fixed top-0 end-0 p-3'>
+                    <div id='liveToast' class='toast' role='alert' aria-live='assertive' aria-atomic='true' style='background-color: white;'>
+                        <div class='toast-header' style='background-color: green; color: white'>
+                            <strong class='me-auto'>Informativo!</strong>
+                            <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+                        </div>
+                        <div class='toast-body'>
+                            $_SESSION[messageInformation]
+                        </div>
+                    </div>
+                </div>";
+
+
+                echo "
+                    <script>
+                        const toastLiveExample = document.getElementById('liveToast')
+                        const toast = new bootstrap.Toast(toastLiveExample)
+                        toast.show()
+                    </script>
+                ";
+
+                $_SESSION['messageInformation'] = '';
+
+            }
+        
+        
+        ?>
+
     </div>
 
-    <script src="../../Bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../library/jquery/jquery.min.js"></script>
 </body>
 
 </html>
