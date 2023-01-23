@@ -1,0 +1,165 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.voltar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.voltar a {
+    margin-bottom: 0px;
+    margin-right: 10%;
+    font-size: larger;
+    color: white;
+    text-decoration: none;
+}
+
+body {
+    background-color: #2f5b44;
+}
+
+.register {
+    display: flex;
+    width: 50vw;
+    height: fit-content;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 3% 5%;
+    background-color: #343A3F;
+    border-radius: 20px;
+    align-items: center;
+    flex-direction: column;
+}
+
+form {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.register h1 {
+    text-align: center;
+    color: white;
+    margin: 0px;
+}
+
+.first {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.first input[name='matricula'] {
+    width: 30%;
+}
+
+.first input[name='nome'] {
+    width: 65%;
+}
+
+.second {
+    display: flex;
+    width: 100%;
+}
+
+.second input[name='email']{
+    width: 100%;
+}
+
+.third {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.third input[name='numero'] {
+    width: 30%;
+}
+
+.third select[name='curso'] {
+    width: 65%;
+    border-radius: 10px;
+    outline: none;
+}
+
+.fourth {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.fourth input[name='senha'] {
+    width: 60%;
+}
+
+.fourth input[name='verificarSenha'] {
+    width: 60%;
+}
+
+
+
+
+
+input, select, textarea, button {
+    margin-bottom: 4%;
+}
+
+input {
+    border: none;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-radius: 10px;
+    padding: 2%;
+    outline: none;
+}
+
+.button {
+    padding: 4%;
+    border: none;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    margin-bottom: 0px;
+}
+
+.button:hover {
+    background-color: #1f2225;
+}
+
+@media (max-width: 1000px) {
+    .register{
+        width: 80vh;
+    }
+}
+
+@media (max-width: 700px) {
+    .register{
+        width: 60vh;
+    }
+}
+
+@media (max-width: 525px) {
+    .register{
+        width: 40vh;
+        height: 60vh;
+    }
+
+    form {
+        justify-content: space-around;
+    }
+}

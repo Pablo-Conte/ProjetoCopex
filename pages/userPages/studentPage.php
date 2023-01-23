@@ -65,7 +65,10 @@
             <h1>Vagas Abertas</h1>
             <div class="sessao">
                 <?php
-                    $query = $conn->prepare("SELECT * FROM vaga");
+                    $queryAluno = $conn->prepare("SELECT curso FROM aluno WHERE id_aluno = $_SESSION[user_id_aluno]");
+                    $queryAluno->execute();
+                    $resultadoAluno = $queryAluno->fetch();
+                    $query = $conn->prepare("SELECT * FROM vaga WHERE curso = '$resultadoAluno[curso]'");
                     $query->execute();
                     $curso = "";
                     $empresa = "";

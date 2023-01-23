@@ -112,8 +112,11 @@
                 <div class="cargoCurso">
                     <input class='cargo' type="text" placeholder="Cargo" name="cargo">
                     <select class='curso' name="curso">
+                        <option value="">Curso</option>
                         <option value="Informática">Informática</option>
                         <option value="Eletromecânica">Eletromecânica</option>
+                        <option value="Eletroeletrônica">Eletroeletrônica</option>
+                        <option value="Eletrotécnica">Eletrotécnica</option>
                     </select>
                 </div>
                 <div><input class="salario" type="text" placeholder="Salário" name="salario"></div>
