@@ -10,18 +10,6 @@ CREATE TABLE IF NOT EXISTS administrador (
     siape VARCHAR(255) UNIQUE
 );
 
-INSERT INTO administrador (
-    nome,
-    senha,
-    email,
-    siape   
-) VALUES (
-    "Ronise",
-    "$2y$10$bM1wqToYnC7gzqwDfl1hyOgWU5SWiuMxqPwiJsDVCkkqnDE3o70HW",
-    "ronise@gmail.com",
-    "1"
-);
-
 CREATE TABLE IF NOT EXISTS empresa (
 	id_empresa INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
@@ -62,12 +50,13 @@ CREATE TABLE IF NOT EXISTS vaga_aluno (
 
 -- Adicionando dados fictícios para testes
 
-INSERT INTO aluno (nome,senha,matricula,email,curso,numero) VALUES ("Pablo Conte Correa","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","1","pablo.correa.nr@gmail.com","INF4M","997602457");
-INSERT INTO aluno (nome,senha,matricula,email,curso,numero) VALUES ("Luana Conte Correa","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","2","pablo.correa.nr@gmail.com1","INF1M","997602458");
-INSERT INTO aluno (nome,senha,matricula,email,curso,numero) VALUES ("Thomas Schimdt","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","3","pablo.correa.nr@gmail.com2","INF3M","997602459");
-INSERT INTO aluno (nome,senha,matricula,email,curso,numero) VALUES ("Luis da Silva","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","4","pablo.correa.nr@gmail.com3","INF3M","997602451");
-INSERT INTO aluno (nome,senha,matricula,email,curso,numero) VALUES ("Kellen Kern","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","5","pablo.correa.nr@gmail.com4","INF2M","997602452");
-INSERT INTO aluno (nome,senha,matricula,email,curso,numero) VALUES ("William Renan Novak","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","6","pablo.correa.nr@gmail.com5","INF3M","997602453");
+INSERT INTO aluno (nome,senha,matricula,email,curso,numero) VALUES ("Pablo Conte Correa","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","1","pablo.correa.nr@gmail.com","Informática","997602457");
+INSERT INTO aluno (nome,senha,matricula,email,curso,numero) VALUES ("Luana Conte Correa","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","2","pablo.correa.nr@gmail.com1","Informática","997602458");
+INSERT INTO aluno (nome,senha,matricula,email,curso,numero) VALUES ("Thomas Schimdt","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","3","pablo.correa.nr@gmail.com2","Informática","997602459");
+INSERT INTO aluno (nome,senha,matricula,email,curso,numero) VALUES ("Luis da Silva","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","4","pablo.correa.nr@gmail.com3","Informática","997602451");
+INSERT INTO aluno (nome,senha,matricula,email,curso,numero) VALUES ("Kellen Kern","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","5","pablo.correa.nr@gmail.com4","Informática","997602452");
+INSERT INTO aluno (nome,senha,matricula,email,curso,numero) VALUES ("William Renan Novak","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","6","pablo.correa.nr@gmail.com5","Informática","997602453");
+INSERT INTO aluno (nome,senha,matricula,email,curso,numero) VALUES ("Pâmela","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","10","pamela@gmail.com","Eletromecânica","9976024578789");
 
 INSERT INTO empresa (nome, senha, cnpj, email, numero) VALUES ("Tec System","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","1","pablo.correa.nr@gmail.com","5551997602457");
 INSERT INTO empresa (nome, senha, cnpj, email, numero) VALUES ("Paipe","$2y$10$giNXQuOifTYENvNhxEC0uepxOzgUigSDxEfZvXjAShfqaAnt2jgGq","2","pablo.correa.nr@gmail.com1","5551997602458");
@@ -82,7 +71,7 @@ INSERT INTO vaga (salario, curso, cargo, descricao, id_emp) VALUES (700,"Inform�
 INSERT INTO vaga (salario, curso, cargo, descricao, id_emp) VALUES (777,"Informática","Técnico em informática","Prestará serviço básico de informática para escolas etc...",2);
 INSERT INTO vaga (salario, curso, cargo, descricao, id_emp) VALUES (900,"Informática","Manutenção de computadores","Fará reparo de computadores e hardwares em geral etc...",2);
 
-INSERT INTO administrador (nome, senha, email, siape) VALUES ("Ronise","$2y$10$bM1wqToYnC7gzqwDfl1hyOgWU5SWiuMxqPwiJsDVCkkqnDE3o70HW","ronise@gmail.com1","11");
+INSERT INTO administrador (nome, senha, email, siape) VALUES ("Ronise","$2y$10$bM1wqToYnC7gzqwDfl1hyOgWU5SWiuMxqPwiJsDVCkkqnDE3o70HW","ronise@gmail.com","1");
 INSERT INTO administrador (nome, senha, email, siape) VALUES ("Rafael","$2y$10$bM1wqToYnC7gzqwDfl1hyOgWU5SWiuMxqPwiJsDVCkkqnDE3o70HW","ronise@gmail.com1","2");
 INSERT INTO administrador (nome, senha, email, siape) VALUES ("Walter","$2y$10$bM1wqToYnC7gzqwDfl1hyOgWU5SWiuMxqPwiJsDVCkkqnDE3o70HW","ronise@gmail.com2","3");
 INSERT INTO administrador (nome, senha, email, siape) VALUES ("Katy","$2y$10$bM1wqToYnC7gzqwDfl1hyOgWU5SWiuMxqPwiJsDVCkkqnDE3o70HW","ronise@gmail.com3","4");

@@ -1,47 +1,84 @@
 <?php
 
     require_once('../../../../includes/connection.php');
-    require_once('../companyAuth.php');
+    require_once('../adminAuth.php');
 
-    if (!empty($_POST['salario']) && !empty($_POST['cargo']) && !empty($_POST['descricao'])){
+    if (!empty($_POST['matricula']) && !empty($_POST['nome']) && !empty($_POST['email'] && !empty($_POST['numero']) && !empty($_POST['curso'])&& !empty($_POST['senha']))){
 
-        $query = $conn->prepare('INSERT INTO vaga (
-            salario,
-            curso,
-            cargo,
-            descricao,
-            id_emp
-        ) VALUES (
-            :salario,
-            :curso,
-            :cargo,
-            :descricao,
-            :id_emp
-        )');
-
-        $salario = $_POST['salario'];
-        $curso = $_POST['curso'];
-        $cargo = $_POST['cargo'];
-        $descricao = $_POST['descricao'];
-        $idEmp = $_SESSION['user_id_empresa'];
-
-        $query->bindParam(':salario', $salario);
-        $query->bindParam(':curso', $curso);
-        $query->bindParam(':cargo', $cargo);
-        $query->bindParam(':descricao', $descricao);
-        $query->bindParam(':id_emp', $idEmp);
-
-        try {
+        if ($_POST['senha'] == $_POST['verificarSenha']){
+            $query = $conn->prepare('
+            INSERT INTO aluno (
+                nome,
+                senha,
+                matricula,
+                email,
+                curso,
+                numero
+            ) VALUES (
+                :nome,
+                :senha,
+                :matricula,
+                :email,
+                :curso,
+                :numero
+            )');
+    
+            $nome = $_POST['nome'];
+            $curso = $_POST['curso'];
+            $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);;
+            $matricula = $_POST['matricula'];
+            $email = $_POST['email'];
+            $numero = $_POST['numero'];
+    
+            $query = $conn->prepare("SELECT * FROM aluno WHERE matricula = :matricula OR email = :email");
+            $query->bindParam(':matricula', $matricula);
+            $query->bindParam(':email', $email);
             $query->execute();
-            $_SESSION['messageInformation'] = 'Vaga Cadastrada!';
-            $corToast = 'green';
-        } catch (Exception $err) {
-            $_SESSION['messageInformation'] = "Ocorreu um erro ao Criar a vaga, verifique se todos os dados estão corretos";
-            $corToast = 'red';
-        }
 
-        
-        
+            $results = $query->fetch(PDO::FETCH_ASSOC);
+
+            if($results == 0){
+                $query = $conn->prepare("INSERT INTO aluno (
+                    nome,     
+                    senha,     
+                    matricula,     
+                    email,
+                    curso,
+                    numero
+                ) VALUES (  
+                    :nome,     
+                    :senha,     
+                    :matricula,     
+                    :email,
+                    :curso,
+                    :numero
+                )");
+
+                $query->bindParam(':nome', $nome);
+                $query->bindParam(':senha', $senha);
+                $query->bindParam(':matricula', $matricula);
+                $query->bindParam(':email', $email);
+                $query->bindParam(':curso', $curso);
+                $query->bindParam(':numero', $numero);
+
+                try {
+                    $query->execute();
+                    $_SESSION['messageInformation'] = 'Aluno Cadastrado!';
+                    $corToast = 'green';
+                } catch (Exception $err) {
+                    $_SESSION['messageInformation'] = "Ocorreu um erro ao registrar aluno, verifique se todos os dados estão corretos Erro: $err";
+                    $corToast = 'red';
+                }
+
+            } else {
+                $_SESSION['messageInformation'] = 'Este Aluno já está cadastrado!';
+                $corToast = '#0dc1fd';
+            }
+        } else {
+            $_SESSION['messageInformation'] = 'Senhas não coincidem, tente novamente!';
+            $corToast = '#0dc1fd';
+        }
+                
     } else {
         if(isset($_POST['singup'])) {
             if (empty($_POST['salario'] || $_POST['cargo'] || $_POST['descricao'])) {
@@ -63,7 +100,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../../Bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../../../css/company/registerVacancy/registerVacancy.css">
+    <link rel="stylesheet" href="../../../css/admin/registerAluno/registerAluno.css">
     <script src="../../../../Bootstrap/js/bootstrap.bundle.js"></script>
     <title>Adicionar Vagas</title>
     <script>
@@ -79,7 +116,7 @@
             
             
             echo "
-            <div class='toast-container position-fixed' style='left: 50%;
+            <div class='toast-container position-fixed style='left: 50%;
             position: fixed;
             transform: translate(-50%, 0px);
             z-index: 9999; border: none; margin-top: 2%'>
@@ -107,6 +144,7 @@
 
         }
     ?>
+
 <nav class="navbar navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="../../../login.php">COPEX</a>
@@ -139,11 +177,18 @@
 
     <div class="center">
         <div class="register">
-            <h1>Registro de Vaga</h1>
-            <form method="POST" action="./addVacancy.php">
-                <div class="cargoCurso">
-                    <input class='cargo' type="text" placeholder="Cargo" name="cargo">
-                    <select class='curso' name="curso">
+            <h1>Registro de Aluno</h1>
+            <form method="POST" action="./registerStudent.php">
+                <div class="first">
+                    <input name='matricula' type="text" placeholder="Matricula" required>
+                    <input name='nome' type="text" placeholder="Nome do Aluno" required>
+                </div>
+                <div class="second">
+                    <input name='email' type="text" placeholder="E-mail do Aluno" required>
+                </div>
+                <div class="third">
+                    <input name='numero' type="text" placeholder="Número" required>
+                    <select name="curso" id="" required>
                         <option value="">Curso</option>
                         <option value="Informática">Informática</option>
                         <option value="Eletromecânica">Eletromecânica</option>
@@ -151,9 +196,12 @@
                         <option value="Eletrotécnica">Eletrotécnica</option>
                     </select>
                 </div>
-                <div><input class="salario" type="text" placeholder="Salário" name="salario"></div>
-                <div class="descricao"><textarea type="text" placeholder="Descrição" name="descricao"></textarea></div>
-                <input class="button" type="submit" name="singup" value="Criar vaga">
+                <div class="fourth">
+                    <input name='senha' type="text" placeholder="Senha" required>
+                    <input name='verificarSenha' type="text" placeholder="Verificar Senha" required>
+                </div>
+
+                <input class="button" type="submit" name="singup" value="Registrar Aluno">
             </form>
         </div>
     </div>

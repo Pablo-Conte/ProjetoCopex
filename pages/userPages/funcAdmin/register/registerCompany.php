@@ -1,47 +1,65 @@
 <?php
 
     require_once('../../../../includes/connection.php');
-    require_once('../companyAuth.php');
+    require_once('../adminAuth.php');
 
-    if (!empty($_POST['salario']) && !empty($_POST['cargo']) && !empty($_POST['descricao'])){
+    if (!empty($_POST['cnpj']) && !empty($_POST['nome']) && !empty($_POST['email']) && !empty($_POST['senha']) && !empty($_POST['numero'])){
 
-        $query = $conn->prepare('INSERT INTO vaga (
-            salario,
-            curso,
-            cargo,
-            descricao,
-            id_emp
-        ) VALUES (
-            :salario,
-            :curso,
-            :cargo,
-            :descricao,
-            :id_emp
-        )');
-
-        $salario = $_POST['salario'];
-        $curso = $_POST['curso'];
-        $cargo = $_POST['cargo'];
-        $descricao = $_POST['descricao'];
-        $idEmp = $_SESSION['user_id_empresa'];
-
-        $query->bindParam(':salario', $salario);
-        $query->bindParam(':curso', $curso);
-        $query->bindParam(':cargo', $cargo);
-        $query->bindParam(':descricao', $descricao);
-        $query->bindParam(':id_emp', $idEmp);
-
-        try {
+        if ($_POST['senha'] == $_POST['verificarSenha']){
+            
+            $nome = $_POST['nome'];
+            $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);;
+            $cnpj = $_POST['cnpj'];
+            $email = $_POST['email'];
+            $numero = $_POST['cnpj'];
+    
+            $query = $conn->prepare("SELECT * FROM empresa WHERE cnpj = :cnpj OR email = :email");
+            $query->bindParam(':cnpj', $cnpj);
+            $query->bindParam(':email', $email);
             $query->execute();
-            $_SESSION['messageInformation'] = 'Vaga Cadastrada!';
-            $corToast = 'green';
-        } catch (Exception $err) {
-            $_SESSION['messageInformation'] = "Ocorreu um erro ao Criar a vaga, verifique se todos os dados estão corretos";
-            $corToast = 'red';
-        }
 
-        
-        
+            $results = $query->fetch(PDO::FETCH_ASSOC);
+
+            if($results == 0){
+                $query = $conn->prepare('
+                    INSERT INTO empresa (
+                        nome,
+                        senha,
+                        cnpj,
+                        email,
+                        numero
+                    ) VALUES (
+                        :nome,
+                        :senha,
+                        :cnpj,
+                        :email,
+                        :numero
+                    )');
+
+                $query->bindParam(':nome', $nome);
+                $query->bindParam(':senha', $senha);
+                $query->bindParam(':cnpj', $cnpj);
+                $query->bindParam(':email', $email);
+                $query->bindParam(':numero', $numero);
+
+                try {
+                    $query->execute();
+                    $_SESSION['messageInformation'] = 'Empresa Cadastrado!';
+                    $corToast = 'green';
+                } catch (Exception $err) {
+                    $_SESSION['messageInformation'] = "Ocorreu um erro ao registrar a empresa, verifique se todos os dados estão corretos Erro: $err";
+                    $corToast = 'red';
+                }
+
+            } else {
+                $_SESSION['messageInformation'] = 'Esta empresa já está cadastrado!';
+                $corToast = '#0dc1fd';
+            }
+        } else {
+            $_SESSION['messageInformation'] = 'Senhas não coincidem, tente novamente!';
+            $corToast = '#0dc1fd';
+        }
+                
     } else {
         if(isset($_POST['singup'])) {
             if (empty($_POST['salario'] || $_POST['cargo'] || $_POST['descricao'])) {
@@ -63,7 +81,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../../Bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../../../css/company/registerVacancy/registerVacancy.css">
+    <link rel="stylesheet" href="../../../css/admin/registerCompany/registerCompany.css">
     <script src="../../../../Bootstrap/js/bootstrap.bundle.js"></script>
     <title>Adicionar Vagas</title>
     <script>
@@ -107,6 +125,7 @@
 
         }
     ?>
+
 <nav class="navbar navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="../../../login.php">COPEX</a>
@@ -139,24 +158,27 @@
 
     <div class="center">
         <div class="register">
-            <h1>Registro de Vaga</h1>
-            <form method="POST" action="./addVacancy.php">
-                <div class="cargoCurso">
-                    <input class='cargo' type="text" placeholder="Cargo" name="cargo">
-                    <select class='curso' name="curso">
-                        <option value="">Curso</option>
-                        <option value="Informática">Informática</option>
-                        <option value="Eletromecânica">Eletromecânica</option>
-                        <option value="Eletroeletrônica">Eletroeletrônica</option>
-                        <option value="Eletrotécnica">Eletrotécnica</option>
-                    </select>
+            <h1>Registro de Empresa</h1>
+            <form method="POST" action="./registerCompany.php">
+                <div class="first">
+                    <input name='cnpj' type="text" placeholder="CNPJ" required>
+                    <input name='nome' type="text" placeholder="Nome da Empresa" required>
                 </div>
-                <div><input class="salario" type="text" placeholder="Salário" name="salario"></div>
-                <div class="descricao"><textarea type="text" placeholder="Descrição" name="descricao"></textarea></div>
-                <input class="button" type="submit" name="singup" value="Criar vaga">
+                <div class="second">
+                    <input name='email' type="text" placeholder="E-mail da Empresa" required>
+                </div>
+                <div class="third">
+                    <input name='numero' type="text" placeholder="Número" required>
+                </div>
+                <div class="fourth">
+                    <input name='senha' type="password" placeholder="Senha" required>
+                    <input name='verificarSenha' type="password" placeholder="Verificar Senha" required>
+                </div>
+
+                <input class="button" type="submit" name="singup" value="Registrar Empresa">
             </form>
         </div>
     </div>
     
 </body>
-</html>
+</html> 

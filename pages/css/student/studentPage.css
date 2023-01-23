@@ -86,6 +86,10 @@ form {
     transition: 1s;
 }
 
+.center {
+    text-align: center;
+}
+
 .botaoModalInfo {
     border: none;
     border-radius: 10px;
