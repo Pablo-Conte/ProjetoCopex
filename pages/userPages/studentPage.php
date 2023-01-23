@@ -127,50 +127,64 @@
                 ?>
             </div>
         </div>
-
         <div id="JanelaModalShowInterest" class="modal fade " tabindex="-1" >';
             <div class='modal-dialog modal-xl'>
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1>Interesses</h1>
-                        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
-                    </div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="center">Interesses</h1>
+                            <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
+                        </div>
 
-                    <div class="modal-body">
-                        <table>
-                            <tr>
-                                <th>-</th>
-                                <th>Empresa</th>
-                                <th>-</th>
-                                <th class='respInterest'>-</th>
-                                <th>vaga</th>
-                                <th>Dados Empresa</th>
-                            </tr>
+                        <div class="modal-body">
+                            <table>
 
                             <?php
+                                
                                 
                                 $queryVagaAluno = $conn->prepare("SELECT id_vaga FROM vaga_aluno WHERE id_aluno = $_SESSION[user_id_aluno]");
                                 $queryVagaAluno->execute();
 
-                                while ($resultQueryVagaAluno = $queryVagaAluno->fetch(PDO::FETCH_ASSOC)) {
-                                    $queryNomeAluno = $conn->prepare("SELECT cargo, id_emp FROM vaga WHERE id_vaga = $resultQueryVagaAluno[id_vaga]");
-                                    $queryNomeAluno->execute();
-                                    $resultNome = $queryNomeAluno->fetch();
+                                $queryVagaAluno2 = $conn->prepare("SELECT id_vaga FROM vaga_aluno WHERE id_aluno = $_SESSION[user_id_aluno]");
+                                $queryVagaAluno2->execute();
+                                $resultQueryVagaAluno2 = $queryVagaAluno2->fetchAll(PDO::FETCH_ASSOC);
+                                
+                                if (count($resultQueryVagaAluno2) == 0){
+                                    echo "<p class='center'>Você ainda não registrou interesse em alguma vaga!</p>";
+                                } else {
 
-
-                                    $queryEmpresa = $conn->prepare("SELECT nome FROM empresa WHERE id_empresa = $resultNome[id_emp]");
-                                    $queryEmpresa->execute();
-                                    $resultEmpresa = $queryEmpresa->fetch();
-
+                                    
+           
                                     echo "<tr>";
-                                    echo "      <td><div class='simboloCirculo'></div></td>";
-                                    echo "      <td><div class='nome'>$resultNome[cargo]</div></td>";
-                                    echo "      <td class='respInterest'><img class='seta' src='../../imagens/seta.png' alt=''></td>";
-                                    echo "      <td><div class='simboloQuadrado'></div></td>";
-                                    echo "      <td><div class='vaga'>$resultEmpresa[nome]</div></td>";
-                                    echo "      <td><img class='curriculo' src='../../imagens/informacao.png' alt=''></td>";
+                                    echo     "<th>-</th>";
+                                    echo     "<th>Vaga</th>";
+                                    echo     "<th>-</th>";
+                                    echo     "<th class='respInterest'>-</th>";
+                                    echo     "<th>Empresa</th>";
+                                    echo     "<th>Dados Empresa</th>";
                                     echo "</tr>";
+                                    while ($resultQueryVagaAluno = $queryVagaAluno->fetch(PDO::FETCH_ASSOC)) {
+                                        $queryNomeAluno = $conn->prepare("SELECT cargo, id_emp FROM vaga WHERE id_vaga = $resultQueryVagaAluno[id_vaga]");
+                                        $queryNomeAluno->execute();
+                                        $resultNome = $queryNomeAluno->fetch();
+                                        
+    
+                                        $queryEmpresa = $conn->prepare("SELECT nome FROM empresa WHERE id_empresa = $resultNome[id_emp]");
+                                        $queryEmpresa->execute();
+                                        $resultEmpresa = $queryEmpresa->fetch();
+    
+                                        echo "<tr>";
+                                        echo "      <td><div class='simboloCirculo'></div></td>";
+                                        echo "      <td><div class='nome'>$resultNome[cargo]</div></td>";
+                                        echo "      <td class='respInterest'><img class='seta' src='../../imagens/seta.png' alt=''></td>";
+                                        echo "      <td><div class='simboloQuadrado'></div></td>";
+                                        echo "      <td><div class='vaga'>$resultEmpresa[nome]</div></td>";
+                                        echo "      <td><img class='curriculo' src='../../imagens/informacao.png' alt=''></td>";
+                                        echo "</tr>";
+                                    }
                                 }
+
+
+                                
                                 
   
                             ?>
