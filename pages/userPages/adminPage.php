@@ -81,12 +81,12 @@
         <div class="funcoes">
             <h1>Cadastros</h1>
             <div class="sessao">
-                <a class="linksFunc" href="./funcAdmin/register/registerAluno.php">
+                <a class="linksFunc" href="./funcAdmin/register/registerStudent.php">
                     <div class="botaoRegistro">
                         Aluno
                     </div>
                 </a>
-                <a class="linksFunc" href="./funcAdmin/register/registerEmpresa.php">
+                <a class="linksFunc" href="./funcAdmin/register/registerCompany.php">
                     <div class="botaoRegistro">
                         Empresa
                     </div>
