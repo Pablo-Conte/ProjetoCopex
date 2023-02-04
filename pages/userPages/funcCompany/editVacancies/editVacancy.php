@@ -131,17 +131,17 @@ if (!isset($_SESSION['user_id_empresa'])) {
             echo         "<th></th>";
             echo     "</tr>";
             while ($results = $query->fetch(PDO::FETCH_ASSOC)) {
-
+                echo $results['id_vaga'];
                 echo     "<tr>";
                 echo         "<td>$results[cargo]</td>";
                 echo         "<td>$results[curso]</td>";
                 echo         "<td class='resp'>$results[salario]</td>";
-                echo         "<td><button type='button' class='botaoModalInfo btn btn-primary' data-bs-toggle='modal' data-bs-target='#JanelaModalStudent" . $results['id_emp'] . "'>Editar</button></td>";
+                echo         "<td><button type='button' class='botaoModalInfo btn btn-primary' data-bs-toggle='modal' data-bs-target='#JanelaModalStudent" . $results['id_vaga'] . "'>Editar</button></td>";
                 echo     "</tr>";
 
                 echo "<form method='POST' action='./updateVacancy.php'>";
 
-                echo "<div id='JanelaModalStudent$results[id_emp]' class='modal fade' tabindex='-1' >";
+                echo "<div id='JanelaModalStudent$results[id_vaga]' class='modal fade' tabindex='-1' >";
                 echo "<div class='modal-dialog'>";
                 echo '<div class="modal-content">';
                 echo '    <div class="modal-header">';
