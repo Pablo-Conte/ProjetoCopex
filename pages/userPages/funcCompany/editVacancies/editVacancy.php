@@ -131,7 +131,6 @@ if (!isset($_SESSION['user_id_empresa'])) {
             echo         "<th></th>";
             echo     "</tr>";
             while ($results = $query->fetch(PDO::FETCH_ASSOC)) {
-                echo $results['id_vaga'];
                 echo     "<tr>";
                 echo         "<td>$results[cargo]</td>";
                 echo         "<td>$results[curso]</td>";
