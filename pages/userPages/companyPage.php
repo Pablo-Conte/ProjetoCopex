@@ -136,7 +136,7 @@
                                         echo "      <td class='respInterest'><img class='seta' src='../../imagens/seta.png' alt=''></td>";
                                         echo "      <td><div class='simboloQuadrado'></div></td>";
                                         echo "      <td><div class='vaga'>$resultQueryInterest[cargo]</div></td>";
-                                        echo "      <td><img class='curriculo' src='../../imagens/vaga.png' alt=''></td>";
+                                        echo "      <td><img class='curriculo' src='../../imagens/vaga.png' alt='' type='button' class='botaoModalInfo' data-bs-toggle='modal' data-bs-target='#JanelaModalInteresse" . $resultNome['id_aluno'] . "'></td>";
                                         echo "</tr>";
                                     }
                                 }
@@ -147,6 +147,48 @@
                 </div>
             </div>
         </div>
+
+        <?php
+            $idEmp = $_SESSION['user_id_empresa'];
+            $queryInterestVacancy = $conn->prepare("SELECT id_vaga, cargo FROM vaga WHERE id_emp = $_SESSION[user_id_empresa]");
+            $queryInterestVacancy->execute();
+            while ($resultQueryInterest = $queryInterestVacancy->fetch(PDO::FETCH_ASSOC)) {
+                $queryVagaAluno = $conn->prepare("SELECT id_aluno FROM vaga_aluno WHERE id_vaga = $resultQueryInterest[id_vaga]");
+                $queryVagaAluno->execute();
+
+                while ($resultQueryVagaAluno = $queryVagaAluno->fetch(PDO::FETCH_ASSOC)) {
+                    $queryNomeAluno = $conn->prepare("SELECT * FROM aluno WHERE id_aluno = $resultQueryVagaAluno[id_aluno]");
+                    $queryNomeAluno->execute();
+
+                    $resultNome = $queryNomeAluno->fetch();
+
+                    echo "<div class='modal fade' id='JanelaModalInteresse" . $resultNome['id_aluno'] . "' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+                    echo "      <div class='modal-dialog'>";
+                    echo "          <div class='modal-content'>";
+                    echo "              <div class='modal-header'>";
+                    echo "                <h1 class='modal-title fs-5' id='exampleModalLabel'></h1>";
+                    echo "                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
+                    echo "              </div>";
+                    echo "              <div class='modal-body'>";
+                    echo "                  <h4>Interessado</h4>";
+                    echo "                  <p>$resultNome[nome]</p>";
+                    echo "                  <h4>Curso:</h4>";
+                    echo "                  <p>$resultNome[curso]</p>";
+                    echo "                  <h4>Número de contato: </h4>";
+                    echo "                  <p>$resultNome[numero]</p>";
+                    echo "                  <h4>E-mail: </h4>";
+                    echo "                  <p>$resultNome[email]</p>";
+                    echo "              </div>";
+                    echo "              <div class='modal-footer'>";
+                    echo "                  <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>";
+                    echo "              </div>";
+                    echo "          </div>";
+                    echo "       </div>";
+                    echo " </div>";
+                }
+            }
+
+        ?>
 
         
     </div>
