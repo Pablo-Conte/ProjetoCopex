@@ -1,5 +1,7 @@
 <?php 
     require_once '../../includes/connection.php';
+    use PHPMailer\PHPMailer\PHPMailer;
+
 
     session_start();
 
@@ -16,7 +18,7 @@
     }
 
     //Login Administrador
-    if (!empty($_POST['siape']) && !empty($_POST['password'])){
+    if (!empty($_POST['siape'])){
 
         $query = "SELECT siape, senha, id_administrador, nome FROM administrador WHERE siape = :siape";
 
@@ -40,14 +42,14 @@
             $_SESSION['messageInformation'] = "";
             header("Location: ./userPages/adminPage.php");
         } else {
-            $message = "<script language='javascript' type='text/javascript'>alert('Problemas ao logar, credenciais não são iguais!')</script>";
+            $message = "<script language='javascript' type='text/javascript'>alert('Algo deu errado, tente novamente!')</script>";
         }
     
     } 
     
     //Login Estudante
-    if(!empty($_POST['matricula']) && !empty($_POST["password_aluno"])){
-        $query = "SELECT id_aluno, nome, senha, numero, email FROM aluno WHERE matricula = :matricula";
+    if(!empty($_POST['matricula'])){
+        $query = "SELECT id_aluno, email, nome FROM aluno WHERE matricula = :matricula";
         $records = $conn->prepare($query);
         $records->bindParam(':matricula', $_POST['matricula']);
         $records->execute();
@@ -59,19 +61,50 @@
         }
 
         if (count($results) > 1 && password_verify($_POST['password_aluno'], $results['senha']) == True){
-            $_SESSION['user_id_aluno'] = $results["id_aluno"];
-            $_SESSION['name'] = $results["nome"];
-            $_SESSION['numero'] = $results["numero"];
-            $_SESSION['email'] = $results["email"];
-            $_SESSION['messageInformation'] = "";
-            header("Location: ./userPages/studentPage.php");
+            $size = 2;
+            $seed = time(); 
+            $code = substr(sha1($seed), 40 - min($size,40));
+            $hashedCode = password_hash($code, PASSWORD_DEFAULT);
+            
+            $queryCriarCode = $conn->prepare("INSERT INTO passwordCodeAluno (id_aluno, code) VALUES ($records[id_aluno], $hashedCode)");
+            $queryCriarCode->execute();
+    
+            $mail = new PHPMailer(true);
+            
+            try {
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'bobesponjamailer@gmail.com';
+                $mail->Password = 'tjtmlgtjwqqskuam';
+                $mail->Port = 587;
+    
+                $mail->setFrom('bobesponjamailer@gmail.com');
+                $mail->addAddress($records['email']);
+    
+                $mail->isHTML(true);
+                $mail->Subject = "Prazer $nomeAluno!";
+                $mail->Body = "<p>Aqui está seu código de recuperação de senha:</p>
+                    <ul>
+                        <li>$code</li>
+                    </ul>
+                    ";
+    
+                $mail->send();
+    
+                header("location: ./passwordChange.php");
+            
+            } catch (Exception $e) {
+                echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
+            }
+            
         } else {
-            $message = "<script language='javascript' type='text/javascript'>alert('Problemas ao logar, credenciais não são iguais!')</script>";
+            $message = "<script language='javascript' type='text/javascript'>alert('Algo deu errado, tente novamente!')</script>";
         }
     }
 
     //Login Empresa
-    if(!empty($_POST['cnpj']) && !empty($_POST['password_empresa'])){
+    if(!empty($_POST['cnpj'])){
         $query = "SELECT * FROM empresa WHERE cnpj = :cnpj";
         $records = $conn->prepare($query);
         $records->bindParam(':cnpj', $_POST['cnpj']);
@@ -89,7 +122,7 @@
             $_SESSION['messageInformation'] = "";
             header("Location: ./userPages/companyPage.php");
         } else {
-            $message = "<script language='javascript' type='text/javascript'>alert('Problemas ao logar, credenciais não são iguais!')</script>";
+            $message = "<script language='javascript' type='text/javascript'>alert('Algo deu errado, tente novamente!')</script>";
         }
         
     }

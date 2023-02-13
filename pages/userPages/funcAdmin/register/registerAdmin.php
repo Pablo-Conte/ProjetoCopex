@@ -8,7 +8,7 @@
         if ($_POST['senha'] == $_POST['verificarSenha']){
             
             $nome = $_POST['nome'];
-            $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);;
+            $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
             $siape = $_POST['siape'];
             $email = $_POST['email'];
     

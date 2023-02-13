@@ -28,6 +28,67 @@
             </form>
         </div>
     </nav>
+
+    <?php
+        if (!empty($_SESSION['messageInformation'])) {
+
+            echo "
+                        <div class='toast-container position-fixed' style='left: 50%;
+                        position: fixed; top: 0; transform: translate(-50%, 0px);
+                        z-index: 9999; border: none; margin-top: 2%'>
+                            <div id='liveToast' class='toast' role='alert' aria-live='assertive' aria-atomic='true' style='background-color: white; '>
+                                <div class='toast-header' style='background-color: $_SESSION[miColor]; color: white'>
+                                    <strong class='me-auto'>Informativo!</strong>
+                                    <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+                                </div>
+                                <div class='toast-body'>
+                                    $_SESSION[messageInformation]
+                                </div>
+                            </div>
+                        </div>";
+
+
+            echo "
+                            <script>
+                                const toastLiveExample = document.getElementById('liveToast')
+                                const toast = new bootstrap.Toast(toastLiveExample)
+                                toast.show()
+                            </script>
+                        ";
+
+            $_SESSION['messageInformation'] = '';
+        }
+
+        if (!empty($_SESSION['messageInformationLogin'])) {
+
+            echo "
+                        <div class='toast-container position-fixed' style='left: 50%;
+                        position: fixed; top: 0; transform: translate(-50%, 0px);
+                        z-index: 9999; border: none; margin-top: 2%'>
+                            <div id='liveToast' class='toast' role='alert' aria-live='assertive' aria-atomic='true' style='background-color: white; '>
+                                <div class='toast-header' style='background-color: $_SESSION[miColor]; color: white'>
+                                    <strong class='me-auto'>Informativo!</strong>
+                                    <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+                                </div>
+                                <div class='toast-body'>
+                                    $_SESSION[messageInformationLogin]
+                                </div>
+                            </div>
+                        </div>";
+
+
+            echo "
+                            <script>
+                                const toastLiveExample = document.getElementById('liveToast')
+                                const toast = new bootstrap.Toast(toastLiveExample)
+                                toast.show()
+                            </script>
+                        ";
+
+                    $_SESSION['messageInformationLogin'] = '';
+        }
+
+    ?>
     <div class="main">
         <div>
             <div class="loginChoice">

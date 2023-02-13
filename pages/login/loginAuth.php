@@ -40,7 +40,8 @@
             $_SESSION['messageInformation'] = "";
             header("Location: ./userPages/adminPage.php");
         } else {
-            $message = "<script language='javascript' type='text/javascript'>alert('Problemas ao logar, credenciais não são iguais!')</script>";
+            $_SESSION["messageInformation"] = 'Credenciais incorretas!';
+            $_SESSION['miColor'] = '#FA6E65';
         }
     
     } 
@@ -66,7 +67,8 @@
             $_SESSION['messageInformation'] = "";
             header("Location: ./userPages/studentPage.php");
         } else {
-            $message = "<script language='javascript' type='text/javascript'>alert('Problemas ao logar, credenciais não são iguais!')</script>";
+            $_SESSION["messageInformation"] = 'Credenciais incorretas!';
+            $_SESSION['miColor'] = '#FA6E65';
         }
     }
 
@@ -89,7 +91,8 @@
             $_SESSION['messageInformation'] = "";
             header("Location: ./userPages/companyPage.php");
         } else {
-            $message = "<script language='javascript' type='text/javascript'>alert('Problemas ao logar, credenciais não são iguais!')</script>";
+            $_SESSION["messageInformation"] = 'Credenciais incorretas!';
+            $_SESSION['miColor'] = '#FA6E65';
         }
         
     }

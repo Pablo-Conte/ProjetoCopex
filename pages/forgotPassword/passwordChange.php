@@ -1,9 +1,7 @@
 <?php
     
+    
     require_once '../../includes/connection.php';
-    use PHPMailer\PHPMailer\PHPMailer;
-    require '../../library/mailSRC/PHPMailer.php';
-    require '../../library/mailSRC/SMTP.php';
 
     session_start();
 
@@ -51,7 +49,7 @@
     
     //Login Estudante
     if(!empty($_POST['matricula'])){
-        $query = "SELECT id_aluno, email, nome FROM aluno WHERE matricula = :matricula";
+        $query = "SELECT id_aluno FROM aluno WHERE matricula = :matricula";
         $records = $conn->prepare($query);
         $records->bindParam(':matricula', $_POST['matricula']);
         $records->execute();
@@ -63,59 +61,45 @@
         }
 
         if ($results){
-            
-            $size = 8;
-            $seed = time(); 
-            $code = substr(sha1($seed), 40 - min($size,40));
-            $hashedCode = password_hash($code, PASSWORD_DEFAULT);
+            if ($_POST['senha'] == $_POST['verificarSenha']){
+                $queryPegarCode = $conn->prepare("SELECT code FROM passwordcodealuno WHERE id_aluno = $results[id_aluno]");
+                $queryPegarCode->execute();
+                $resultCode = $queryPegarCode->fetch(PDO::FETCH_ASSOC);
+    
+                $hashedSenha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+                if (password_verify($_POST['codigo'], $resultCode['code'])) {
+                    $queryTrocarSenha = $conn->prepare("UPDATE aluno SET senha = '$hashedSenha' WHERE id_aluno = $results[id_aluno]");
+                    
+                    try {
+                        $queryTrocarSenha->execute();
+                        
+                        $queryVerificarCode = $conn->prepare("SELECT id_code FROM passwordcodealuno WHERE id_aluno = $results[id_aluno]");
+                        if ($queryVerificarCode->execute()) {
+                            
+                            while ($queryVerificarIdCode = $queryVerificarCode->fetch(PDO::FETCH_ASSOC)){
+                                $queryDeletarCode = $conn->prepare("DELETE FROM passwordcodealuno WHERE id_code = $queryVerificarIdCode[id_code]");
+                                $queryDeletarCode->execute();
+                            }
+                        };
+                        $_SESSION["messageInformationLogin"] = 'Senha alterada com sucesso!';
+                        $_SESSION['miColor'] = 'green';
+                        header("location: ../login.php");
 
-            $queryVerificarCode = $conn->prepare("SELECT id_code FROM passwordcodealuno WHERE id_aluno = $results[id_aluno]");
-            if ($queryVerificarCode->execute()) {
-                
-                while ($queryVerificarIdCode = $queryVerificarCode->fetch(PDO::FETCH_ASSOC)){
-                    $queryDeletarCode = $conn->prepare("DELETE FROM passwordcodealuno WHERE id_code = $queryVerificarIdCode[id_code]");
-                    $queryDeletarCode->execute();
-                }
-            };
-            
-            $queryCriarCode = $conn->prepare("INSERT INTO passwordCodeAluno (id_aluno, code) VALUES ($results[id_aluno], '$hashedCode')");
-            $queryCriarCode->execute();
-            
-            $mail = new PHPMailer(true);
-            
-            try {
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'bobesponjamailer@gmail.com';
-                $mail->Password = 'tjtmlgtjwqqskuam';
-                $mail->Port = 587;
-    
-                $mail->setFrom('bobesponjamailer@gmail.com');
-                $mail->addAddress($results['email']);
-    
-                $mail->isHTML(true);
-                $mail->Subject = "Prazer $results[nome]!";
-                $mail->Body = "<p>Aqui está seu código de recuperação de senha:</p>
-                    <ul>
-                        <li>$code</li>
-                    </ul>
-                    ";
-    
-                $mail->send();
-                
-                
-                $_SESSION['miColor'] = 'green';
-                $_SESSION['messageInformationOutraPagina'] = "Email com o código enviado para o seu e-mail, verifique-o!";
-
-                header("location: ./passwordChange.php");
-            
-            } catch (Exception $e) {
-                echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
+                    } catch (Exception $e) {
+                        $_SESSION["messageInformation"] = 'Dados incorretos, tente novamente!';
+                        $_SESSION['miColor'] = '#2186C8';
+                    };
+                } else {
+                    $_SESSION["messageInformation"] = 'Código incorreto!';
+                    $_SESSION['miColor'] = '#FA6E65';
+                };
+            } else {
+                $_SESSION["messageInformation"] = 'Senhas não conferem!';
+                $_SESSION['miColor'] = '#2186C8';
             }
             
         } else {
-            $_SESSION["messageInformation"] = 'Algo deu errado!';
+            $_SESSION["messageInformation"] = 'Dados incorretos!';
             $_SESSION['miColor'] = '#FA6E65';
         }
     }
@@ -143,8 +127,13 @@
         }
         
     }
+
+    
+
+
     
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -159,7 +148,7 @@
     <link rel="stylesheet" href="../css/login.css">
     <script src="../../library/jquery/jquery.min.js"></script>
     <script src="../../Bootstrap/js/bootstrap.bundle.js"></script>
-    <title>Recuperação de senha</title>
+    <title>Editar Senha</title>
 </head>
 
 <body id="grad">
@@ -174,7 +163,6 @@
             </form>
         </div>
     </nav>
-
     <?php
         if (!empty($_SESSION['messageInformation'])) {
 
@@ -205,6 +193,34 @@
             $_SESSION['messageInformation'] = '';
         }
 
+        if (!empty($_SESSION['messageInformationOutraPagina'])) {
+
+            echo "
+                        <div class='toast-container position-fixed' style='left: 50%;
+                        position: fixed; top: 0; transform: translate(-50%, 0px);
+                        z-index: 9999; border: none; margin-top: 2%'>
+                            <div id='liveToast' class='toast' role='alert' aria-live='assertive' aria-atomic='true' style='background-color: white; '>
+                                <div class='toast-header' style='background-color: $_SESSION[miColor]; color: white'>
+                                    <strong class='me-auto'>Informativo!</strong>
+                                    <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+                                </div>
+                                <div class='toast-body'>
+                                    $_SESSION[messageInformationOutraPagina]
+                                </div>
+                            </div>
+                        </div>";
+
+
+            echo "
+                            <script>
+                                const toastLiveExample = document.getElementById('liveToast')
+                                const toast = new bootstrap.Toast(toastLiveExample)
+                                toast.show()
+                            </script>
+                        ";
+
+                    $_SESSION['messageInformationOutraPagina'] = '';
+        }
 
     ?>
     <div class="main">
@@ -220,34 +236,43 @@
                 <div>
                     <div id="tab1" style="display: none;">
                         <div class="loginForm">
-                            <form action="./forgotPassword.php" method="POST" class="data">
+                            <form action="./passwordChange.php" method="POST" class="data">
                                 <img src="../../imagens/admin.png" alt="">
                                 <hr>
-                                <input type="name" placeholder="Digite seu SIAPE" name="siape">
+                                <input type="text" placeholder="SIAPE" name="siape">
+                                <input type="password" placeholder="Senha" name="senha">
+                                <input type="password" placeholder="verificar Senha" name="verificarSenha">
+                                <input type="text" placeholder="Código" name="codigo">
                                 
-                                <button type="submit">Recuperar senha</button>
+                                <button type="submit">Editar Senha</button>
                             </form>
                         </div>
                     </div>
                     <div id="tab2" style="display: block;">
                         <div class="loginForm">
-                            <form action="./forgotPassword.php" method="POST" class="data">
+                            <form action="./passwordChange.php" method="POST" class="data">
                                 <img src="../../imagens/aluno.png" alt="">
                                 <hr>
-                                <input type="text" placeholder="Digite sua matricula" name="matricula">
+                                <input type="text" placeholder="Matricula" name="matricula">
+                                <input type="password" placeholder="Senha" name="senha">
+                                <input type="password" placeholder="verificar Senha" name="verificarSenha">
+                                <input type="text" placeholder="Código" name="codigo">
                                 
-                                <button type="submit">Recuperar senha</button>
+                                <button type="submit">Editar Senha</button>
                             </form>
                         </div>
                     </div>
                     <div id="tab3" style="display: none;">
                         <div class="loginForm">
-                            <form action="./forgotPassword.php" method="POST" class="data">
+                            <form action="./passwordChange.php" method="POST" class="data">
                                 <img src="../../imagens/empresa.png" alt="">
                                 <hr>
-                                <input type="name" placeholder="Digite seu CNPJ" name="cnpj">
+                                <input type="text" placeholder="CNPJ" name="cnpj">
+                                <input type="password" placeholder="Senha" name="senha">
+                                <input type="password" placeholder="verificar Senha" name="verificarSenha">
+                                <input type="text" placeholder="Código" name="codigo">
                                 
-                                <button type="submit">Recuperar senha</button>
+                                <button type="submit">Editar Senha</button>
                             </form>
                         </div>
                     </div>

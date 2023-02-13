@@ -47,6 +47,24 @@ CREATE TABLE IF NOT EXISTS vaga_aluno (
     CONSTRAINT fk_id_aluno FOREIGN KEY (id_aluno) REFERENCES aluno (id_aluno) 
 );
 
+CREATE TABLE IF NOT EXISTS passwordCodeAdmin (
+    id_code INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_admin INT,
+    code VARCHAR(70)
+);
+
+CREATE TABLE IF NOT EXISTS passwordCodeAluno (
+    id_code INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_aluno INT,
+    code VARCHAR(70)
+);
+
+CREATE TABLE IF NOT EXISTS passwordCodeEmpresa (
+    id_code INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_empresa INT,
+    code VARCHAR(70)
+);
+
 
 -- Adicionando dados fictícios para testes
 
