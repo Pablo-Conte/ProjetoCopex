@@ -87,11 +87,20 @@ button {
   border-radius: 0.625rem;
   width: 75%;
   margin-bottom: 10%;
-  margin-top: 10%;
+  margin-top: 5%;
   background-color: #212529;
   border: none;
   color: white;
   border: 1px solid black
+}
+
+.recuperacao {
+  color: rgb(179, 179, 179);
+  text-decoration: none;
+}
+
+.recuperacao:hover {
+  color: rgb(219, 219, 219);
 }
 
 .bg-dark {
@@ -113,19 +122,24 @@ button:hover {
   transition: 1s;
 }
 
-.d-flex a {
-  color: white;
+
+.d-flex a{
+  color: rgb(209, 209, 209);
+  text-decoration: none;
+  padding: 10px;
+}
+
+.d-flex a.home{
+  color: rgb(255, 255, 255);
   text-decoration: none;
   padding: 10px;
 }
 
 .d-flex a:hover {
-  color: white;
+  color: rgb(255, 255, 255);
   text-decoration: none;
-  background-color: white;
   border-radius: 20px;
   padding: 10px;
-  color: black;
   transition: 0.1s;
 }
 

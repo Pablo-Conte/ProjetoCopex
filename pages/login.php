@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <a href="../index.php" class="navbar-brand">COPEX</a>
             <form class="d-flex" role="search">
-                <a href="../index.php">
+                <a href="../index.php" class="home">
                     HOME
                 </a>
             </form>
@@ -47,6 +47,7 @@
                                 <input type="name" placeholder="Digite seu SIAPE" name="siape">
                                 
                                 <input type="password" placeholder="Digite sua senha" name="password">
+                                <a href="./forgotPassword/forgotPassword.php" class="recuperacao">Esqueceu sua senha?</a>
                                 <button type="submit">Login</button>
                             </form>
                         </div>
@@ -59,6 +60,7 @@
                                 <input type="text" placeholder="Digite sua matricula" name="matricula">
                                 
                                 <input type="password" placeholder="Digite sua senha" name="password_aluno">
+                                <a href="./forgotPassword/forgotPassword.php" class="recuperacao">Esqueceu sua senha?</a>
                                 <button type="submit">Login</button>
                             </form>
                         </div>
@@ -71,10 +73,13 @@
                                 <input type="name" placeholder="Digite seu CNPJ" name="cnpj">
                                 
                                 <input type="password" placeholder="Digite sua senha" name="password_empresa">
+                                <a href="./forgotPassword/forgotPassword.php" class="recuperacao">Esqueceu sua senha?</a>
                                 <button type="submit">Login</button>
+                                
                             </form>
                         </div>
                     </div>
+                    
                     <?php if (!empty($message)) : ?>
                         <p> <?= $message ?></p>
                     <?php endif; ?>
