@@ -2,7 +2,7 @@
     require_once "./login/loginAuth.php";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -15,12 +15,17 @@
     <script src="../library/jquery/jquery.min.js"></script>
     <script src="../Bootstrap/js/bootstrap.bundle.js"></script>
     <title>Login</title>
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
 </head>
 
 <body id="grad">
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <a href="../index.php" class="navbar-brand">COPEX</a>
+            <a href="../../index.php" class="navbar-brand">COPEX</a>
             <form class="d-flex" role="search">
                 <a href="../index.php" class="home">
                     HOME

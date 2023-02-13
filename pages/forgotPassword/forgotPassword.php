@@ -22,29 +22,72 @@
     //Login Administrador
     if (!empty($_POST['siape'])){
 
-        $query = "SELECT siape, senha, id_administrador, nome FROM administrador WHERE siape = :siape";
-
+        $query = "SELECT id_administrador, email, nome FROM administrador WHERE siape = :siape";
         $records = $conn->prepare($query);
-
         $records->bindParam(':siape', $_POST['siape']);
-        
         $records->execute();
 
         $results = $records->fetch(PDO::FETCH_ASSOC);
-        
+
         if ($results == false){
             $results = [];
         }
 
-        $message = '';
+        if ($results){
+            
+            $size = 8;
+            $seed = time(); 
+            $code = substr(sha1($seed), 40 - min($size,40));
+            $hashedCode = password_hash($code, PASSWORD_DEFAULT);
+            var_dump($results);
+            $queryVerificarCode = $conn->prepare("SELECT id_code FROM passwordcodeadmin WHERE id_admin = $results[id_administrador]");
+            if ($queryVerificarCode->execute()) {
+                
+                while ($queryVerificarIdCode = $queryVerificarCode->fetch(PDO::FETCH_ASSOC)){
+                    $queryDeletarCode = $conn->prepare("DELETE FROM passwordcodeadmin WHERE id_code = $queryVerificarIdCode[id_code]");
+                    $queryDeletarCode->execute();
+                }
+            };
+            
+            $queryCriarCode = $conn->prepare("INSERT INTO passwordCodeadmin (id_admin, code) VALUES ($results[id_administrador], '$hashedCode')");
+            $queryCriarCode->execute();
+            
+            $mail = new PHPMailer(true);
+            
+            try {
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'bobesponjamailer@gmail.com';
+                $mail->Password = 'tjtmlgtjwqqskuam';
+                $mail->Port = 587;
+    
+                $mail->setFrom('bobesponjamailer@gmail.com');
+                $mail->addAddress($results['email']);
+    
+                $mail->isHTML(true);
+                $mail->Subject = "Prazer $results[nome]!";
+                $mail->Body = "<p>Aqui está seu código de recuperação de senha:</p>
+                    <ul>
+                        <li>$code</li>
+                    </ul>
+                    ";
+    
+                $mail->send();
+                
+                
+                $_SESSION['miColor'] = 'green';
+                $_SESSION['messageInformationOutraPagina'] = "Email com o código enviado para o seu e-mail, verifique-o!";
 
-        if (count($results) > 1 && password_verify($_POST['password'], $results['senha']) == TRUE){
-            $_SESSION['user_id_admin'] = $results["id_administrador"];
-            $_SESSION['name'] = $results["nome"];
-            $_SESSION['messageInformation'] = "";
-            header("Location: ./userPages/adminPage.php");
+                header("location: ./passwordChange.php");
+            
+            } catch (Exception $e) {
+                echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
+            }
+            
         } else {
-            $message = "<script language='javascript' type='text/javascript'>alert('Algo deu errado, tente novamente!')</script>";
+            $_SESSION["messageInformation"] = 'Algo deu errado!';
+            $_SESSION['miColor'] = '#FA6E65';
         }
     
     } 
@@ -122,7 +165,7 @@
 
     //Login Empresa
     if(!empty($_POST['cnpj'])){
-        $query = "SELECT * FROM empresa WHERE cnpj = :cnpj";
+        $query = "SELECT id_empresa, email, nome FROM empresa WHERE cnpj = :cnpj";
         $records = $conn->prepare($query);
         $records->bindParam(':cnpj', $_POST['cnpj']);
         $records->execute();
@@ -133,13 +176,61 @@
             $results = [];
         }
 
-        if (count($results) > 1 && password_verify($_POST['password_empresa'], $results['senha'])){
-            $_SESSION['user_id_empresa'] = $results["id_empresa"];
-            $_SESSION['name'] = $results["nome"];
-            $_SESSION['messageInformation'] = "";
-            header("Location: ./userPages/companyPage.php");
+        if ($results){
+            
+            $size = 8;
+            $seed = time(); 
+            $code = substr(sha1($seed), 40 - min($size,40));
+            $hashedCode = password_hash($code, PASSWORD_DEFAULT);
+
+            $queryVerificarCode = $conn->prepare("SELECT id_code FROM passwordcodeempresa WHERE id_empresa = $results[id_empresa]");
+            if ($queryVerificarCode->execute()) {
+                
+                while ($queryVerificarIdCode = $queryVerificarCode->fetch(PDO::FETCH_ASSOC)){
+                    $queryDeletarCode = $conn->prepare("DELETE FROM passwordcodeempresa WHERE id_code = $queryVerificarIdCode[id_code]");
+                    $queryDeletarCode->execute();
+                }
+            };
+            
+            $queryCriarCode = $conn->prepare("INSERT INTO passwordcodeempresa (id_empresa, code) VALUES ($results[id_empresa], '$hashedCode')");
+            $queryCriarCode->execute();
+            
+            $mail = new PHPMailer(true);
+            
+            try {
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'bobesponjamailer@gmail.com';
+                $mail->Password = 'tjtmlgtjwqqskuam';
+                $mail->Port = 587;
+    
+                $mail->setFrom('bobesponjamailer@gmail.com');
+                $mail->addAddress($results['email']);
+    
+                $mail->isHTML(true);
+                $mail->Subject = "Prazer $results[nome]!";
+                $mail->Body = "<p>Aqui está seu código de recuperação de senha:</p>
+                    <ul>
+                        <li>$code</li>
+                    </ul>
+                    ";
+    
+                $mail->send();
+                
+                
+                $_SESSION['miColor'] = 'green';
+                $_SESSION['messageInformationOutraPagina'] = "Email com o código enviado para o seu e-mail, verifique-o!";
+
+                header("location: ./passwordChange.php");
+            
+            } catch (Exception $e) {
+                echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
+            }
+            
         } else {
-            $message = "<script language='javascript' type='text/javascript'>alert('Algo deu errado, tente novamente!')</script>";
+            $_SESSION["messageInformation"] = 'Algo deu errado!';
+            $_SESSION['miColor'] = '#FA6E65';
         }
         
     }
@@ -165,7 +256,7 @@
 <body id="grad">
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <a href="../index.php" class="navbar-brand">COPEX</a>
+            <a href="../../index.php" class="navbar-brand">COPEX</a>
             <form class="d-flex" role="search">
                 <a href="../login.php" class="voltar">Voltar</a>
                 <a href="../../index.php" class="home">

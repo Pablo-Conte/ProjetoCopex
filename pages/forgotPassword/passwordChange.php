@@ -20,29 +20,58 @@
     //Login Administrador
     if (!empty($_POST['siape'])){
 
-        $query = "SELECT siape, senha, id_administrador, nome FROM administrador WHERE siape = :siape";
-
+        $query = "SELECT id_administrador FROM administrador WHERE siape = :siape";
         $records = $conn->prepare($query);
-
         $records->bindParam(':siape', $_POST['siape']);
-        
         $records->execute();
 
         $results = $records->fetch(PDO::FETCH_ASSOC);
-        
+
         if ($results == false){
             $results = [];
         }
 
-        $message = '';
+        if ($results){
+            if ($_POST['senha'] == $_POST['verificarSenha']){
+                $queryPegarCode = $conn->prepare("SELECT code FROM passwordcodeadmin WHERE id_admin = $results[id_administrador]");
+                $queryPegarCode->execute();
+                $resultCode = $queryPegarCode->fetch(PDO::FETCH_ASSOC);
+    
+                $hashedSenha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+                if (password_verify($_POST['codigo'], $resultCode['code'])) {
+                    $queryTrocarSenha = $conn->prepare("UPDATE administrador SET senha = '$hashedSenha' WHERE id_administrador = $results[id_administrador]");
+                    
+                    try {
+                        $queryTrocarSenha->execute();
+                        
+                        $queryVerificarCode = $conn->prepare("SELECT id_code FROM passwordcodeadmin WHERE id_admin = $results[id_administrador]");
+                        if ($queryVerificarCode->execute()) {
+                            
+                            while ($queryVerificarIdCode = $queryVerificarCode->fetch(PDO::FETCH_ASSOC)){
+                                $queryDeletarCode = $conn->prepare("DELETE FROM passwordcodeadmin WHERE id_code = $queryVerificarIdCode[id_code]");
+                                $queryDeletarCode->execute();
+                            }
+                        };
+                        $_SESSION["messageInformationLogin"] = 'Senha alterada com sucesso!';
+                        $_SESSION['miColor'] = 'green';
+                        header("location: ../login.php");
 
-        if (count($results) > 1 && password_verify($_POST['password'], $results['senha']) == TRUE){
-            $_SESSION['user_id_admin'] = $results["id_administrador"];
-            $_SESSION['name'] = $results["nome"];
-            $_SESSION['messageInformation'] = "";
-            header("Location: ./userPages/adminPage.php");
+                    } catch (Exception $e) {
+                        $_SESSION["messageInformation"] = 'Dados incorretos, tente novamente!';
+                        $_SESSION['miColor'] = '#2186C8';
+                    };
+                } else {
+                    $_SESSION["messageInformation"] = 'Código incorreto!';
+                    $_SESSION['miColor'] = '#FA6E65';
+                };
+            } else {
+                $_SESSION["messageInformation"] = 'Senhas não conferem!';
+                $_SESSION['miColor'] = '#2186C8';
+            }
+            
         } else {
-            $message = "<script language='javascript' type='text/javascript'>alert('Algo deu errado, tente novamente!')</script>";
+            $_SESSION["messageInformation"] = 'Dados incorretos!';
+            $_SESSION['miColor'] = '#FA6E65';
         }
     
     } 
@@ -106,7 +135,7 @@
 
     //Login Empresa
     if(!empty($_POST['cnpj'])){
-        $query = "SELECT * FROM empresa WHERE cnpj = :cnpj";
+        $query = "SELECT id_empresa FROM empresa WHERE cnpj = :cnpj";
         $records = $conn->prepare($query);
         $records->bindParam(':cnpj', $_POST['cnpj']);
         $records->execute();
@@ -117,13 +146,47 @@
             $results = [];
         }
 
-        if (count($results) > 1 && password_verify($_POST['password_empresa'], $results['senha'])){
-            $_SESSION['user_id_empresa'] = $results["id_empresa"];
-            $_SESSION['name'] = $results["nome"];
-            $_SESSION['messageInformation'] = "";
-            header("Location: ./userPages/companyPage.php");
+        if ($results){
+            if ($_POST['senha'] == $_POST['verificarSenha']){
+                $queryPegarCode = $conn->prepare("SELECT code FROM passwordcodeempresa WHERE id_empresa = $results[id_empresa]");
+                $queryPegarCode->execute();
+                $resultCode = $queryPegarCode->fetch(PDO::FETCH_ASSOC);
+    
+                $hashedSenha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+                if (password_verify($_POST['codigo'], $resultCode['code'])) {
+                    $queryTrocarSenha = $conn->prepare("UPDATE empresa SET senha = '$hashedSenha' WHERE id_empresa = $results[id_empresa]");
+                    
+                    try {
+                        $queryTrocarSenha->execute();
+                        
+                        $queryVerificarCode = $conn->prepare("SELECT id_code FROM passwordcodeempresa WHERE id_empresa = $results[id_empresa]");
+                        if ($queryVerificarCode->execute()) {
+                            
+                            while ($queryVerificarIdCode = $queryVerificarCode->fetch(PDO::FETCH_ASSOC)){
+                                $queryDeletarCode = $conn->prepare("DELETE FROM passwordcodeempresa WHERE id_code = $queryVerificarIdCode[id_code]");
+                                $queryDeletarCode->execute();
+                            }
+                        };
+                        $_SESSION["messageInformationLogin"] = 'Senha alterada com sucesso!';
+                        $_SESSION['miColor'] = 'green';
+                        header("location: ../login.php");
+
+                    } catch (Exception $e) {
+                        $_SESSION["messageInformation"] = 'Dados incorretos, tente novamente!';
+                        $_SESSION['miColor'] = '#2186C8';
+                    };
+                } else {
+                    $_SESSION["messageInformation"] = 'Código incorreto!';
+                    $_SESSION['miColor'] = '#FA6E65';
+                };
+            } else {
+                $_SESSION["messageInformation"] = 'Senhas não conferem!';
+                $_SESSION['miColor'] = '#2186C8';
+            }
+            
         } else {
-            $message = "<script language='javascript' type='text/javascript'>alert('Algo deu errado, tente novamente!')</script>";
+            $_SESSION["messageInformation"] = 'Dados incorretos!';
+            $_SESSION['miColor'] = '#FA6E65';
         }
         
     }
@@ -136,7 +199,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -154,7 +217,7 @@
 <body id="grad">
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <a href="../index.php" class="navbar-brand">COPEX</a>
+            <a href="../../index.php" class="navbar-brand">COPEX</a>
             <form class="d-flex" role="search">
                 <a href="../login.php" class="voltar">Voltar</a>
                 <a href="../../index.php" class="home">
