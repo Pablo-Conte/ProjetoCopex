@@ -53,6 +53,17 @@ body {
     margin: 0% 0% 10% 0%;
 }
 
+.editExclude {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.close {
+    margin-left: 5%;
+}
+
 .botaoRegistro {
     display: flex;
     margin-right: 0.625rem;

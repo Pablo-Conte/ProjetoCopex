@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS vaga (
     cargo VARCHAR(255) NOT NULL, 
     descricao VARCHAR(1000) NOT NULL,
     id_emp INT,
-    CONSTRAINT fk_id_emp FOREIGN KEY (id_emp) REFERENCES empresa (id_empresa) 
+    CONSTRAINT fk_id_emp FOREIGN KEY (id_emp) REFERENCES empresa (id_empresa) ON DELETE CASCADE 
 );
 
 CREATE TABLE IF NOT EXISTS aluno (
@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS vaga_aluno (
     id_vagaAluno INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_vaga INT,
     id_aluno INT,
-    CONSTRAINT fk_id_vaga FOREIGN KEY (id_vaga) REFERENCES vaga (id_vaga),
-    CONSTRAINT fk_id_aluno FOREIGN KEY (id_aluno) REFERENCES aluno (id_aluno) 
+    CONSTRAINT fk_id_vaga FOREIGN KEY (id_vaga) REFERENCES vaga (id_vaga) ON DELETE CASCADE,
+    CONSTRAINT fk_id_aluno FOREIGN KEY (id_aluno) REFERENCES aluno (id_aluno) ON DELETE CASCADE 
 );
 
 CREATE TABLE IF NOT EXISTS passwordCodeAdmin (

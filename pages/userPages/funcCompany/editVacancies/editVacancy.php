@@ -116,7 +116,7 @@ if (!isset($_SESSION['user_id_empresa'])) {
             $query = $conn->prepare("SELECT id_emp, cargo, curso, salario, descricao, id_vaga FROM vaga WHERE id_emp = $idEmp");
 
             if (!empty($_POST['search'])) {
-                $query = $conn->prepare("SELECT id_emp, cargo, curso, salario, descricao, id_vaga FROM vaga WHERE cargo LIKE '%$_POST[search]%'");
+                $query = $conn->prepare("SELECT id_emp, cargo, curso, salario, descricao, id_vaga FROM vaga WHERE cargo LIKE '%$_POST[search]%' AND id_emp = $idEmp");
             }
 
             $query->execute();
@@ -135,7 +135,7 @@ if (!isset($_SESSION['user_id_empresa'])) {
                 echo         "<td>$results[cargo]</td>";
                 echo         "<td>$results[curso]</td>";
                 echo         "<td class='resp'>$results[salario]</td>";
-                echo         "<td><button type='button' class='botaoModalInfo btn btn-primary' data-bs-toggle='modal' data-bs-target='#JanelaModalStudent" . $results['id_vaga'] . "'>Editar</button></td>";
+                echo         "<td class='editExclude'><button type='button' class='botaoModalInfo btn btn-primary' data-bs-toggle='modal' data-bs-target='#JanelaModalStudent" . $results['id_vaga'] . "'>Editar</button><button type='button' class='botaoModalInfo btn btn-danger close' data-bs-toggle='modal' data-bs-target='#JanelaModalStudentExclude" . $results['id_vaga'] . "'>X</button></td>";
                 echo     "</tr>";
 
                 echo "<form method='POST' action='./updateVacancy.php'>";
@@ -171,6 +171,30 @@ if (!isset($_SESSION['user_id_empresa'])) {
                 echo '</div>';
                 echo '</div>';
                 echo "</form>";
+
+                echo "<form method='POST' action='./deleteVacancy.php'>";
+                echo "<div id='JanelaModalStudentExclude$results[id_vaga]' class='modal fade' tabindex='-1' >";
+                echo "<div class='modal-dialog'>";
+                echo '<div class="modal-content">';
+                echo '    <div class="modal-header">';
+                echo "        <h3 class='modal-title'>Cuidado!</h3>";
+                echo '        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>';
+                echo '    </div>';
+
+                echo '    <div class="modal-body">';
+                echo '      <h5>Você realmente quer excluir esta vaga?</h5>';
+                echo "      <h5><strong>Vaga: </strong>$results[cargo]</h5>";
+                echo "      <input type='text' hidden value='$results[id_vaga]' name='idVaga'>";
+                echo '    </div>';
+
+                echo '    <div class="modal-footer">';
+                echo '        <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Sim</button>';
+                echo '        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Não</button>';
+                echo '    </div>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+                echo '</form>';
             }
             echo "</table>";
             echo "</div>"
