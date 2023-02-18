@@ -3,8 +3,19 @@
     require_once('../../../../includes/connection.php');
     require_once('../companyAuth.php');
 
-    if (!empty($_POST['salario']) && !empty($_POST['cargo']) && !empty($_POST['descricao'])){
-
+    if (empty($_POST['salario']) || empty($_POST['cargo']) || empty($_POST['descricao']) || empty($_POST['curso'])){
+        if(isset($_POST['singup'])) {
+            var_dump($_POST);
+            if (empty($_POST['salario']) || empty($_POST['cargo']) || empty($_POST['descricao']) || empty($_POST['curso'])) {
+                $_SESSION['messageInformation'] = "Por favor, preencha todos os dados do formulário";
+                $corToast = '#0dc1fd';
+                var_dump($_SESSION);
+                
+            }
+        }
+        
+    } else {
+        
         $query = $conn->prepare('INSERT INTO vaga (
             salario,
             curso,
@@ -39,17 +50,6 @@
             $_SESSION['messageInformation'] = "Ocorreu um erro ao Criar a vaga, verifique se todos os dados estão corretos";
             $corToast = 'red';
         }
-
-        
-        
-    } else {
-        if(isset($_POST['singup'])) {
-            if (empty($_POST['salario'] || $_POST['cargo'] || $_POST['descricao'])) {
-                $_SESSION['messageInformation'] = "Por favor, preencha todos os dados do formulário";
-                $corToast = '#0dc1fd';
-            }
-        }
-
 
     }
 
