@@ -97,7 +97,7 @@
             
             
             echo "
-            <div class='toast-container position-fixed' style='left: 50%;
+            <div class='toast-container position-fixed' style='style='left: 50%;
             position: fixed;
             transform: translate(-50%, 0px);
             z-index: 9999; border: none; margin-top: 2%'>

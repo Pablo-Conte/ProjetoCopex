@@ -113,17 +113,18 @@
                                 <th>-</th>
                                 <th class='respInterest'>-</th>
                                 <th>vaga</th>
-                                <th>Currículo</th>
+                                <th>Informações</th>
                             </tr>
 
                             <?php
                                 $idEmp = $_SESSION['user_id_empresa'];
                                 $queryInterestVacancy = $conn->prepare("SELECT id_vaga, cargo FROM vaga WHERE id_emp = $_SESSION[user_id_empresa]");
                                 $queryInterestVacancy->execute();
+                                
                                 while ($resultQueryInterest = $queryInterestVacancy->fetch(PDO::FETCH_ASSOC)) {
                                     $queryVagaAluno = $conn->prepare("SELECT id_aluno FROM vaga_aluno WHERE id_vaga = $resultQueryInterest[id_vaga]");
                                     $queryVagaAluno->execute();
-
+                                    
                                     while ($resultQueryVagaAluno = $queryVagaAluno->fetch(PDO::FETCH_ASSOC)) {
                                         $queryNomeAluno = $conn->prepare("SELECT * FROM aluno WHERE id_aluno = $resultQueryVagaAluno[id_aluno]");
                                         $queryNomeAluno->execute();

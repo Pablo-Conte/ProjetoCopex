@@ -93,10 +93,10 @@
             
             
             echo "
-            <div class='toast-container position-fixed' style='left: 50%;
+            <div class='toast-container position-fixed' style='style='left: 50%;
             position: fixed;
             transform: translate(-50%, 0px);
-            z-index: 9999; border: none; margin-top: 2%''>
+            z-index: 9999; border: none; margin-top: 2%'>
                 <div id='liveToast' class='toast' role='alert' aria-live='assertive' aria-atomic='true' style='background-color: white;'>
                     <div class='toast-header' style='background-color: $corToast; color: white'>
                         <strong class='me-auto'>Informativo!</strong>
