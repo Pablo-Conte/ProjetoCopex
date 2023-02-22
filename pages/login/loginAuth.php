@@ -1,5 +1,5 @@
 <?php 
-    require_once '../includes/connection.php';
+    require_once "$_SERVER[DOCUMENT_ROOT]/projetocopex/includes/connection.php";
 
     session_start();
 
@@ -96,5 +96,6 @@
         }
         
     }
+
     
 ?>

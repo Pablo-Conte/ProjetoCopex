@@ -21,91 +21,103 @@
     $idEmpresa = $_POST['idEmpresa'];
     $cargo = $_POST['cargo'];
 
-    $query = $conn->prepare("SELECT email FROM empresa WHERE id_empresa = $idEmpresa");
+    $query = $conn->prepare("SELECT email, numero, nome FROM empresa WHERE id_empresa = $idEmpresa");
     $query->execute();
 
     $results = $query->fetch(PDO::FETCH_ASSOC);
     $emailEmpresa = $results['email'];
+    $numeroEmpresa = $results['numero'];
+    $nomeEmpresa = $results['nome'];
 
     $mail = new PHPMailer(true);
 
-    // try {
-    //     $mail->isSMTP();
-    //     $mail->Host = 'smtp.gmail.com';
-    //     $mail->SMTPAuth = true;
-    //     $mail->Username = 'bobesponjamailer@gmail.com'; //Uma conta com as devidas configs para aceitar requisições desse tipo.
-    //     $mail->Password = '-'; //Necessário pass pública do email usado para enviar os e-mails (bob).
-    //     $mail->Port = 587;
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'bobesponjamailer@gmail.com'; //Uma conta com as devidas configs para aceitar requisições desse tipo.
+        $mail->Password = ''; //Necessário pass pública do email usado para enviar os e-mails (bob).
+        $mail->Port = 587;
 
-    //     $mail->setFrom('bobesponjamailer@gmail.com');
-    //     $mail->addAddress($emailEmpresa);
+        $mail->setFrom('bobesponjamailer@gmail.com');
+        $mail->addAddress($emailEmpresa);
 
-    //     $mail->isHTML(true);
-    //     $mail->Subject = "$nomeAluno registou interesse na sua vaga!";
-    //     $mail->Body = "<p>Dados de $nomeAluno:</p>
-    //         <ul>
-    //             <li>Nome: $nomeAluno</li>
-    //             <li>Numero de contato: $numeroAluno</li>
-    //             <li>Email de contato: $emailAluno</li>
-    //             <li>Vaga de interesse: $cargo</li>
-    //         </ul>
-    //         ";
-    //     $mail->AltBody = 'Chegou o email teste de Pablin!!';
+        $mail->isHTML(true);
+        $mail->Subject = "$nomeAluno registou interesse na sua vaga!";
+        $mail->Body = "<p>Olá! parece que um aluno do IFSul registrou interesse na sua vaga! Lá vão os dados de $nomeAluno:</p>
+            <ul>
+                <li>Nome: $nomeAluno</li>
+                <li>Numero de contato: $numeroAluno</li>
+                <li>Email de contato: $emailAluno</li>
+                <li>Vaga de interesse: $cargo</li>
+            </ul>
+            ";
+        $mail->AltBody = 'Chegou o email teste de Pablin!!';
 
-    //     $_SESSION['m'] = "Interesse foi registrado com sucesso!";
+        $_SESSION['m'] = "Interesse foi registrado com sucesso!";
 
-    //     $mail->send();
+        $mail->send();
 
-    //     header("location: ./listVacancy.php");
+        header("location: ./listVacancy.php");
         
-    // } catch (Exception $e) {
-    //     echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
-    //     //Provavelmente tu estás vendo essa parte do código pq a autenticação não funfou né prof? ahahahha, podemos testar em aulas juntos se quiser ;), ou tu pode criar um email e configurar certin para colocar no $mail->Username e tals
-    // }
+    } catch (Exception $e) {
+        echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
+    }
 
-    //Implementação do envio de SMS, em trabalho ainda.
+    
+    //Implementação do envio de SMS.
+    try {
+        $account_sid = ''; //account id do twilio
+        $auth_token = ''; //token do twilio
 
-    // try {
+        $twilio_number = ""; //Número que tu ganha do twilio para enviar as mensagens
+
+        $client = new Client($account_sid, $auth_token);
+        $client->messages->create(
+                // Where to send a text message (your cell phone?)
+                '+5551997602457', //com o twilio pro, colocariamos aqui a variável do número, como usamos a free, vai o meu na mão mesmo, a fim de teste
+                array(
+                    'From' => $twilio_number,
+                    'body' => "Ola $nomeEmpresa! verificamos que um aluno do IFSUL se interessou em sua vaga. 
+Nome: $nomeAluno
+Número: $numeroAluno
+E-mail: $emailAluno
+Cargo: $cargo
+                    "
+                )
+            );
         
-    //     $account_sid = '';
-    //     $auth_token = '';
+    } catch (Exception $e) {
+        echo "Erro ao enviar SMS: $e";
+    }
 
-    //     $twilio_number = "(726) 227-2391 ";
+    //Envio de mensagens via whatsapp
+    try {
 
-    //     $client = new Client($account_sid, $auth_token);
-    //     $client->messages->create(
-    //             // Where to send a text message (your cell phone?)
-    //             '+5551997602457',
-    //             array(
-    //                 'from' => $twilio_number,
-    //                 'body' => 'Projeto COPEX está funcionando com SMS agora!'
-    //             )
-    //         );
-        
-    // } catch (Exception $e) {
-    //     echo "Erro ao enviar SMS";
-    // }
+        $dadosParaEnviar = http_build_query(
+            array(
+                'number' => "+$numeroEmpresa",
+                'message' => "Ola $nomeEmpresa! verificamos que um aluno do IFSUL se interessou em sua vaga. 
 
-    // try {
-
-    //     $dadosParaEnviar = http_build_query(
-    //         array(
-    //             'number' => '+55 51 8044-2548',
-    //             'message' => 'OK, agora implementei no código do projeto mesmo, se tu ver essa mensagem é pq deu certo'
-    //         )
-    //     );
-    //     $opcoes = array('http' =>
-    //            array(
-    //             'method'  => 'POST',
-    //             'header'  => 'Content-Type: application/x-www-form-urlencoded',
-    //             'content' => $dadosParaEnviar
-    //         )
-    //     );
-    //     $contexto = stream_context_create($opcoes);
-    //     $result   = file_get_contents('http://localhost:8000/send-message', false, $contexto);
-    // } catch (Exception $e){
-    //     echo "oh shit, here we go again!\n" . $e;
-    // }
+Nome: $nomeAluno
+Número: $numeroAluno
+E-mail: $emailAluno
+Cargo: $cargo
+                "
+            )
+        );
+        $opcoes = array('http' =>
+               array(
+                'method'  => 'POST',
+                'header'  => 'Content-Type: application/x-www-form-urlencoded',
+                'content' => $dadosParaEnviar
+            )
+        );
+        $contexto = stream_context_create($opcoes);
+        $result   = file_get_contents('http://localhost:8000/send-message', false, $contexto);
+    } catch (Exception $e){
+        echo "oh shit, here we go again!\n" . $e;
+    }
      
     $idVaga = $_POST['idVaga'];
     $query = $conn->prepare(
@@ -120,7 +132,6 @@
     $query->execute();
 
     $results = $query->fetch(PDO::FETCH_ASSOC);
-    var_dump($_SESSION);
     $_SESSION['messageInformation'] = 'Interesse registrado com sucesso!';
     header("location: ../studentPage.php");
 ?>
