@@ -1,5 +1,9 @@
 <?php
-    $msg = $_GET['msg'];
+    $error = "";
+    
+    if (isset($_GET['msg'])){
+        $error = $_GET['msg'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +19,7 @@
     <div class="error">
         <h1>Opa!</h1>
         <bold><h3>Erro: Contate nosso suporte!</h3></bold>
-        <p><?php echo $msg; ?></p>
+        <p><?php echo $error; ?></p>
         <button onclick="window.location.href='./login.php'">Voltar para Home</button>
     </div>
 </body>
