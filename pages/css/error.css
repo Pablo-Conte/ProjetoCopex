@@ -1,0 +1,90 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+body {
+    background: linear-gradient(to right,rgb(47, 91, 68), #3c786c) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0px;
+}
+
+.error {
+   background-color: #212529; 
+   width: 50%;
+   height: 60%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 2%;
+   border-radius: 20px;
+   border: 1px solid white;
+   box-shadow: 0px 0px 10px black;
+}
+
+h1 {
+    font-size: 100px;
+    margin-bottom: 0px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+button {
+    background-color: rgb(98, 98, 98);
+    width: 40%;
+    padding: 2%;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: rgb(75, 75, 75);
+    color: white;
+    transition: 1s;
+}
+
+@media (max-width: 900px) {
+    h1 {
+        font-size: 80px;
+        text-align: center;
+    }
+    h3 {
+        font-size: 20px;
+        text-align: center;
+    }
+    p {
+        font-size: 20px;
+        text-align: center;
+    }
+    button {
+        width: 50%;
+        height: 10%;
+    }
+}
+
+@media (max-width: 900px) {
+    .error {
+        width: 70%;
+    }
+}
+
+@media (max-width: 410px) {
+    h1 {
+        font-size: 50px;
+    }
+    h3 {
+        font-size: 18px;
+        text-align: center;
+    }
+    p {
+        font-size: 15px;
+        text-align: center;
+    }
+}

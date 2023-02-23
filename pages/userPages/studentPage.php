@@ -236,6 +236,7 @@ if (!isset($_SESSION['user_id_aluno'])) {
 
         <?php
 
+        
         $queryVagaAluno3 = $conn->prepare("SELECT id_vaga FROM vaga_aluno WHERE id_aluno = $_SESSION[user_id_aluno]");
         $queryVagaAluno3->execute();
         while ($resultQueryVagaAluno = $queryVagaAluno3->fetch(PDO::FETCH_ASSOC)) {

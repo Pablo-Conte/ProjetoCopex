@@ -5,10 +5,11 @@
     $password = '1234';
     $database = 'site';
 
+    
     try {
         $conn = new PDO("mysql:host=$server; dbname=$database;", $username, $password);
     } catch (PDOException $e) {
-        die('Connection Failed: ' . $e->getMessage());
+        header('Location: ../pages/error.php?msg='.$e->getMessage());
     }
 
 ?>
