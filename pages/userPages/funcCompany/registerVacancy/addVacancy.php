@@ -5,11 +5,9 @@
 
     if (empty($_POST['salario']) || empty($_POST['cargo']) || empty($_POST['descricao']) || empty($_POST['curso'])){
         if(isset($_POST['singup'])) {
-            var_dump($_POST);
             if (empty($_POST['salario']) || empty($_POST['cargo']) || empty($_POST['descricao']) || empty($_POST['curso'])) {
                 $_SESSION['messageInformation'] = "Por favor, preencha todos os dados do formulário";
                 $corToast = '#0dc1fd';
-                var_dump($_SESSION);
                 
             }
         }

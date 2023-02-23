@@ -4,6 +4,8 @@
     use PHPMailer\PHPMailer\PHPMailer;
     require '../../library/mailSRC/PHPMailer.php';
     require '../../library/mailSRC/SMTP.php';
+    require '../../library/mailSRC/Exception.php';
+    use PHPMailer\PHPMailer\Exception;
 
     session_start();
 
@@ -82,7 +84,7 @@
                 header("location: ./passwordChange.php");
             
             } catch (Exception $e) {
-                echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
+                $_SESSION['messageInformation'] = "$mail->ErrorInfo";
             }
             
         } else {
@@ -154,7 +156,7 @@
                 header("location: ./passwordChange.php");
             
             } catch (Exception $e) {
-                echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
+                $_SESSION['messageInformation'] = "$mail->ErrorInfo";
             }
             
         } else {
@@ -225,7 +227,7 @@
                 header("location: ./passwordChange.php");
             
             } catch (Exception $e) {
-                echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
+                $_SESSION['messageInformation'] = "$mail->ErrorInfo";
             }
             
         } else {

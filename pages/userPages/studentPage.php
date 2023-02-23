@@ -244,7 +244,7 @@ if (!isset($_SESSION['user_id_aluno'])) {
             $queryNomeAluno->execute();
             $resultNome = $queryNomeAluno->fetch();
 
-            $queryEmpresa = $conn->prepare("SELECT nome FROM empresa WHERE id_empresa = $resultNome[id_emp]");
+            $queryEmpresa = $conn->prepare("SELECT nome, email FROM empresa WHERE id_empresa = $resultNome[id_emp]");
             $queryEmpresa->execute();
             $resultEmpresa = $queryEmpresa->fetch();
 
@@ -252,7 +252,7 @@ if (!isset($_SESSION['user_id_aluno'])) {
             echo "      <div class='modal-dialog'>";
             echo "          <div class='modal-content'>";
             echo "              <div class='modal-header'>";
-            echo "                <h1 class='modal-title fs-5' id='exampleModalLabel'>Interesse</h1>'";
+            echo "                <h1 class='modal-title fs-5' id='exampleModalLabel'>Interesse</h1>";
             echo "                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
             echo "              </div>";
             echo "              <div class='modal-body'>";
@@ -262,6 +262,8 @@ if (!isset($_SESSION['user_id_aluno'])) {
             echo "                  <p>$resultNome[cargo]</p>";
             echo "                  <h4>Descrição da Vaga: </h4>";
             echo "                  <p>$resultNome[descricao]</p>";
+            echo "                  <h4>E-mail da empresa: </h4>";
+            echo "                  <p>$resultEmpresa[email]</p>";
             echo "              </div>";
             echo "              <div class='modal-footer'>";
             echo "                  <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>";

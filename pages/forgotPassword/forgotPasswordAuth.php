@@ -1,6 +1,8 @@
 <?php 
     require_once '../../includes/connection.php';
     use PHPMailer\PHPMailer\PHPMailer;
+    require '../../library/mailSRC/Exception.php';
+    use PHPMailer\PHPMailer\Exception;
 
 
     session_start();
