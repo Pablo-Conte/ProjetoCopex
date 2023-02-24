@@ -108,14 +108,21 @@
                     <div class="modal-body">
                         <table>
                             <tr>
-                                <th>-</th>
-                                <th>Nome</th>
-                                <th>-</th>
-                                <th class='respInterest'>-</th>
-                                <th>vaga</th>
-                                <th>Informações</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th class='respInterest'></th>
+                                <th></th>
+                                <th></th>
                             </tr>
-
+                            <tr>
+                                <td><div class='simboloCirculo'></div></td>
+                                <td class='nome'>Nome aluno</td>
+                                <td class='respInterest'><img class='seta' src='../../imagens/seta.png' alt=''></td>
+                                <td><div class='simboloQuadrado'></div></td>
+                                <td><div class='vaga'>Nome Cargo</div></td>
+                                <td><div class='vaga'>Informações</div></td>
+                            </tr>
                             <?php
                                 $idEmp = $_SESSION['user_id_empresa'];
                                 $queryInterestVacancy = $conn->prepare("SELECT id_vaga, cargo FROM vaga WHERE id_emp = $_SESSION[user_id_empresa]");

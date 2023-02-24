@@ -20,7 +20,7 @@
         <h1>Opa!</h1>
         <bold><h3>Erro: Contate nosso suporte!</h3></bold>
         <p><?php echo $error; ?></p>
-        <button onclick="window.location.href='./login.php'">Voltar para Home</button>
+        <button onclick="window.location.href='../index.php'">Voltar para Home</button>
     </div>
 </body>
 </html>
