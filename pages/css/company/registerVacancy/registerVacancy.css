@@ -32,6 +32,7 @@ body {
     border-radius: 20px;
     align-items: center;
     flex-direction: column;
+    box-shadow: 0px 0px 5px black;
 }
 
 form {
@@ -59,6 +60,11 @@ form {
 .descricao {
     width: 100%;
 
+}
+
+body {
+    background: url('../../../../imagens/background.svg') no-repeat;
+    background-size: cover;
 }
 
 .descricao textarea {

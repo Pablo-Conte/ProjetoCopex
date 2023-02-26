@@ -1,6 +1,6 @@
 .page {
     display: flex;
-    height: 91vh;
+    height: 92vh;
     padding: 3%;
 }
 
@@ -70,6 +70,10 @@ body {
     border-radius: 0.625rem;
     justify-content: center;
     height: 100%;
+}
+body {
+    background: url('../../../imagens/background.svg') no-repeat;
+    background-size: cover;
 }
 
 .funcoes h1 {

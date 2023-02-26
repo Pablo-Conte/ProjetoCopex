@@ -64,6 +64,11 @@ body {
     margin-left: 5%;
 }
 
+body {
+    background: url('../../../../imagens/background.svg') no-repeat;
+    background-size: cover;
+}
+
 .botaoRegistro {
     display: flex;
     margin-right: 0.625rem;

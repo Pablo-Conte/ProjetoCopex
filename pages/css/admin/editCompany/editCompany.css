@@ -15,6 +15,11 @@ body {
     display: inline-table;
 }
 
+body {
+    background: url('../../../../imagens/background.svg') no-repeat;
+    background-size: cover;
+}
+
 .editExclude {
     display: flex;
     justify-content: center;

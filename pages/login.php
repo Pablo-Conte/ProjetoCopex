@@ -96,59 +96,62 @@
     ?>
     <div class="main">
         <div>
-            <div class="loginChoice">
+            <div class="login">
+                <div class="loginChoice">
 
-                <label value="Administrador" name="opcao" class="opcao" id="Administrador">Administrador</label>
-                <label value="Estudante" name="opcao" class="opcao" id="Estudante" style="background-color: white; color: black;">Estudante</label>
-                <label value="Empresa" name="opcao" class="opcao" id="Empresa">Empresa</label>
+                    <label value="Administrador" name="opcao" class="opcao" id="Administrador">Administrador</label>
+                    <label value="Estudante" name="opcao" class="opcao" id="Estudante" style="background-color: white; color: black;">Estudante</label>
+                    <label value="Empresa" name="opcao" class="opcao" id="Empresa">Empresa</label>
 
-            </div>
-            <div class="loginStyle">
-                <div>
-                    <div id="tab1" style="display: none;">
-                        <div class="loginForm">
-                            <form action="login.php" method="POST" class="data">
-                                <img src="../imagens/admin.png" alt="">
-                                <hr>
-                                <input type="name" placeholder="Digite seu SIAPE" name="siape">
-                                
-                                <input type="password" placeholder="Digite sua senha" name="password">
-                                <a href="./forgotPassword/forgotPassword.php" class="recuperacao">Esqueceu sua senha?</a>
-                                <button type="submit">Login</button>
-                            </form>
+                </div>
+            
+                <div class="loginStyle">
+                    <div>
+                        <div id="tab1" style="display: none;">
+                            <div class="loginForm">
+                                <form action="login.php" method="POST" class="data">
+                                    <img src="../imagens/admin.png" alt="">
+                                    <hr>
+                                    <input type="name" placeholder="Digite seu SIAPE" name="siape">
+                                    
+                                    <input type="password" placeholder="Digite sua senha" name="password">
+                                    <a href="./forgotPassword/forgotPassword.php" class="recuperacao">Esqueceu sua senha?</a>
+                                    <button type="submit">Login</button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <div id="tab2" style="display: block;">
-                        <div class="loginForm">
-                            <form action="login.php" method="POST" class="data">
-                                <img src="../imagens/aluno.png" alt="">
-                                <hr>
-                                <input type="text" placeholder="Digite sua matricula" name="matricula">
-                                
-                                <input type="password" placeholder="Digite sua senha" name="password_aluno">
-                                <a href="./forgotPassword/forgotPassword.php" class="recuperacao">Esqueceu sua senha?</a>
-                                <button type="submit">Login</button>
-                            </form>
+                        <div id="tab2" style="display: block;">
+                            <div class="loginForm">
+                                <form action="login.php" method="POST" class="data">
+                                    <img src="../imagens/aluno.png" alt="">
+                                    <hr>
+                                    <input type="text" placeholder="Digite sua matricula" name="matricula">
+                                    
+                                    <input type="password" placeholder="Digite sua senha" name="password_aluno">
+                                    <a href="./forgotPassword/forgotPassword.php" class="recuperacao">Esqueceu sua senha?</a>
+                                    <button type="submit">Login</button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <div id="tab3" style="display: none;">
-                        <div class="loginForm">
-                            <form action="login.php" method="POST" class="data">
-                                <img src="../imagens/empresa.png" alt="">
-                                <hr>
-                                <input type="name" placeholder="Digite seu CNPJ" name="cnpj">
-                                
-                                <input type="password" placeholder="Digite sua senha" name="password_empresa">
-                                <a href="./forgotPassword/forgotPassword.php" class="recuperacao">Esqueceu sua senha?</a>
-                                <button type="submit">Login</button>
-                                
-                            </form>
+                        <div id="tab3" style="display: none;">
+                            <div class="loginForm">
+                                <form action="login.php" method="POST" class="data">
+                                    <img src="../imagens/empresa.png" alt="">
+                                    <hr>
+                                    <input type="name" placeholder="Digite seu CNPJ" name="cnpj">
+                                    
+                                    <input type="password" placeholder="Digite sua senha" name="password_empresa">
+                                    <a href="./forgotPassword/forgotPassword.php" class="recuperacao">Esqueceu sua senha?</a>
+                                    <button type="submit">Login</button>
+                                    
+                                </form>
+                            </div>
                         </div>
+                        
+                        <?php if (!empty($message)) : ?>
+                            <p> <?= $message ?></p>
+                        <?php endif; ?>
                     </div>
-                    
-                    <?php if (!empty($message)) : ?>
-                        <p> <?= $message ?></p>
-                    <?php endif; ?>
                 </div>
             </div>
         </div>

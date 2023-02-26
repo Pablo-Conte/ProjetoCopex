@@ -60,6 +60,11 @@ body {
     
 }
 
+body {
+    background: url('../../../../imagens/background.svg') no-repeat;
+    background-size: cover;
+}
+
 .close {
     margin-left: 5%;
 }

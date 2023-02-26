@@ -13,7 +13,8 @@ h2 {
 }
 
 body#grad {
-  background-color: rgb(47, 91, 68);
+  background: url('../../imagens/background.svg') no-repeat;
+  background-size: cover;
 }
 
 /* Sistema de autenticação */
@@ -52,6 +53,11 @@ label:last-child {
   background-color: #343a3f;
   padding: 0.9375rem;
   border-radius: 0rem 0rem 0.625rem 0.625rem;
+}
+
+.login {
+  box-shadow: 0px 0px 5px black;
+  border-radius: 0.625rem 0.625rem 0.625rem 0.625rem;
 }
 
 div div.loginForm {

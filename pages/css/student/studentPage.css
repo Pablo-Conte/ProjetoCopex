@@ -1,6 +1,6 @@
 .page {
     display: flex;
-    height: 91vh;
+    height: 92vh;
     padding: 3%;
 }
 
@@ -28,6 +28,7 @@ body {
     justify-content: space-between;
     padding-bottom: 5%;
     background-color: rgba(240, 248, 255, 0.829);
+    box-shadow: 0px 0px 5px black;
 }
 
 .funcoes {
@@ -39,6 +40,7 @@ body {
     padding: 3%;
     background-color: rgba(240, 248, 255, 0.829);
     overflow: auto;
+    box-shadow: 0px 0px 5px black;
 }
 
 
@@ -60,6 +62,7 @@ form {
     padding: 20px;
     border-radius: 20px;
     width: 30%;
+    box-shadow: 0px 0px 10px black;
 }
 
 .user {
@@ -115,6 +118,10 @@ form {
 
 .user {
     margin: 10% 0% 0% 0%;
+}
+
+.nomeEmpresa {
+    font-weight: bold;
 }
 
 .nomeAdmin {
@@ -181,12 +188,14 @@ a:hover {
         width: 100%;
         margin-left: 0px;
         text-align: center;
-
+        height: 40%;
     }
 
     .perfil {
         width: 100%;
         margin-bottom: 5%;
+        display: flex;
+        justify-content: center;
     }
 
     .funcoes {
@@ -223,7 +232,7 @@ a:hover {
 
     /* Handle on hover */
     .perfil::-webkit-scrollbar-thumb:hover {
-        background: rgb(72, 136, 255);
+        background: rgb(97, 97, 97);
     }
 
 }
@@ -276,9 +285,12 @@ a:hover {
 
     /* Handle on hover */
     .funcoes::-webkit-scrollbar-thumb:hover {
-        background: rgb(72, 136, 255);
+        background: rgb(97, 97, 97);;
     }
 
+    .perfil {
+        height: 35%;
+    }
 }
 
 .funcoes {
@@ -312,7 +324,12 @@ a:hover {
 
 /* Handle on hover */
 .funcoes::-webkit-scrollbar-thumb:hover {
-    background: rgb(72, 136, 255);
+    background: rgb(97, 97, 97);;
+}
+
+body {
+    background: url('../../../imagens/background.svg') no-repeat;
+    background-size: cover;
 }
 
 .interest {

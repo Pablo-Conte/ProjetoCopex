@@ -50,19 +50,22 @@ CREATE TABLE IF NOT EXISTS vaga_aluno (
 CREATE TABLE IF NOT EXISTS passwordCodeAdmin (
     id_code INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_admin INT,
-    code VARCHAR(70)
+    code VARCHAR(70),
+    CONSTRAINT fk_id_admin foreign key (id_admin) references administrador(id_administrador) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS passwordCodeAluno (
     id_code INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_aluno INT,
-    code VARCHAR(70)
+    code VARCHAR(70),
+    CONSTRAINT fk_id_aluno_code foreign key (id_aluno) references aluno(id_aluno) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS passwordCodeEmpresa (
     id_code INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_empresa INT,
-    code VARCHAR(70)
+    code VARCHAR(70),
+    CONSTRAINT fk_id_empresa foreign key (id_empresa) references empresa(id_empresa) ON DELETE CASCADE
 );
 
 

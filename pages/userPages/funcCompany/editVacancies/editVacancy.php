@@ -81,8 +81,8 @@ if (!isset($_SESSION['user_id_empresa'])) {
             </div>
 
             <div class="nomeAdmin">
-                <p>Interessados</p>
-                <p>
+                <p class="esconde">Interessados</p>
+                <p class="esconde">
                     <?php
                     $query = $conn->prepare("SELECT id_vaga FROM vaga WHERE id_emp = $_SESSION[user_id_empresa]");
                     $query->execute();
