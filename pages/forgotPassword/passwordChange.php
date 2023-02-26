@@ -214,7 +214,7 @@
     <title>Editar Senha</title>
 </head>
 
-<body id="grad">
+<body id="grad" style="background-color: #2f5b44">
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
             <a href="../../index.php" class="navbar-brand">COPEX</a>

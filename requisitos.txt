@@ -1,0 +1,29 @@
+Para rodar o projeto é preciso ter certeza que:
+
+- Todas as variaveis de ambiente estão configuradas, as mesmas ficam em config.
+- As variáveis de ambiente em suma maioria são senhas e SSIDs de autenticação dos sites que utilizamos como rest API, podendo estar sujeitas a mudanças
+ou desativação por parte das aplicações (as que usamos com trial mode, como o twilio).
+
+- Perceba que para o projeto funcionar, deves de ter algumas tecnologias e ou requisitos.
+    * Algum SGBD rodando SQL, como MySQL ou um sistema de manipulação de banco de dados, como o PHPMyAdmin.
+    * Node.JS atualizado, com a ultima versão de preferência, assim como seu gerenciador de pacotes, o NPM, aceita-se o yarn também.
+    * PHP, em sua versão mais nova, as versões mais desatualizadas da aplicação resultam em erros, por não terem funções que utilizamos na implementação.
+    * De preferência tenha o VSCode instalado (isso para você prof! é mais fácil mexer em uma IDE que conhecemos).
+    * Uma conta no google com permissão para envio de emails.
+    * Uma conta no twilio em free trail em caso de desenvolvimento, e uma conta PRO se tiver em ambiente de produção.
+    * As contas de nosso DUMP estão todas com as mesmas senhas, sendo ela "1234".
+    * É recomendado também antes de rodar que verifique o arquivo "connection.php", que fica dentro de "/includes", verifique o IP donde o seu
+    banco de dados está rodando, a senha e nome do root do banco e o nome do banco (que no DUMP está como 'site').
+
+OBS: No caso de mensagens de whatsapp estamos rodando um repositório open source do usuário NGKoding do github, perceba que essa etapa é MUITO
+IMPORTANTE para o funcionamento das notificações por whatsapp. A primeira coisa que deverá fazer é instanciar as dependências do projeto do colega, isso
+tu deverá fazer com o NPM. Feito isso tu deverá rodar a aplicação em seu computador, basta verificar o script de ativação no package.json e rodar com o 
+NPM, no caso desse repositório será: NPM start. Com isso o projeto vai rodar na porta 8000 do teu computador... acessando via web esta porta, teremos 
+uma autenticação que deverá ser feita, basicamente tu abrirá teu whatsapp e clicará em aparelhos conectados, logo depois 'conectar um aparelho', Feito
+isso aponte a camera do teu celular para o código QR que estara no localhost:8000 e verifique no terminal se a autenticação deu êxito, dando êxito, basta
+seguir com o teste da aplicação do projeto COPEX 
+    
+A princípio seria isso os cuidados a serem tomados. Em caso de mal funcionamento converse comigo, pode ser pelos seguinte contatos:
+
+Email: pablo.correa.nr@gmail.com
+Celular: 5551997602457

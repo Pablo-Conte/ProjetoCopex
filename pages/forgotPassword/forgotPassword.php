@@ -6,6 +6,7 @@
     require '../../library/mailSRC/SMTP.php';
     require '../../library/mailSRC/Exception.php';
     use PHPMailer\PHPMailer\Exception;
+    include_once '../../config/configs.php';
 
     session_start();
 
@@ -21,6 +22,10 @@
         header('Location: ./userPages/companyPage.php');
     }
 
+    $autenticacao = new Autenticacao();
+    $senha = $autenticacao->senhaEmail;
+    $email = $autenticacao->email;
+    
     //Login Administrador
     if (!empty($_POST['siape'])){
 
@@ -60,11 +65,11 @@
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'bobesponjamailer@gmail.com';
-                $mail->Password = 'xzpeefhpzzthbxyx';
+                $mail->Username = "$email";
+                $mail->Password = "$senha";
                 $mail->Port = 587;
     
-                $mail->setFrom('bobesponjamailer@gmail.com');
+                $mail->setFrom("$email");
                 $mail->addAddress($results['email']);
     
                 $mail->isHTML(true);
@@ -133,11 +138,11 @@
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'bobesponjamailer@gmail.com';
-                $mail->Password = 'xzpeefhpzzthbxyx';
+                $mail->Username = "$email";
+                $mail->Password = "$senha";
                 $mail->Port = 587;
     
-                $mail->setFrom('bobesponjamailer@gmail.com');
+                $mail->setFrom("$email");
                 $mail->addAddress($results['email']);
     
                 $mail->isHTML(true);
@@ -200,16 +205,15 @@
             $queryCriarCode->execute();
             
             $mail = new PHPMailer(true);
-            
             try {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'bobesponjamailer@gmail.com';
-                $mail->Password = 'xzpeefhpzzthbxyx';
+                $mail->Username = "$email";
+                $mail->Password = "$senha";
                 $mail->Port = 587;
     
-                $mail->setFrom('bobesponjamailer@gmail.com');
+                $mail->setFrom("$email");
                 $mail->addAddress($results['email']);
     
                 $mail->isHTML(true);

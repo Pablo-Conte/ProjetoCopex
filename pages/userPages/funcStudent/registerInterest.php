@@ -3,7 +3,7 @@
     use Twilio\Rest\Client;
     require_once "../../../includes/connection.php";
     require_once "./studentAuth.php";
-
+    include_once '../../../config/configs.php';
     require_once('../../../library/mailSRC/PHPMailer.php');
     require_once('../../../library/mailSRC/SMTP.php');
     require_once('../../../library/mailSRC/Exception.php');
@@ -14,6 +14,13 @@
     //precisamos a partir da outra página, receber o ID da empresa
     //Assim poderemos pesquisar no banco o e-mail da empresa para colocar como addAddress (para quem vamos enviar um e-mail)
     //Para colocar os dados do aluno no corpo do e-mail é fácil, basta puxar da sessão
+
+    $autenticacao = new Autenticacao();
+    $senha = $autenticacao->senhaEmail;
+    $email = $autenticacao->email;
+    $accountId = $autenticacao->account_sid;
+    $authToken = $autenticacao->auth_token;
+    $twilioNumber = $autenticacao->twilio_number;
 
     $nomeAluno = $_SESSION['name'];
     $numeroAluno = $_SESSION['numero'];
@@ -35,11 +42,11 @@
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'bobesponjamailer@gmail.com'; //Uma conta com as devidas configs para aceitar requisições desse tipo.
-        $mail->Password = ''; //Necessário pass pública do email usado para enviar os e-mails (bob).
+        $mail->Username = "$email"; //Uma conta com as devidas configs para aceitar requisições desse tipo.
+        $mail->Password = "$senha"; //Necessário senha pública do email usado para enviar os e-mails (bob).
         $mail->Port = 587;
 
-        $mail->setFrom('bobesponjamailer@gmail.com');
+        $mail->setFrom("$email");
         $mail->addAddress($emailEmpresa);
 
         $mail->isHTML(true);
@@ -67,10 +74,10 @@
     
     //Implementação do envio de SMS.
     try {
-        $account_sid = ''; //account id do twilio
-        $auth_token = ''; //token do twilio
+        $account_sid = "$accountId"; //account id do twilio
+        $auth_token = "$authToken"; //token do twilio
 
-        $twilio_number = ""; //Número que tu ganha do twilio para enviar as mensagens
+        $twilio_number = "$twilioNumber"; //Número que tu ganha do twilio para enviar as mensagens
 
         $client = new Client($account_sid, $auth_token);
         $client->messages->create(

@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS vaga (
     salario VARCHAR(255) NOT NULL,
     curso VARCHAR(100) NOT NULL,
     cargo VARCHAR(255) NOT NULL, 
-    descricao VARCHAR(1000) NOT NULL,
+    descricao VARCHAR(10000) NOT NULL,
     id_emp INT,
     CONSTRAINT fk_id_emp FOREIGN KEY (id_emp) REFERENCES empresa (id_empresa) ON DELETE CASCADE 
 );
